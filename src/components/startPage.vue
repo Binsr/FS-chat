@@ -51,7 +51,7 @@ export default {
     data(){
         return{
             client:{
-                "name":"djordje",
+                "name":"Uros",
                 "users": 13
             },
             myMessage:'',
