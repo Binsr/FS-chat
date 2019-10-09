@@ -27,10 +27,8 @@
                 </div>
             </div>
             <div class="inputWrap">
-                <input type="text" v-model="myMessage">
-                <button @click="submit">asdas</button>
-                <br>
-                <span>{{myMessage}}</span>
+                <input  type="text" v-model="myMessage">
+                <button @keyup.enter.native="submit" @click="submit">asdas</button>
             </div>
         
             <!-- <form onSubmit={this.handleSubmit} >
@@ -108,25 +106,20 @@ export default {
         msg: String
     },
     methods:{
-        hello() {
-            console.log('hello');
-            
-        },
         submit() {
             // axios.post('ahsdhas').data(this.myMessage)
-            let timeHours = new Date().getHours().toString;
-            let timeMin = new Date().getMinutes().toString;
-            if(timeHours < 10 ){
-                timeHours = '0'+timeHours
-            }
-            if(timeMin < 10 ){
-                timeMin = '0'+timeMin
-            }
-            let timeNow = timeHours + ":" + timeMin;
+            // if(timeHours < 10 ){
+            //     timeHours = '0'+timeHours
+            // }
+            // if(timeMin < 10 ){
+            //     timeMin = '0'+timeMin
+            // }
+            let time = new Date();
+            let timeNow = time.getHours() + ":" + time.getMinutes();
             let currentMessage = this.myMessage;
             let newMsg = {
                 "content":currentMessage,
-                "time":'12:32'
+                "time": timeNow
             }
             this.message.push(newMsg);
             this.myMessage = '';
