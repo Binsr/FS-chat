@@ -52,6 +52,7 @@ export default {
                 "name":"Uros",
                 "users": 13
             },
+            otherMessages: [],
             myMessage:'',
             message:[
                 {
@@ -107,13 +108,6 @@ export default {
     },
     methods:{
         submit() {
-            // axios.post('ahsdhas').data(this.myMessage)
-            // if(timeHours < 10 ){
-            //     timeHours = '0'+timeHours
-            // }
-            // if(timeMin < 10 ){
-            //     timeMin = '0'+timeMin
-            // }
             let time = new Date();
             let timeNow = time.getHours() + ":" + time.getMinutes();
             let currentMessage = this.myMessage;
@@ -123,10 +117,20 @@ export default {
             }
             this.message.push(newMsg);
             this.myMessage = '';
-        }
+        },
+        // loadpage () {
+        //     this.otherMessages = "picka";
+        //     axios.get("http://990b121.mars1.mars-hosting.com/hello%20:D")
+        //     .then(function(response){
+        //         this.otherMessages.push = response.data.bpi;
+        //     })
+        //     .catch(function(error){
+        //         this.otherMessages = error;
+        //     })
+        // }
     },
     created () {
-        //ovde idu api pozivi koji ucitavaju sadrzaj
+        this.loadpage();
     },
     mounted () {
         this.hello();
