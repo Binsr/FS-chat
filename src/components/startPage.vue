@@ -157,7 +157,10 @@ export default {
     background-color: white;
     align-self: flex-start;
     margin: 9px 0 0 9px;
-    
+    background-image: url("../assets/avatar.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 .headChat{
     display: flex;
@@ -189,6 +192,22 @@ justify-content: center;
 }
 .inputWrap{
     background-color: rgb(20, 82, 20);
+}
+.inputWrap input{
+    width: 90%;
+    display: block;
+    float: left;
+}
+.inputWrap button{
+    color: rgb(20, 233, 13);
+    padding-top: 2px;
+    background-color: rgb(20, 82, 20);
+    font-weight: bolder;
+    font-family: sans-serif;
+    width: 9%;
+    border: none;
+    display: block;
+    float: right;
 }
 /*
 CHATHEAD
