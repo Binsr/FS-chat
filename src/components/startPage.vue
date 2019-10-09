@@ -58,7 +58,7 @@ export default {
                 "content":"asda as das asd as da s ASfasfafasfas",
                 "time":'23:14'
                 },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
+                "content":"asjdsajassdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
                 "time":'23:14'
                 },{
                 "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
