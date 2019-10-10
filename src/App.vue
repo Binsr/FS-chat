@@ -10,7 +10,7 @@ import chatPage from './components/chatPage.vue'
 import firstPage from './components/firstPage.vue'
 import api from './api'
 import store from './store'
-import { mapState } from "vuex"
+import { mapState, mapActions } from "vuex"
 
 export default {
   data(){
@@ -19,7 +19,7 @@ export default {
     }
   },
   computed: {
-  ...mapState(["gotIn"]),
+  ...mapState(["gotIn",'messages']),
   },
   name: 'app',
   components: {
@@ -27,7 +27,16 @@ export default {
     firstPage
   },
   methods:{
-    
+    ...mapActions(['addMessages']),
+    test () {
+      api.getmessages().then(response => {
+          console.log(response.data)
+          this.addMessages(response.data.messages)
+      });
+    },
+  },
+  mounted () {
+    this.test();
   }
 }
 </script>

@@ -17,12 +17,16 @@
                     >
                         <div class="wrapLine">
                             <div class="Message">
-                                <div class="messageText"> {{msg.content}} </div>
+                                <div class="messageText" > {{msg.content}} </div>
                                 <div class="timeWrap">
                                     <div class="time"> {{msg.time}} </div>    
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="singleMessageDiv invis">
+
                     </div>
                 
             </div>
@@ -36,6 +40,8 @@
 </template>
 
 <script>
+import api from '../api'
+import { mapState } from 'vuex';
 export default {
     data(){
         return{
@@ -52,7 +58,13 @@ export default {
     props: {
         msg: String
     },
+    computed : {
+        ...mapState(['messages'])
+    },
     methods:{
+        test () {
+            console.log(this.messages)
+        },
         scrollToEnd: function() {    	
             var container = this.$el.querySelector(".ChatWindow");
             console.log(container);
@@ -80,12 +92,11 @@ export default {
                 "content":currentMessage,
                 "time": timeNow
             }
-            this.message.pop()
-            this.message.push(newMsg);
             this.message.push(newMsg);
             this.scrollToEnd();
             this.myMessage = '';
         },
+        
         // loadpage () {
         //     this.otherMessages = "picka";
         //     axios.get("http://990b121.mars1.mars-hosting.com/hello%20:D")
@@ -99,15 +110,20 @@ export default {
     },
     created () {
         // this.loadpage();
+        
     },
     mounted () {
-        
+        this.message = this.messages;
     }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style >
+<style scoped>
+.invis{
+    visibility: hidden;
+    height: 50px;
+}
 .singleMessageDiv{
     display: flex;
     justify-content: flex-end;
