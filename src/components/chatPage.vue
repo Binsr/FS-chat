@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import api from '../api'
+import { mapState } from 'vuex';
 export default {
     data(){
         return{
@@ -56,7 +58,13 @@ export default {
     props: {
         msg: String
     },
+    computed : {
+        ...mapState(['messages'])
+    },
     methods:{
+        test () {
+            console.log(this.messages)
+        },
         scrollToEnd: function() {    	
             var container = this.$el.querySelector(".ChatWindow");
             console.log(container);
@@ -88,6 +96,7 @@ export default {
             this.scrollToEnd();
             this.myMessage = '';
         },
+        
         // loadpage () {
         //     this.otherMessages = "picka";
         //     axios.get("http://990b121.mars1.mars-hosting.com/hello%20:D")
@@ -101,9 +110,10 @@ export default {
     },
     created () {
         // this.loadpage();
+        
     },
     mounted () {
-        
+        this.message = this.messages;
     }
 }
 </script>

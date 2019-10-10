@@ -7,25 +7,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     gotIn: false,
-
-    isLogged: false,
-    whosUsing: sessionStorage.getItem('whodat'),
-    user: {
-      rideReqIntervalId: null,
-      rideStatus: false,
-      reqStatus: false,
-      socket: null,
-      socketData: [],
-      chosenTaxi: null  
-    },
-    taxi: {
-      socket: null,
-      socketData: [],
-      chosenUser: null,
-      socketBackup: [],
-      active: 0,
-      tax_id: null
-    }
+    messages: null,
+    
   },
   mutations: {
     // =================================================UTILITY MUTATIONS START=======================================================
@@ -38,6 +21,10 @@ const store = new Vuex.Store({
     },
     CHANGE_GOTIN : (state) => {
         state.gotIn = !state.gotIn
+    },
+    ADD_MESSAGES : (state, payload) => {
+      console.log(payload)
+      state.messages = payload;
     }
     
   },
@@ -49,6 +36,9 @@ const store = new Vuex.Store({
   actions: {
     changeGotIn (store) {
         store.commit('CHANGE_GOTIN');
+    },
+    addMessages (store, payload){
+      store.commit( 'ADD_MESSAGES' , payload);
     },
 
 
