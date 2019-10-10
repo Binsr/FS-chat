@@ -167,7 +167,7 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     width: 550px;
-    background-color: rgb(22, 88, 20);
+    background-color: rgb(0, 0, 0);
 }
 .topHead{
     display: flex;
