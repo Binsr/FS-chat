@@ -28,7 +28,7 @@
             </div>
             <div class="inputWrap">
                 <input  type="text" v-model="myMessage">
-                <button @keyup.enter.native="submit" @click="submit">asdas</button>
+                <button @keyup.enter.native="submit" @click="submit">--></button>
             </div>
         
             <!-- <form onSubmit={this.handleSubmit} >
@@ -54,52 +54,7 @@ export default {
             },
             otherMessages: [],
             myMessage:'',
-            message:[
-                {
-                "content":"asda as das asd as da s ASfasfafasfas",
-                "time":'23:14'
-                },{
-                "content":"asjdsajassdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                }
-            ]
-            
+            message:[]
         }
     },
     name: 'startPage',
@@ -167,7 +122,7 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     width: 550px;
-    background-color: rgb(22, 88, 20);
+    background-color: rgb(0, 0, 0);
 }
 .topHead{
     display: flex;
@@ -185,7 +140,7 @@ export default {
     margin-left: -60px;
 }
 .roomWrap{
-    width: 100%;
+width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -194,20 +149,26 @@ justify-content: center;
     background-color: rgb(20, 82, 20);
 }
 .inputWrap input{
-    width: 90%;
+    width: 89%;
     display: block;
     float: left;
+    border-radius: 30px;
+    background-color: gray;
+    font-size: 18px;
+    padding-left: 5px;
 }
 .inputWrap button{
     color: rgb(20, 233, 13);
     padding-top: 2px;
-    background-color: rgb(20, 82, 20);
+    background-color: rgb(0, 0, 0);
     font-weight: bolder;
     font-family: sans-serif;
+    font-size: 18px;
     width: 9%;
     border: none;
     display: block;
     float: right;
+    border-radius: 30px;
 }
 /*
 CHATHEAD
