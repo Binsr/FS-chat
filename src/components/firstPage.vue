@@ -27,7 +27,7 @@
                 </header>
                 <div class="monitor">
                     <p class="textType" id = "text"></p>
-                    <!-- <image src="resources/monitor.jpg"></image> -->
+                    <img src="resources/monitor.jpg" alt="ovo je veoma pozeljno da postoji"/>
                 </div>
                     <button class="button"><p class="btParagraf" id="clickme">get in</p>
                         <div class="imageShip">

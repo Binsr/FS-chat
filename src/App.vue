@@ -1,16 +1,20 @@
 <template>
   <div id="app">
-    <!-- <firstPage>
-    </firstPage> -->
-    <chatPage> 
-    </chatPage>
+    <chatPage v-if="gotIn" />
+    <firstPage v-if="!gotIn"/> 
   </div>
 </template>
 
 <script>
 import chatPage from './components/chatPage.vue'
 import firstPage from './components/firstPage.vue'
+import api from './api'
 export default {
+  data(){
+    return{
+      gotIn :false
+    }
+  },
   name: 'app',
   components: {
     chatPage,
