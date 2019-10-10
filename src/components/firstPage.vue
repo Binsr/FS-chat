@@ -26,10 +26,10 @@
                     </h1>
                 </header>
                 <div class="monitor">
-                    <p class="textType" id = "text"></p>
-                    <img src="resources/monitor.jpg" alt="ovo je veoma pozeljno da postoji"/>
+                    <p class="textType" id="text"></p>
+                    <!-- <img src="../assets/monitor.jpg" alt="ovo je veoma pozeljno da postoji" class="slika"/> -->
                 </div>
-                    <button class="button"><p class="btParagraf" id="clickme">get in</p>
+                    <button class="button" @click="changeGot"><p class="btParagraf" id="clickme">get in</p>
                         <div class="imageShip">
                             <img src="../assets/mainlogo.jpg"/>
                         </div>
@@ -40,46 +40,66 @@
 </template>
 
 <script>
+import router from "../router.js"
+import api from '../api'
+import { mapState,mapActions } from "vuex"
+
 export default {
     name: "startPage",
+    data() {
+      return{
+        interval:null
+      }
+    },
     methods: {
-        typing(){
-            var i = 0;
-            var j = 0;
-            const text = "...Kurac kurac govno sisa, picka na banderu krade jede govna kao fetus...";
-            const el = document.getElementById("text");
-            setInterval(function(){
-                    
-                    if(i < text.length){
-                    el.textContent += text[i];
+      ...mapActions(['changeGotIn']),
+        typing() {
+          var i = 0;
+          var j = 0;
+          const text = "...Kurac kurac govno sisa, picka na banderu krade jede govna kao fetus...";
+          const el = document.getElementById("text");
+          this.interval = setInterval(function () {
 
-                    if(i == text.length){
-                        i = 0;
-                        el.textContent = "";
-                    }
-                }
-                if(i > text.length){
-                    if(i == (text.length + 30)){  /* when text end how long till typing again */
-                        i = -1;
-                        el.textContent = "";
-                    }
-                }
-                if(j%20 == 0){
-                    document.getElementById("clickme").style.color = "rgb(255, 0, 0)";
-                }
-                if(j%40 == 0){
-                    document.getElementById("clickme").style.color = "rgb(0, 0, 0)";
-                }
-                if(j == 40){
-                    j = 0;
-                }
-                j++;
-                i++;
-                },90);
-                    }
-            },
-    created() {
+            if (i < text.length) {
+              el.textContent += text[i];
+
+              if (i == text.length) {
+                i = 0;
+                el.textContent = "";
+              }
+            }
+            if (i > text.length) {
+              if (i == (text.length + 30)) {
+                /* when text end how long till typing again */
+                i = -1;
+                el.textContent = "";
+              }
+            }
+            if (j % 20 == 0) {
+              document.getElementById("clickme").style.color = "rgb(255, 0, 0)";
+            }
+            if (j % 40 == 0) {
+              document.getElementById("clickme").style.color = "rgb(0, 0, 0)";
+            }
+            if (j == 40) {
+              j = 0;
+            }
+            j++;
+            i++;
+          }, 90);
+        },
+        changeGot () {
+          clearInterval(this.interval)
+          this.changeGotIn();
+          console.log(this.gotIn)
+        }
+    },
+    mounted() {
+      
         this.typing();
+    },
+    computed: {
+      ...mapState(["gotIn"]),
     }
 }
 </script>

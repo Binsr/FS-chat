@@ -9,16 +9,25 @@
 import chatPage from './components/chatPage.vue'
 import firstPage from './components/firstPage.vue'
 import api from './api'
+import store from './store'
+import { mapState } from "vuex"
+
 export default {
   data(){
     return{
-      gotIn :false
+      
     }
+  },
+  computed: {
+  ...mapState(["gotIn"]),
   },
   name: 'app',
   components: {
     chatPage,
     firstPage
+  },
+  methods:{
+    
   }
 }
 </script>
