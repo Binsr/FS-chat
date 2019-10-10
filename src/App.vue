@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <firstPage>
-    </firstPage>
-    <!-- <chatPage> 
-    </chatPage> -->
+    <!-- <firstPage>
+    </firstPage> -->
+    <chatPage> 
+    </chatPage>
   </div>
 </template>
 
