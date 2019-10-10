@@ -27,8 +27,8 @@
                 </div>
             </div>
             <div class="inputWrap">
-                <input  type="text" v-model="myMessage">
-                <button @keyup.enter.native="submit" @click="submit">--></button>
+                <input  type="text" v-model="myMessage" @keyup.enter="submit">
+                <button  @click="submit">--></button>
             </div>
         </div>
     </div>
