@@ -60,10 +60,22 @@ export default {
         },
         submit() {  
             let time = new Date();
-            let timeNow = time.getHours() + ":" + time.getMinutes();
+            let min = time.getMinutes();
+            let hours = time.getHours();
+
+            if(hours < 10){
+                hours = "0" + hours;
+            }
+            if(min < 10){
+                min = "0" + min;
+            }
+            
+            let timeNow = hours + ":" + min;
             let currentMessage = this.myMessage;
+
             if(currentMessage == '')
                 return;
+
             let newMsg = {
                 "content":currentMessage,
                 "time": timeNow
