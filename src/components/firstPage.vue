@@ -89,13 +89,13 @@ export default {
           }, 90);
         },
         changeGot () {
-          clearInterval(this.interval)
+          console.log(this.interval)
+          clearInterval(this.interval);
           this.changeGotIn();
-          console.log(this.gotIn)
+          console.log(this.gotIn)  
         }
     },
     mounted() {
-      
         this.typing();
     },
     computed: {
@@ -165,8 +165,8 @@ header {
   height: 200px;
   width: 200px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: top;
+  justify-content: flex-start;
   border-radius: 10%;
   border-width: 8px;
   border-style: solid;

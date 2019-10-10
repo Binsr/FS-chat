@@ -30,15 +30,6 @@
                 <input  type="text" v-model="myMessage">
                 <button @keyup.enter.native="submit" @click="submit">--></button>
             </div>
-        
-            <!-- <form onSubmit={this.handleSubmit} >
-                <input  type="text" class= "TypeBarTextArea" onChange={event => this.handleChange(event)} >
-                </input>
-            </form>
-                    <input type="file" class="inputHide" id="fileupload" 
-                    onChange={this.imgHandle} 
-                    ref={fileInput => this.fileInput = fileInput}/>
-                    <button class="imgButton" @click="nekafunckija" ></button> -->
         </div>
     </div>
 </div>
@@ -66,6 +57,8 @@ export default {
             let time = new Date();
             let timeNow = time.getHours() + ":" + time.getMinutes();
             let currentMessage = this.myMessage;
+            if(currentMessage == '')
+                return;
             let newMsg = {
                 "content":currentMessage,
                 "time": timeNow
@@ -85,10 +78,10 @@ export default {
         // }
     },
     created () {
-        this.loadpage();
+        // this.loadpage();
     },
     mounted () {
-        this.hello();
+        
     }
 }
 </script>
