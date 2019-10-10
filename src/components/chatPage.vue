@@ -17,12 +17,16 @@
                     >
                         <div class="wrapLine">
                             <div class="Message">
-                                <div class="messageText"> {{msg.content}} </div>
+                                <div class="messageText" > {{msg.content}} </div>
                                 <div class="timeWrap">
                                     <div class="time"> {{msg.time}} </div>    
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="singleMessageDiv invis">
+
                     </div>
                 
             </div>
@@ -80,8 +84,6 @@ export default {
                 "content":currentMessage,
                 "time": timeNow
             }
-            this.message.pop()
-            this.message.push(newMsg);
             this.message.push(newMsg);
             this.scrollToEnd();
             this.myMessage = '';
@@ -107,7 +109,11 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style >
+<style scoped>
+.invis{
+    visibility: hidden;
+    height: 50px;
+}
 .singleMessageDiv{
     display: flex;
     justify-content: flex-end;
