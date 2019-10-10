@@ -57,7 +57,7 @@ export default {
             message:[]
         }
     },
-    name: 'startPage',
+    name: 'chatPage',
     props: {
         msg: String
     },
@@ -118,11 +118,17 @@ export default {
     background-repeat: no-repeat;
 }
 .headChat{
+    border-style:solid;
+    border-width: 3px;
+    border-bottom-width: 0px;
+    border-color: rgb(0, 155, 0);    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 550px;
     background-color: rgb(0, 0, 0);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 .topHead{
     display: flex;
@@ -149,7 +155,7 @@ justify-content: center;
     background-color: rgb(20, 82, 20);
 }
 .inputWrap input{
-    width: 89%;
+    width: 88%;
     display: block;
     float: left;
     border-radius: 30px;
@@ -178,6 +184,5 @@ CHATHEAD
     </div>
     <p class="botHead">Number of users online:</p>
 */
-
 
 </style>

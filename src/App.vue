@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-    <startPage>
-      
-    </startPage>
+    <!-- <firstPage>
+    </firstPage> -->
+    <chatPage> 
+    </chatPage>
   </div>
 </template>
 
 <script>
-import startPage from './components/startPage.vue'
-
+import chatPage from './components/chatPage.vue'
+import firstPage from './components/firstPage.vue'
 export default {
   name: 'app',
   components: {
-    startPage
+    chatPage,
+    firstPage
   }
 }
 </script>
