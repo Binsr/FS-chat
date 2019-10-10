@@ -7,7 +7,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     gotIn: false,
-    messages: null,
+    fromBackendMessages: null,
     
   },
   mutations: {
@@ -23,8 +23,7 @@ const store = new Vuex.Store({
         state.gotIn = !state.gotIn
     },
     ADD_MESSAGES : (state, payload) => {
-      console.log(payload)
-      state.messages = payload;
+      state.fromBackendMessages = payload;
     }
     
   },
