@@ -56,7 +56,7 @@ export default {
         typing() {
           var i = 0;
           var j = 0;
-          const text = "...Kurac kurac govno sisa, picka na banderu krade jede govna kao fetus...";
+          const text = "...Posupeli prilozi u poncu sa 30 na 50 din i pice i sendvici isto...";
           const el = document.getElementById("text");
           this.interval = setInterval(function () {
 
