@@ -28,7 +28,7 @@
             </div>
             <div class="inputWrap">
                 <input  type="text" v-model="myMessage" @keyup.enter="submit">
-                <button  @click="submit">--></button>
+                <button @click="submit">--></button>
             </div>
         </div>
     </div>
@@ -156,6 +156,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
+
 .inputWrap{
     background-color: rgb(20, 82, 20);
 }
@@ -170,7 +171,6 @@ justify-content: center;
 }
 .inputWrap button{
     color: rgb(20, 233, 13);
-    padding-top: 2px;
     background-color: rgb(0, 0, 0);
     font-weight: bolder;
     font-family: sans-serif;
@@ -180,6 +180,9 @@ justify-content: center;
     display: block;
     float: right;
     border-radius: 30px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: green;
 }
 /*
 CHATHEAD
