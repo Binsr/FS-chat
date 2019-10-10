@@ -54,52 +54,7 @@ export default {
             },
             otherMessages: [],
             myMessage:'',
-            message:[
-                {
-                "content":"asda as das asd as da s ASfasfafasfas",
-                "time":'23:14'
-                },{
-                "content":"asjdsajassdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                },{
-                "content":"asjdsajasdaasdasdasasddsadasdaasdasdasdadsadadsdsadasasdasdasdasdasdasdasdasd",
-                "time":'23:14'
-                }
-            ]
-            
+            message:[]
         }
     },
     name: 'startPage',
