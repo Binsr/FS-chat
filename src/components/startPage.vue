@@ -140,7 +140,7 @@ export default {
     margin-left: -60px;
 }
 .roomWrap{
-    width: 100%;
+width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -149,12 +149,13 @@ justify-content: center;
     background-color: rgb(20, 82, 20);
 }
 .inputWrap input{
-    width: 90%;
+    width: 89%;
     display: block;
     float: left;
     border-radius: 30px;
     background-color: gray;
     font-size: 18px;
+    padding-left: 5px;
 }
 .inputWrap button{
     color: rgb(20, 233, 13);
