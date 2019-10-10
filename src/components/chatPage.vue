@@ -10,7 +10,7 @@
         </div>
         <div class="chatWrap">
             <div class="ChatWindow"> 
-                <div>
+                
                     <div class="singleMessageDiv"
                     v-for="(msg, index) in message"
                     v-bind:key="index"
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                
             </div>
             <div class="inputWrap">
                 <input  type="text" v-model="myMessage" @keyup.enter="submit">
@@ -53,7 +53,12 @@ export default {
         msg: String
     },
     methods:{
-        submit() {
+        scrollToEnd: function() {    	
+            var container = this.$el.querySelector(".ChatWindow");
+            console.log(container);
+            container.scrollTop = container.scrollHeight;
+        },
+        submit() {  
             let time = new Date();
             let timeNow = time.getHours() + ":" + time.getMinutes();
             let currentMessage = this.myMessage;
@@ -63,7 +68,10 @@ export default {
                 "content":currentMessage,
                 "time": timeNow
             }
+            this.message.pop()
             this.message.push(newMsg);
+            this.message.push(newMsg);
+            this.scrollToEnd();
             this.myMessage = '';
         },
         // loadpage () {
