@@ -28,7 +28,7 @@
             </div>
             <div class="inputWrap">
                 <input  type="text" v-model="myMessage">
-                <button @keyup.enter.native="submit" @click="submit">asdas</button>
+                <button @keyup.enter.native="submit" @click="submit">--></button>
             </div>
         
             <!-- <form onSubmit={this.handleSubmit} >
@@ -197,17 +197,22 @@ justify-content: center;
     width: 90%;
     display: block;
     float: left;
+    border-radius: 30px;
+    background-color: gray;
+    font-size: 18px;
 }
 .inputWrap button{
     color: rgb(20, 233, 13);
     padding-top: 2px;
-    background-color: rgb(20, 82, 20);
+    background-color: rgb(0, 0, 0);
     font-weight: bolder;
     font-family: sans-serif;
+    font-size: 18px;
     width: 9%;
     border: none;
     display: block;
     float: right;
+    border-radius: 30px;
 }
 /*
 CHATHEAD
