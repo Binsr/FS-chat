@@ -55,7 +55,7 @@ export default {
         typing() {
           var i = 0;
           var j = 0;
-          const text = "...OVO JE BRANCH MASTER_____________________________...";
+          const text = "...OVO JE BRANCH MASTER. . . . . ....";
           const el = document.getElementById("text");
           this.interval = setInterval(function () {
 
