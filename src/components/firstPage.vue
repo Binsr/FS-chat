@@ -27,7 +27,6 @@
                 </header>
                 <div class="monitor">
                     <p class="textType" id="text"></p>
-                    <!-- <img src="../assets/monitor.jpg" alt="ovo je veoma pozeljno da postoji" class="slika"/> -->
                 </div>
                     <button class="button" @click="changeGot"><p class="btParagraf" id="clickme">get in</p>
                         <div class="imageShip">
@@ -56,7 +55,7 @@ export default {
         typing() {
           var i = 0;
           var j = 0;
-          const text = "...Posupeli prilozi u poncu sa 30 na 50 din i pice i sendvici isto...";
+          const text = "...OVO JE BRANCH MASTER_____________________________...";
           const el = document.getElementById("text");
           this.interval = setInterval(function () {
 
