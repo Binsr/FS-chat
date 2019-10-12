@@ -59,7 +59,7 @@ export default {
         msg: String
     },
     computed : {
-        ...mapState(['messages'])
+        ...mapState(['fromBackendMessages'])
     },
     methods:{
         test () {
@@ -113,7 +113,7 @@ export default {
         
     },
     mounted () {
-        this.message = this.messages;
+        this.message = this.fromBackendMessages;
     }
 }
 </script>
