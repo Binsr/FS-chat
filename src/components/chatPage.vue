@@ -47,7 +47,7 @@ export default {
     data(){
         return{
             client:{
-                "name":"Uros",
+                "name":"Vreli penisi",
                 "users": 13
             },
             otherMessages: [],
@@ -118,7 +118,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 div.singleMessageDiv.my-message{
-    justify-content: flex-start;
+    justify-content: flex-end;
 }
 .invis{
     visibility: hidden;
@@ -126,8 +126,15 @@ div.singleMessageDiv.my-message{
 }
 .singleMessageDiv{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
+.singleMessageDiv Message{
+    border-color:red;
+}
+div.singleMessageDiv.my-message .wrapLine .Message{
+    border-color: rgb(49, 0, 228);
+}
+
 .tatkoNaMafiu{
     display: flex;
     flex-direction: column;
