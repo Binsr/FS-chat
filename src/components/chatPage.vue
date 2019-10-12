@@ -31,7 +31,7 @@
                 
             </div>
             <div class="inputWrap">
-                <input  type="text" v-model="myMessage" @keyup.enter="submit">
+                <input  type="text" v-model="myMessage" @keyup.enter="submit" @focus="scrollToEnd">
                 <button @click="submit">--></button>
             </div>
         </div>
@@ -59,7 +59,7 @@ export default {
         msg: String
     },
     computed : {
-        ...mapState(['fromBackendMessages'])
+        ...mapState(['messages'])
     },
     methods:{
         test () {
@@ -67,8 +67,8 @@ export default {
         },
         scrollToEnd: function() {    	
             var container = this.$el.querySelector(".ChatWindow");
-            console.log(container);
-            container.scrollTop = container.scrollHeight;
+            // console.log(container);
+            container.scrollTop = container.scrollHeight - 55;
         },
         submit() {  
             let time = new Date();
@@ -92,7 +92,8 @@ export default {
                 "content":currentMessage,
                 "time": timeNow
             }
-            this.message.push(newMsg);
+            // console.log(this.messages);
+            this.messages.push(newMsg);
             this.scrollToEnd();
             this.myMessage = '';
         },
@@ -111,9 +112,11 @@ export default {
     created () {
         // this.loadpage();
         
+        
     },
     mounted () {
-        this.message = this.fromBackendMessages;
+        this.message = this.messages;
+        
     }
 }
 </script>

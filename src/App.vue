@@ -39,8 +39,11 @@ export default {
     },
   },
   mounted () {
-    router.push('/');
-    this.test();
+    //router.push('/');
+    api.getmessages().then(response => {
+          console.log(response.data)
+          this.addMessages(response.data.messages)
+      });
   }
 }
 </script>

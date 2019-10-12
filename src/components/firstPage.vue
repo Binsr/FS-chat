@@ -41,7 +41,7 @@
 <script>
 import router from "../router.js"
 import api from '../api'
-import { mapState,mapActions } from "vuex"
+import { mapState, mapActions } from "vuex"
 
 export default {
     name: "startPage",
@@ -51,7 +51,7 @@ export default {
       }
     },
     methods: {
-      ...mapActions(['changeGotIn','addUsername']),
+      ...mapActions(['addUsername']),
         typing() {
           var i = 0;
           var j = 0;
@@ -88,7 +88,7 @@ export default {
           }, 90);
         },
         changeGot () {
-          console.log(this.interval)
+          //console.log(this.interval)
           clearInterval(this.interval);
           router.push('/chatpage');
         }
@@ -97,7 +97,7 @@ export default {
         this.typing();
     },
     computed: {
-      ...mapState(["gotIn"]),
+      ...mapState([]),
     }
 }
 </script>

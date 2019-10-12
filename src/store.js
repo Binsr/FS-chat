@@ -6,16 +6,10 @@ import router from './router'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
-    gotIn: false,
-<<<<<<< HEAD
     messages: null,
     user: {
       name: null
     },
-=======
-    fromBackendMessages: null,
-    
->>>>>>> vidak
   },
   mutations: {
     // =================================================UTILITY MUTATIONS START=======================================================
@@ -26,27 +20,17 @@ const store = new Vuex.Store({
       state.whosUsing = type;
       sessionStorage.setItem('whodat', type);
     },
-    CHANGE_GOTIN : (state) => {
-        state.gotIn = !state.gotIn
-    },
     ADD_MESSAGES : (state, payload) => {
-<<<<<<< HEAD
       console.log(payload)
       state.messages = payload;
     },
     ADD_USERNAME : (state, payload) => {
       state.user.name = payload;
-=======
-      state.fromBackendMessages = payload;
->>>>>>> vidak
     }
   },
 
 
   actions: {
-    changeGotIn (store) {
-        store.commit('CHANGE_GOTIN');
-    },
     addMessages (store, payload){
       store.commit( 'ADD_MESSAGES' , payload);
     },
