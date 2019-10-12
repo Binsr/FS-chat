@@ -8,7 +8,9 @@ const store = new Vuex.Store({
   state: {
     gotIn: false,
     messages: null,
-    
+    user: {
+      name: null
+    },
   },
   mutations: {
     // =================================================UTILITY MUTATIONS START=======================================================
@@ -25,12 +27,11 @@ const store = new Vuex.Store({
     ADD_MESSAGES : (state, payload) => {
       console.log(payload)
       state.messages = payload;
+    },
+    ADD_USERNAME : (state, payload) => {
+      state.user.name = payload;
     }
-    
   },
-
-
-
 
 
   actions: {
@@ -39,6 +40,9 @@ const store = new Vuex.Store({
     },
     addMessages (store, payload){
       store.commit( 'ADD_MESSAGES' , payload);
+    },
+    addUsername (store, payload){
+      store.commit( 'ADD_USERNAME' , payload);
     },
 
 

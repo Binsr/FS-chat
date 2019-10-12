@@ -51,7 +51,7 @@ export default {
       }
     },
     methods: {
-      ...mapActions(['changeGotIn']),
+      ...mapActions(['changeGotIn','addUsername']),
         typing() {
           var i = 0;
           var j = 0;
@@ -90,8 +90,7 @@ export default {
         changeGot () {
           console.log(this.interval)
           clearInterval(this.interval);
-          this.changeGotIn();
-          console.log(this.gotIn)  
+          router.push('/chatpage');
         }
     },
     mounted() {

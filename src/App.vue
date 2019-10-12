@@ -1,11 +1,14 @@
 <template>
   <div id="app">
-    <chatPage v-if="gotIn" />
-    <firstPage v-if="!gotIn"/> 
+    <router-view>      
+    </router-view>
+    <!-- <chatPage v-if="gotIn" />
+    <firstPage v-if="!gotIn"/>  -->
   </div>
 </template>
 
 <script>
+import router from './router.js'
 import chatPage from './components/chatPage.vue'
 import firstPage from './components/firstPage.vue'
 import api from './api'
@@ -36,6 +39,7 @@ export default {
     },
   },
   mounted () {
+    router.push('/');
     this.test();
   }
 }
