@@ -94,7 +94,7 @@ export default {
                 "time": name + " " + timeNow
             }
             // console.log(this.messages);
-            this.messages.push(newMsg);
+            // this.messages.push(newMsg);
             this.user.ws.send(JSON.stringify(newMsg));
             this.scrollToEnd();
             this.myMessage = '';
