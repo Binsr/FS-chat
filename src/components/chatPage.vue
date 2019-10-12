@@ -14,12 +14,13 @@
                     <div class="singleMessageDiv"
                     v-for="(msg, index) in message"
                     v-bind:key="index"
+                    :class="{'my-message':msg.myMsg}"
                     >
                         <div class="wrapLine">
                             <div class="Message">
                                 <div class="messageText" > {{msg.content}} </div>
                                 <div class="timeWrap">
-                                    <div class="time"> {{msg.time}} </div>    
+                                    <div class="time"> {{msg.time}} </div>   
                                 </div>
                             </div>
                         </div>
@@ -91,7 +92,8 @@ export default {
 
             let newMsg = {
                 "content":currentMessage,
-                "time": name + " " + timeNow
+                "time": name + " " + timeNow,
+                "sid": this.user.sid
             }
             // console.log(this.messages);
             // this.messages.push(newMsg);
@@ -114,6 +116,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+div.singleMessageDiv.my-message{
+    justify-content: flex-start;
+}
 .invis{
     visibility: hidden;
     height: 50px;
