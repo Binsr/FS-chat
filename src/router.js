@@ -5,6 +5,7 @@ import api from './api';
 
 import chatPage from './components/chatPage.vue';
 import firstPage from './components/firstPage.vue';
+import popup from './components/popup.vue'
 
 Vue.use(Router);
 const router = new Router({
@@ -29,6 +30,11 @@ const router = new Router({
             next();
       }
     },
+    {
+      path: '/popup',
+      component: popup,
+      name: 'popup',
+    },
     { //===================================user router begin==========================================
       path: '/chatpage',
       component: chatPage,
@@ -49,6 +55,9 @@ const router = new Router({
     //         requiresLogin: false
     //       },
           beforeEnter(to, from, next) {
+            if (store.state.user.name == null || store.state.user.name == null){
+              
+            }
             // var sid = sessionStorage.getItem('sid')
             // if (sid) {
             //   api.userloginsid(sid).then(response => {

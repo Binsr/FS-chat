@@ -90,14 +90,15 @@ export default {
         changeGot () {
           //console.log(this.interval)
           clearInterval(this.interval);
-          router.push('/chatpage');
+          router.push('/popup');
         }
     },
     mounted() {
         this.typing();
+
     },
     computed: {
-      ...mapState([]),
+      ...mapState(['user']),
     }
 }
 </script>

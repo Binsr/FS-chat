@@ -51,7 +51,7 @@ export default {
             },
             otherMessages: [],
             myMessage:'',
-            message:[]
+            message:[],
         }
     },
     name: 'chatPage',
@@ -59,7 +59,7 @@ export default {
         msg: String
     },
     computed : {
-        ...mapState(['messages'])
+        ...mapState(['messages','user'])
     },
     methods:{
         test () {
@@ -74,6 +74,7 @@ export default {
             let time = new Date();
             let min = time.getMinutes();
             let hours = time.getHours();
+            let name = this.user.name;
 
             if(hours < 10){
                 hours = "0" + hours;
@@ -90,28 +91,18 @@ export default {
 
             let newMsg = {
                 "content":currentMessage,
-                "time": timeNow
+                "time": name + " " + timeNow
             }
             // console.log(this.messages);
             this.messages.push(newMsg);
+            this.user.ws.send(JSON.stringify(newMsg));
             this.scrollToEnd();
             this.myMessage = '';
         },
         
-        // loadpage () {
-        //     this.otherMessages = "picka";
-        //     axios.get("http://990b121.mars1.mars-hosting.com/hello%20:D")
-        //     .then(function(response){
-        //         this.otherMessages.push = response.data.bpi;
-        //     })
-        //     .catch(function(error){
-        //         this.otherMessages = error;
-        //     })
-        // }
     },
     created () {
-        // this.loadpage();
-        
+        //dodati api za nalazenje cafe room name
         
     },
     mounted () {

@@ -8,7 +8,10 @@ const store = new Vuex.Store({
   state: {
     messages: null,
     user: {
-      name: null
+      name: null,
+      ip: null,
+      ws: null,
+      sid: null
     },
   },
   mutations: {
@@ -36,6 +39,23 @@ const store = new Vuex.Store({
     },
     addUsername (store, payload){
       store.commit( 'ADD_USERNAME' , payload);
+    },
+    connectToWS(store){
+      console.log(store.state.user.sid);
+      if(store.state.user.sid != null){
+        let WS = new WebSocket('ws://990b121.mars1.mars-hosting.com/stockings?sid='+ store.state.user.sid);
+        store.state.user.ws = WS;
+        
+        store.state.user.ws.onopen = () =>{
+          console.log('connected to WS')
+          store.state.user.ws.onmessage = (data) => {
+            console.log(data.data);
+            let object = JSON.parse(data.data)
+            store.state.messages.push( object )
+            console.log(store.state.messages)
+          }
+        }
+      }
     },
 
 

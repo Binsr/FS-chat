@@ -12,5 +12,10 @@ export default {
     },
     getmessages () {
         return axios.get('/hello');
+    },
+    login (payload) {
+        return axios.post('/api/addUser', {
+            name: payload
+        })
     }
 }
