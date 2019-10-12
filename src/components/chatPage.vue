@@ -117,7 +117,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 div.singleMessageDiv.my-message{
-    justify-content: flex-start;
+    justify-content: flex-end;
+}
+div.singleMessageDiv.my-message .wrapLine .Message{
+    border-color: aqua;
 }
 .invis{
     visibility: hidden;
@@ -125,7 +128,7 @@ div.singleMessageDiv.my-message{
 }
 .singleMessageDiv{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 .tatkoNaMafiu{
     display: flex;
@@ -207,13 +210,26 @@ justify-content: center;
     border-width: 2px;
     border-color: green;
 }
-/*
-CHATHEAD
-    <div class="topHead">
-        <div class="chatIcon"></div>
-        <p class="roomName">Chat area:</p>
-    </div>
-    <p class="botHead">Number of users online:</p>
-*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(58, 182, 20); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1e8510; 
+}
+
 
 </style>

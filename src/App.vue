@@ -49,17 +49,21 @@ export default {
 </script>
 
 <style>
+textarea:focus, input:focus, button:focus{
+    outline: none;
+}
 
 .Message{
-  width: auto;
+  min-width: 100px;
   height: auto;
   min-height: 20px;
   background-color: rgba(51, 51, 51, 0.6);
   float: right;
-  margin: 7px;
+  margin: 7px 20px;
   padding-right: 40px;
   font-size: 14px;
   border-style: solid;
+  border-color: green;
   border-radius: 15px;
   border-width: 1px;
   padding-top: 3px;
@@ -117,7 +121,7 @@ export default {
   position: relative;
   width: 550px;
   height: 550px;
-  background-color: rgb(0, 0, 0);
+  background-image:url('./assets/monitor.png');
   border-width: 3px;
   border-color: green;
   border-style:solid;
