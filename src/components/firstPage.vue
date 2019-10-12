@@ -56,7 +56,7 @@ export default {
         typing() {
           var i = 0;
           var j = 0;
-          const text = "...Posupeli prilozi u poncu sa 30 na 50 din i pice i sendvici isto...";
+          const text = "...Poskupeli prilozi u poncu sa 30 na 50 din i pice i sendvici isto...";
           const el = document.getElementById("text");
           this.interval = setInterval(function () {
 
@@ -197,6 +197,7 @@ header {
   border-style: solid;
   border-color: rgb(255, 0, 0);
   max-height: 200px;
+  cursor: pointer;
 }
 
 .btParagraf {
