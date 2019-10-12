@@ -51,6 +51,12 @@ const store = new Vuex.Store({
           store.state.user.ws.onmessage = (data) => {
             console.log(data.data);
             let object = JSON.parse(data.data)
+            if(object.sid == store.state.user.sid){
+              object.myMessage = true;
+            }
+            else{
+              object.myMessage = false;
+            }
             store.state.messages.push( object )
             console.log(store.state.messages)
           }

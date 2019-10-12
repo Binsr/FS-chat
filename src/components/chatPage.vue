@@ -13,7 +13,7 @@
                 
                     <div class="singleMessageDiv"
                     v-for="(msg, index) in message"
-                    v-bind:key="index"
+                    v-bind:key="index" v-bind:class="{'Myessage':msg.myMessage}"
                     >
                         <div class="wrapLine">
                             <div class="Message">
@@ -91,11 +91,13 @@ export default {
 
             let newMsg = {
                 "content":currentMessage,
-                "time": name + " " + timeNow
+                "time": name + " " + timeNow,
+                "sid": this.user.sid
             }
             // console.log(this.messages);
-            this.messages.push(newMsg);
+            // this.messages.push(newMsg);
             this.user.ws.send(JSON.stringify(newMsg));
+            console.log('sent');
             this.scrollToEnd();
             this.myMessage = '';
         },
