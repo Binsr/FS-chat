@@ -4,11 +4,14 @@
         <div class="headChat">
                 <div class="topHead">
                     <div class="chatIcon"></div>
-                    <div class="roomWrap"><p class="roomName">F-S area: {{client.name}}</p></div>
+                    <div class="roomWrap">
+                        <p class="roomName">F-S area: {{client.name}}</p>
+                        <p class="botHead">Number of users online:{{client.number}}</p>
+                    </div>
                 </div>
-                <p class="botHead">Number of users online:{{client.number}}</p>
         </div>
         <div class="chatWrap">
+<<<<<<< HEAD
             <div class="ChatWindow">
 
                     <div class="singleMessageDiv"
@@ -30,6 +33,28 @@
 
                     </div>
 
+=======
+            <div class="ChatWindow"> 
+                <div class="singleMessageDiv"
+                v-for="(msg, index) in message"
+                v-bind:key="index"
+                :class="{'my-message':msg.myMsg}"
+                >
+                    <div class="wrapLine">
+                        <div class="Message">
+                            <div class="messageText" > {{msg.content}} </div>
+                            <div class="timeWrap">
+                                <div class="time"> {{msg.time}} </div>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="singleMessageDiv invis"></div>
+                
+>>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
+            </div>
+            <div class="scrollDownButton" @click="scrollToEnd" v-if="!user.scrolled">
+                <i class="material-icons">keyboard_arrow_down</i>
             </div>
             <div class="inputWrap">
             <div @click="files" class="content">
@@ -38,6 +63,7 @@
                 <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="changeIcon" @focus="scrollToEnd">
                 <button @click="submit" class="btn_icon"></button>
             </div>
+            <div class="dopuna"></div>
         </div>
     </div>
 </div>
@@ -69,6 +95,8 @@ export default {
             var container = this.$el.querySelector(".ChatWindow");
             // console.log(container);
             container.scrollTop = container.scrollHeight - 55;
+
+            this.user.scrolled = true;
         },
         submit() {
             let time = new Date();
@@ -127,13 +155,43 @@ export default {
     },
     mounted () {
         this.message = this.messages;
+<<<<<<< HEAD
 
+=======
+        this.scrollToEnd();
+        
+>>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
     }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.scrollDownButton {
+  animation: MoveUpDown 1s ease-in-out infinite;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 50%;
+  background-color: rgba(121, 121, 121, 0.65);
+  border: 1px rgb(58, 58, 58);
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: 20px;
+  }
+}
+
 div.singleMessageDiv.my-message{
     justify-content: flex-end;
 }
@@ -146,10 +204,10 @@ div.singleMessageDiv.my-message{
     justify-content: flex-start;
 }
 .singleMessageDiv Message{
-    border-color:red;
+    background-color: rgb(212, 228, 241);
 }
 div.singleMessageDiv.my-message .wrapLine .Message{
-    border-color: rgb(137, 116, 209);
+    background-color:rgb(62, 145, 76);
 }
 
 .tatkoNaMafiu{
@@ -164,51 +222,64 @@ div.singleMessageDiv.my-message .wrapLine .Message{
     border-radius: 50%;
     background-color: white;
     align-self: flex-start;
-    margin: 9px 0 0 9px;
+    margin: 10px 0 10px 10px;
     background-image: url("../assets/avatar.png");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
 }
 .headChat{
+<<<<<<< HEAD
     border-style:solid;
     border-width: 3px;
     border-bottom-width: 0px;
     border-color: rgb(0, 155, 0);
+=======
+    border-style:solid;   
+>>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 550px;
-    background-color: rgb(0, 0, 0);
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-width: 0px;
+    background-color: rgba(7, 43, 8, 0.979);
 }
 .topHead{
     display: flex;
+    align-items: flex-start;
 }
 .botHead{
-    color: rgb(133, 133, 133);
+    color: rgb(255, 255, 255);
     font-size: 10px;
+    margin: 0 0 5px 0;
 }
 .roomName{
+    font-size: 10px;
+    color: rgb(255, 255, 255);
     font-size: 20px;
-    color: rgb(33, 160, 29);
-    font-size: 20px;
-    color: rgb(33, 160, 29);
-    font-family: "Righteous", cursive;
-    margin-left: -60px;
+    margin: 17px 0 5px 0px;
 }
 .roomWrap{
 width: 100%;
 display: flex;
-align-items: center;
-justify-content: center;
+align-items: flex-start;
+flex-direction: column;
+margin-left: 10px;
 }
-
+.typingShell{
+    background-color: rgb(119, 158, 122);
+    display: flex;
+    width: fit-content;
+}
 .inputWrap{
-    background-color: rgb(20, 82, 20);
+    display: flex;
+    flex-direction: row;
+    border-radius: 30px;
+    flex:1;
+    background-color: rgb(212, 228, 241);
+    margin: 0 3% 0 2%;
 }
 .inputWrap input{
+<<<<<<< HEAD
     width: 84%;
     display: block;
     float: left;
@@ -216,20 +287,36 @@ justify-content: center;
     font-size: 18px;
     padding-left: 5px;
     margin-top: 4px;
+=======
+    margin: 0 0 0px 4%;
+    width: 88%;
+    display: flex;
+    float: left;
+    font-size: 14px;
+    padding-left: 5px;
+    border-width: 0;
+    background-color: rgb(212, 228, 241);
+    /* box-shadow: rgb(22, 22, 22) 10px -10px 50% 10px; */
+>>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
 }
 
 .inputWrap button{
+<<<<<<< HEAD
     display: block;
     width: 30px;
     height: 30px;
     color: gray;
     background-color: rgb(0, 0, 0);
+=======
+    color: rgb(97, 97, 97);
+>>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
     font-weight: bolder;
     font-family: sans-serif;
     font-size: 18px;
     float: right;
     border: 2px solid gray;
     border-radius: 30px;
+<<<<<<< HEAD
     margin: 4px;
     background-image: url('../assets/microphone_icon.png');
     background-size: 40px 40px;
@@ -251,6 +338,13 @@ justify-content: center;
   display: block;
   border-radius: 30px;
   float: left;
+=======
+}
+.dopuna{
+    background-color: rgb(119, 158, 122);
+    display: flex;
+    height: 6px;
+>>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
 }
 /*
 CHATHEAD

@@ -15,7 +15,8 @@ const store = new Vuex.Store({
       name: null,
       ip: null,
       ws: null,
-      sid: null
+      sid: null,
+      scrolled: true
     },
   },
   mutations: {
@@ -60,8 +61,10 @@ const store = new Vuex.Store({
               object.myMsg = true
             else
               object.myMsg = false
+              
             store.state.messages.push( object )
-            console.log(store.state.messages)
+            store.state.user.scrolled = false;
+            // console.log(store.state.messages)
           }
         }
       }
