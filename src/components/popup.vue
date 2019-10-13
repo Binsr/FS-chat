@@ -23,7 +23,7 @@ export default {
         }
     },
     computed:{
-    ...mapState(['user']),
+    ...mapState(['user','client']),
     },
     methods:{
         ...mapActions(['addUsername','connectToWS']),
@@ -38,9 +38,18 @@ export default {
                 this.user.ip = Response.data.ip;
                 console.log(this.user);
                 this.connectToWS();
+                this.getClient();
             });
             
             router.push('/chatpage');
+        },
+        getClient () {
+            let sid = this.user.sid
+            api.getclient(sid).then(response =>{
+                console.log(response)
+                this.client.name = response.data.cafe.caf_name;
+                this.client.number = response.data.cafe.caf_number;
+            })
         },
         typing() {
           var i = 0;

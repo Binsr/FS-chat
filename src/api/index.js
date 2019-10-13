@@ -17,5 +17,9 @@ export default {
         return axios.post('/api/addUser', {
             name: payload
         })
+    },
+    getclient (sid) {
+        return axios.get('/api/getClient?sid=' + sid);
     }
+
 }

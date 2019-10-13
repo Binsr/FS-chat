@@ -7,6 +7,10 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     messages: null,
+    client:{
+      name:null,
+      number:null
+    },
     user: {
       name: null,
       ip: null,
@@ -49,6 +53,7 @@ const store = new Vuex.Store({
         store.state.user.ws.onopen = () =>{
           console.log('connected to WS')
           store.state.user.ws.onmessage = (data) => {
+            store.dispatch('getClient');
             console.log(data.data);
             let object = JSON.parse(data.data)
             if(object.sid == store.state.user.sid)
@@ -60,6 +65,17 @@ const store = new Vuex.Store({
           }
         }
       }
+    },
+    disconnectWS (store) {
+      store.state.user.ws.close();
+    },
+    getClient () {
+      let sid = store.state.user.sid
+      api.getclient(sid).then(response =>{
+          console.log(response)
+          store.state.client.name = response.data.cafe.caf_name;
+          store.state.client.number = response.data.cafe.caf_number;
+      })
     },
 
 

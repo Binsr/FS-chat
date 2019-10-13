@@ -6,7 +6,7 @@
                     <div class="chatIcon"></div>
                     <div class="roomWrap"><p class="roomName">F-S area: {{client.name}}</p></div>
                 </div>
-                <p class="botHead">Number of users online:{{client.users}}</p>
+                <p class="botHead">Number of users online:{{client.number}}</p>
         </div>
         <div class="chatWrap">
             <div class="ChatWindow"> 
@@ -46,10 +46,6 @@ import { mapState } from 'vuex';
 export default {
     data(){
         return{
-            client:{
-                "name":"Uros",
-                "users": 13
-            },
             otherMessages: [],
             myMessage:'',
             message:[],
@@ -60,7 +56,7 @@ export default {
         msg: String
     },
     computed : {
-        ...mapState(['messages','user'])
+        ...mapState(['messages','user','client'])
     },
     methods:{
         test () {
@@ -93,14 +89,17 @@ export default {
             let newMsg = {
                 "content":currentMessage,
                 "time": name + " " + timeNow,
-                "sid": this.user.sid
+                "sid": this.user.sid,
+                "name": name
             }
             // console.log(this.messages);
             // this.messages.push(newMsg);
             this.user.ws.send(JSON.stringify(newMsg));
+            console.log('sent');
             this.scrollToEnd();
             this.myMessage = '';
         },
+        
         
     },
     created () {
@@ -108,6 +107,9 @@ export default {
         
     },
     mounted () {
+        setTimeout(() => {
+            this.getClient()
+        }, 200);
         this.message = this.messages;
         
     }
@@ -119,9 +121,6 @@ export default {
 div.singleMessageDiv.my-message{
     justify-content: flex-end;
 }
-div.singleMessageDiv.my-message .wrapLine .Message{
-    border-color: aqua;
-}
 .invis{
     visibility: hidden;
     height: 50px;
@@ -130,6 +129,13 @@ div.singleMessageDiv.my-message .wrapLine .Message{
     display: flex;
     justify-content: flex-start;
 }
+.singleMessageDiv Message{
+    border-color:red;
+}
+div.singleMessageDiv.my-message .wrapLine .Message{
+    border-color: rgb(49, 0, 228);
+}
+
 .tatkoNaMafiu{
     display: flex;
     flex-direction: column;
@@ -210,26 +216,13 @@ justify-content: center;
     border-width: 2px;
     border-color: green;
 }
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgb(58, 182, 20); 
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #1e8510; 
-}
-
+/*
+CHATHEAD
+    <div class="topHead">
+        <div class="chatIcon"></div>
+        <p class="roomName">Chat area:</p>
+    </div>
+    <p class="botHead">Number of users online:</p>
+*/
 
 </style>

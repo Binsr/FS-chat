@@ -30,7 +30,7 @@ export default {
     firstPage
   },
   methods:{
-    ...mapActions(['addMessages']),
+    ...mapActions(['addMessages','disconnectWS']),
     test () {
       api.getmessages().then(response => {
           console.log(response.data)
@@ -44,6 +44,9 @@ export default {
           console.log(response.data)
           this.addMessages(response.data.messages)
       });
+  },
+  beforeDestroy(){
+    this.disconnectWS()
   }
 }
 </script>
