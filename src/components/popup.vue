@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="popwrap">
         <div class="popupwrap">
             <div class="space"></div>
             <p id="poptext"></p>
         </div>
         <div class="input">
-                <input type="text" v-model="name" placeholder="Anonymous">
+                <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
                 <button @click="submitName">Oki</button>
         </div>
     </div>
@@ -84,6 +84,15 @@ export default {
 </script>
 
 <style>
+.popupwrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 350px;
+  max-height: 400px;
+}
+
 .space{
     height: 20px;
 }
@@ -109,19 +118,22 @@ export default {
 }
 .input{
     margin: 0 auto;
-    justify-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .input input{
     color: red;
     background-color: rgba(112, 112, 112, 0.267);
-    border-color: rgb(69, 165, 255);
     width: 199px;
     height: 35px;
     text-align: center;
+    border-width: 0px;
 
 }
 .input input::placeholder{
-    color: rgb(0, 124, 240);
+    color: red;
     font-size: 15px;
     font-weight:bolder;
 }
@@ -133,11 +145,15 @@ export default {
        font-size: 20px;
   }
 .input button{
+    margin-top: 2px;
     margin-left: 10px;
     border-radius: 20px;
     font-size: 15px;
+    width: 100px;
+    height:35px;
     font-weight:bolder;
-    background-color: rgb(0, 124, 240);
+    background-color: rgba(112, 112, 112, 0.267);
     color: rgb(141, 0, 0);
+    border-width: 0px;
 }
 </style>
