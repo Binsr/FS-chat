@@ -251,7 +251,6 @@ margin-left: 10px;
     margin: 0 3% 0 2%;
 }
 .inputWrap input{
-    width: 84%;
     display: block;
     float: left;
     border-radius: 30px;
@@ -259,7 +258,7 @@ margin-left: 10px;
     padding-left: 5px;
     margin-top: 4px;
     margin: 0 0 0px 4%;
-    width: 88%;
+    width: 80%;
     display: flex;
     float: left;
     font-size: 14px;
