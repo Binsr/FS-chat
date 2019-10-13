@@ -37,7 +37,7 @@
                 <i class="material-icons">keyboard_arrow_down</i>
             </div>
             <div class="inputWrap">
-            <div @click="files" class="content">
+                <div @click="files" class="content">
                   &nbsp;
                 </div>
                 <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="changeIcon" @focus="scrollToEnd">
@@ -116,11 +116,9 @@ export default {
           let inputValue = this.myMessage;
           if(inputValue !== ''){
             console.log('radi');
-            icon.style.backgroundImage = 'url("/img/arrow-up.3873f299.png")';
-            icon.style.backgroundSize = '30px 30px';
+            icon.style.display = 'block';
           }else{
-            icon.style.backgroundImage = 'url(/img/microphone_icon.fac92fde.png)';
-            icon.style.backgroundSize = '40px 40px';
+            icon.style.display = 'none';
           }
         },
         files(){
@@ -272,7 +270,7 @@ margin-left: 10px;
 }
 
 .inputWrap button{
-    display: block;
+    /* display: none; */
     width: 30px;
     height: 30px;
     color: gray;
@@ -285,8 +283,8 @@ margin-left: 10px;
     border: 2px solid gray;
     border-radius: 30px;
     margin: 4px;
-    background-image: url('../assets/microphone_icon.png');
-    background-size: 40px 40px;
+    background-image: url('../assets/arrow-up.png');
+    background-size: 30px 30px;
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: center center;
