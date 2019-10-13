@@ -60,7 +60,7 @@ textarea:focus, input:focus, button:focus{
   min-width: 100px;
   height: auto;
   min-height: 20px;
-  background-color: rgba(51, 51, 51, 0.6);
+  background-color: rgb(63, 63, 63);
   float: right;
   margin: 7px 20px;
   padding-right: 40px;

@@ -130,7 +130,7 @@ div.singleMessageDiv.my-message{
     border-color:red;
 }
 div.singleMessageDiv.my-message .wrapLine .Message{
-    border-color: rgb(49, 0, 228);
+    border-color: rgb(137, 116, 209);
 }
 
 .tatkoNaMafiu{
