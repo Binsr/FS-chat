@@ -28,13 +28,10 @@
                         </div>
                     </div>
 
-                    <div class="singleMessageDiv invis">
-
-                    </div>
-
-            </div>
-            <div class="scrollDownButton" @click="scrollToEnd" v-if="!user.scrolled">
+                    <div class="singleMessageDiv invis"></div>
+                <div class="scrollDownButton" @click="scrollToEnd" v-if="!user.scrolled">
                 <i class="material-icons">keyboard_arrow_down</i>
+            </div>
             </div>
             <div class="inputWrap">
                 <div @click="files" class="content">
@@ -147,7 +144,14 @@ export default {
   justify-content: center;
   width: 30px;
   height: 30px;
-  position: absolute;
+  position: fixed;
+
+    /* padding: 2em; */
+    left: 64%;
+    top: 80%;
+    transform: translateX(-50%);
+
+
   right: 10px;
   bottom: 10px;
   border-radius: 50%;
