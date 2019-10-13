@@ -271,8 +271,8 @@ margin-left: 10px;
 
 .inputWrap button{
     /* display: none; */
-    width: 30px;
-    height: 30px;
+    width: 29px;
+    height: 29px;
     color: gray;
     background-color: rgb(0, 0, 0);
     color: rgb(97, 97, 97);
