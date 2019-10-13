@@ -10,26 +10,25 @@
         </div>
         <div class="chatWrap">
             <div class="ChatWindow"> 
-                
-                    <div class="singleMessageDiv"
-                    v-for="(msg, index) in message"
-                    v-bind:key="index"
-                    :class="{'my-message':msg.myMsg}"
-                    >
-                        <div class="wrapLine">
-                            <div class="Message">
-                                <div class="messageText" > {{msg.content}} </div>
-                                <div class="timeWrap">
-                                    <div class="time"> {{msg.time}} </div>   
-                                </div>
+                <div class="singleMessageDiv"
+                v-for="(msg, index) in message"
+                v-bind:key="index"
+                :class="{'my-message':msg.myMsg}"
+                >
+                    <div class="wrapLine">
+                        <div class="Message">
+                            <div class="messageText" > {{msg.content}} </div>
+                            <div class="timeWrap">
+                                <div class="time"> {{msg.time}} </div>   
                             </div>
                         </div>
                     </div>
-
-                    <div class="singleMessageDiv invis">
-
-                    </div>
+                </div>
+                <div class="singleMessageDiv invis"></div>
                 
+            </div>
+            <div class="scrollDownButton" @click="scrollToEnd" v-if="!user.scrolled">
+                <i class="material-icons">keyboard_arrow_down</i>
             </div>
             <div class="inputWrap">
                 <input  type="text" v-model="myMessage" @keyup.enter="submit" @focus="scrollToEnd">
@@ -66,6 +65,8 @@ export default {
             var container = this.$el.querySelector(".ChatWindow");
             // console.log(container);
             container.scrollTop = container.scrollHeight - 55;
+
+            this.user.scrolled = true;
         },
         submit() {  
             let time = new Date();
@@ -108,6 +109,7 @@ export default {
     },
     mounted () {
         this.message = this.messages;
+        this.scrollToEnd();
         
     }
 }
@@ -115,6 +117,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.scrollDownButton {
+  animation: MoveUpDown 1s ease-in-out infinite;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 50%;
+  background-color: rgba(121, 121, 121, 0.65);
+  border: 1px rgb(58, 58, 58);
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: 20px;
+  }
+}
+
 div.singleMessageDiv.my-message{
     justify-content: flex-end;
 }
