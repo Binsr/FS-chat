@@ -147,8 +147,8 @@ export default {
   position: fixed;
 
     /* padding: 2em; */
-    left: 64%;
-    top: 80%;
+    left: 65%;
+    top: 81%;
     transform: translateX(-50%);
 
 
