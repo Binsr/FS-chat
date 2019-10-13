@@ -107,9 +107,6 @@ export default {
         
     },
     mounted () {
-        setTimeout(() => {
-            this.getClient()
-        }, 200);
         this.message = this.messages;
         
     }
