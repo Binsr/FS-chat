@@ -66,13 +66,11 @@ textarea:focus, input:focus, button:focus{
   padding-right: 40px;
   font-size: 17px;
   border-style: solid;
-  border-color: green;
   border-radius: 15px;
-  border-width: 3px;
+  border-width: 0;
   padding-top: 3px;
-  color: rgb(255, 255, 255);
-  border-color: red;
-  min-width: 170px;
+  color: rgb(0, 0, 0);
+  min-width: 70px;
   min-height: 38px;
   /* margin-left: 400px; */
   padding-left: 10px;
@@ -80,7 +78,7 @@ textarea:focus, input:focus, button:focus{
   word-break: break-all;
   display: flex;
   flex-direction: column;
-    
+  box-shadow: 1px 1px;
 }
 .messageText{
   float: left;
@@ -108,9 +106,10 @@ textarea:focus, input:focus, button:focus{
 .time{
   font-size: 10px;
   margin-left: 5px;
+  font-weight: bold;
 }
 .timeWrap{
-  color: rgb(160, 159, 159);
+  color: rgb(78, 78, 78);
   background-color: rgba(255, 255, 255, 0);
   display:flex;
   justify-content: flex-end;
@@ -123,11 +122,16 @@ textarea:focus, input:focus, button:focus{
   color: white;
 }
 .ChatWindow{
+  background-color: rgb(119, 158, 122);
   position: relative;
   width: 550px;
   height: 550px;
+<<<<<<< ours
+  border-width: 0px;
+=======
   border-width: 3px;
   border-color: green;
+>>>>>>> theirs
   border-style:solid;
   overflow-y: scroll;
   display: flexbox;
@@ -139,7 +143,7 @@ textarea:focus, input:focus, button:focus{
   margin-left: 50px;
   width: 400px;
   height: 30px;
-  background-color: rgb(51, 51, 51);
+  background-color: rgb(255, 255, 255);
   font-size: 18px;
   color: rgb(255, 255, 255);
   position: relative;

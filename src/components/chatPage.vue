@@ -4,9 +4,11 @@
         <div class="headChat">
                 <div class="topHead">
                     <div class="chatIcon"></div>
-                    <div class="roomWrap"><p class="roomName">F-S area: {{client.name}}</p></div>
+                    <div class="roomWrap">
+                        <p class="roomName">F-S area: {{client.name}}</p>
+                        <p class="botHead">Number of users online:{{client.number}}</p>
+                    </div>
                 </div>
-                <p class="botHead">Number of users online:{{client.number}}</p>
         </div>
         <div class="chatWrap">
             <div class="ChatWindow"> 
@@ -23,6 +25,7 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div>
                 <div class="singleMessageDiv invis"></div>
                 
@@ -33,7 +36,19 @@
             <div class="inputWrap">
                 <input  type="text" v-model="myMessage" @keyup.enter="submit" @focus="scrollToEnd">
                 <button @click="submit">--></button>
+=======
+
+                    <div class="singleMessageDiv invis">
+                    </div>
             </div>
+            <div class="typingShell">
+                <div class="inputWrap">
+                    <input  type="text" v-model="myMessage" @keyup.enter="submit" @focus="scrollToEnd">
+                    <button @click="submit">--></button>
+                </div>
+>>>>>>> whatsapp-theme
+            </div>
+            <div class="dopuna"></div>
         </div>
     </div>
 </div>
@@ -154,10 +169,10 @@ div.singleMessageDiv.my-message{
     justify-content: flex-start;
 }
 .singleMessageDiv Message{
-    border-color:red;
+    background-color: rgb(212, 228, 241);
 }
 div.singleMessageDiv.my-message .wrapLine .Message{
-    border-color: rgb(137, 116, 209);
+    background-color:rgb(62, 145, 76);
 }
 
 .tatkoNaMafiu{
@@ -172,62 +187,67 @@ div.singleMessageDiv.my-message .wrapLine .Message{
     border-radius: 50%;
     background-color: white;
     align-self: flex-start;
-    margin: 9px 0 0 9px;
+    margin: 10px 0 10px 10px;
     background-image: url("../assets/avatar.png");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
 }
 .headChat{
-    border-style:solid;
-    border-width: 3px;
-    border-bottom-width: 0px;
-    border-color: rgb(0, 155, 0);    
+    border-style:solid;   
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 550px;
-    background-color: rgb(0, 0, 0);
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-width: 0px;
+    background-color: rgba(7, 43, 8, 0.979);
 }
 .topHead{
     display: flex;
+    align-items: flex-start;
 }
 .botHead{
-    color: rgb(133, 133, 133);
+    color: rgb(255, 255, 255);
     font-size: 10px;
+    margin: 0 0 5px 0;
 }
 .roomName{
+    font-size: 10px;
+    color: rgb(255, 255, 255);
     font-size: 20px;
-    color: rgb(33, 160, 29);
-    font-size: 20px;
-    color: rgb(33, 160, 29);
-    font-family: "Righteous", cursive;
-    margin-left: -60px;
+    margin: 17px 0 5px 0px;
 }
 .roomWrap{
 width: 100%;
 display: flex;
-align-items: center;
-justify-content: center;
+align-items: flex-start;
+flex-direction: column;
+margin-left: 10px;
 }
-
+.typingShell{
+    background-color: rgb(119, 158, 122);
+    display: flex;
+}
 .inputWrap{
-    background-color: rgb(20, 82, 20);
+    display: flex;
+    flex-direction: row;
+    border-radius: 30px;
+    flex:1;
+    background-color: rgb(212, 228, 241);
+    margin: 0 3% 0 2%;
 }
 .inputWrap input{
+    margin: 0 0 0px 4%;
     width: 88%;
-    display: block;
+    display: flex;
     float: left;
-    border-radius: 30px;
-    background-color: gray;
-    font-size: 18px;
+    font-size: 14px;
     padding-left: 5px;
+    border-width: 0;
+    background-color: rgb(212, 228, 241);
+    /* box-shadow: rgb(22, 22, 22) 10px -10px 50% 10px; */
 }
 .inputWrap button{
-    color: rgb(20, 233, 13);
-    background-color: rgb(0, 0, 0);
+    color: rgb(97, 97, 97);
     font-weight: bolder;
     font-family: sans-serif;
     font-size: 18px;
@@ -236,9 +256,11 @@ justify-content: center;
     display: block;
     float: right;
     border-radius: 30px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: green;
+}
+.dopuna{
+    background-color: rgb(119, 158, 122);
+    display: flex;
+    height: 6px;
 }
 /*
 CHATHEAD
