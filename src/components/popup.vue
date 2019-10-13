@@ -112,7 +112,7 @@ export default {
     flex-direction: column;
     margin-top: auto;
     border-style: solid;
-    border-color: rgb(68, 68, 68);
+    border-color: rgb(68, 67, 68);
     border-width: 4px;
     border-radius: 20px;
 }
