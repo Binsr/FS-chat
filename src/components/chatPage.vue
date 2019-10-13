@@ -25,7 +25,6 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
                 </div>
                 <div class="singleMessageDiv invis"></div>
                 
@@ -36,17 +35,6 @@
             <div class="inputWrap">
                 <input  type="text" v-model="myMessage" @keyup.enter="submit" @focus="scrollToEnd">
                 <button @click="submit">--></button>
-=======
-
-                    <div class="singleMessageDiv invis">
-                    </div>
-            </div>
-            <div class="typingShell">
-                <div class="inputWrap">
-                    <input  type="text" v-model="myMessage" @keyup.enter="submit" @focus="scrollToEnd">
-                    <button @click="submit">--></button>
-                </div>
->>>>>>> whatsapp-theme
             </div>
             <div class="dopuna"></div>
         </div>
@@ -226,6 +214,7 @@ margin-left: 10px;
 .typingShell{
     background-color: rgb(119, 158, 122);
     display: flex;
+    width: fit-content;
 }
 .inputWrap{
     display: flex;
