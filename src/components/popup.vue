@@ -40,7 +40,7 @@ export default {
                 this.connectToWS();
                 this.getClient();
             });
-
+//OVDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
             router.push('/chatpage');
         },
         getClient () {
