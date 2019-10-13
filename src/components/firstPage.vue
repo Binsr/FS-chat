@@ -9,10 +9,11 @@
         <link rel="icon" type="image/ico" href="resources/logo.jpg"/>
         <link href="https://fonts.googleapis.com/css?family=Shojumaru&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Ultra&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/startPage.css">
         <link rel="stylesheet" href="css/chatPage.css">
         <title>Friend-Sheep Area</title>
@@ -136,7 +137,7 @@ header {
   width: 100%;
 }
 
-/* TITLE EDIT PART 
+/* TITLE EDIT PART
 ------------------------------------*/
 .title {
   text-align: center;

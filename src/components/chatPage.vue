@@ -9,8 +9,8 @@
                 <p class="botHead">Number of users online:{{client.number}}</p>
         </div>
         <div class="chatWrap">
-            <div class="ChatWindow"> 
-                
+            <div class="ChatWindow">
+
                     <div class="singleMessageDiv"
                     v-for="(msg, index) in message"
                     v-bind:key="index"
@@ -20,7 +20,7 @@
                             <div class="Message">
                                 <div class="messageText" > {{msg.content}} </div>
                                 <div class="timeWrap">
-                                    <div class="time"> {{msg.time}} </div>   
+                                    <div class="time"> {{msg.time}} </div>
                                 </div>
                             </div>
                         </div>
@@ -29,11 +29,14 @@
                     <div class="singleMessageDiv invis">
 
                     </div>
-                
+
             </div>
             <div class="inputWrap">
-                <input  type="text" v-model="myMessage" @keyup.enter="submit" @focus="scrollToEnd">
-                <button @click="submit">--></button>
+            <div @click="files" class="content">
+                  &nbsp;
+                </div>
+                <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="changeIcon" @focus="scrollToEnd">
+                <button @click="submit" class="btn_icon"></button>
             </div>
         </div>
     </div>
@@ -62,12 +65,12 @@ export default {
         test () {
             console.log(this.messages)
         },
-        scrollToEnd: function() {    	
+        scrollToEnd: function() {
             var container = this.$el.querySelector(".ChatWindow");
             // console.log(container);
             container.scrollTop = container.scrollHeight - 55;
         },
-        submit() {  
+        submit() {
             let time = new Date();
             let min = time.getMinutes();
             let hours = time.getHours();
@@ -79,7 +82,7 @@ export default {
             if(min < 10){
                 min = "0" + min;
             }
-            
+
             let timeNow = hours + ":" + min;
             let currentMessage = this.myMessage;
 
@@ -99,16 +102,32 @@ export default {
             this.scrollToEnd();
             this.myMessage = '';
         },
-        
-        
+
+        changeIcon(){
+          let icon = this.$el.querySelector('.btn_icon');
+          let inputValue = this.myMessage;
+          if(inputValue !== ''){
+            console.log('radi');
+            icon.style.backgroundImage = 'url("/img/arrow-up.3873f299.png")';
+            icon.style.backgroundSize = '30px 30px';
+          }else{
+            icon.style.backgroundImage = 'url(/img/microphone_icon.fac92fde.png)';
+            icon.style.backgroundSize = '40px 40px';
+          }
+        },
+        files(){
+          console.log('radi');
+        }
+
+
     },
     created () {
         //dodati api za nalazenje cafe room name
-        
+
     },
     mounted () {
         this.message = this.messages;
-        
+
     }
 }
 </script>
@@ -155,7 +174,7 @@ div.singleMessageDiv.my-message .wrapLine .Message{
     border-style:solid;
     border-width: 3px;
     border-bottom-width: 0px;
-    border-color: rgb(0, 155, 0);    
+    border-color: rgb(0, 155, 0);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -190,28 +209,48 @@ justify-content: center;
     background-color: rgb(20, 82, 20);
 }
 .inputWrap input{
-    width: 88%;
+    width: 84%;
     display: block;
     float: left;
     border-radius: 30px;
-    background-color: gray;
     font-size: 18px;
     padding-left: 5px;
+    margin-top: 4px;
 }
+
 .inputWrap button{
-    color: rgb(20, 233, 13);
+    display: block;
+    width: 30px;
+    height: 30px;
+    color: gray;
     background-color: rgb(0, 0, 0);
     font-weight: bolder;
     font-family: sans-serif;
     font-size: 18px;
-    width: 9%;
-    border: none;
-    display: block;
     float: right;
+    border: 2px solid gray;
     border-radius: 30px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: green;
+    margin: 4px;
+    background-image: url('../assets/microphone_icon.png');
+    background-size: 40px 40px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden;
+}
+.content{
+  border: 2px solid gray;
+  background-image: url('../assets/white_clip.png');
+  background-color: #fff;
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 4px;
+  width: 25px;
+  height: 25px;
+  display: block;
+  border-radius: 30px;
+  float: left;
 }
 /*
 CHATHEAD
