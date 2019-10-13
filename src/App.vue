@@ -64,14 +64,16 @@ textarea:focus, input:focus, button:focus{
   float: right;
   margin: 7px 20px;
   padding-right: 40px;
-  font-size: 14px;
+  font-size: 17px;
   border-style: solid;
   border-color: green;
   border-radius: 15px;
-  border-width: 1px;
+  border-width: 3px;
   padding-top: 3px;
   color: rgb(255, 255, 255);
-  max-width: 400px;
+  border-color: red;
+  min-width: 170px;
+  min-height: 38px;
   /* margin-left: 400px; */
   padding-left: 10px;
   font-weight: 300;

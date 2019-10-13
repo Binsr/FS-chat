@@ -46,6 +46,13 @@ import { mapState } from 'vuex';
 export default {
     data(){
         return{
+<<<<<<< HEAD
+=======
+            client:{
+                "name":"Vreli penisi",
+                "users": 13
+            },
+>>>>>>> 3b15148551e9855163d5d43ad1e2b99bc2ce438b
             otherMessages: [],
             myMessage:'',
             message:[],
@@ -128,10 +135,17 @@ div.singleMessageDiv.my-message{
 .singleMessageDiv{
     display: flex;
     justify-content: flex-start;
+<<<<<<< HEAD
 }
 .singleMessageDiv Message{
     border-color:red;
 }
+=======
+}
+.singleMessageDiv Message{
+    border-color:red;
+}
+>>>>>>> 3b15148551e9855163d5d43ad1e2b99bc2ce438b
 div.singleMessageDiv.my-message .wrapLine .Message{
     border-color: rgb(49, 0, 228);
 }
