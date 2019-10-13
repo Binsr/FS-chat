@@ -11,7 +11,6 @@
                 </div>
         </div>
         <div class="chatWrap">
-<<<<<<< HEAD
             <div class="ChatWindow">
 
                     <div class="singleMessageDiv"
@@ -33,25 +32,6 @@
 
                     </div>
 
-=======
-            <div class="ChatWindow"> 
-                <div class="singleMessageDiv"
-                v-for="(msg, index) in message"
-                v-bind:key="index"
-                :class="{'my-message':msg.myMsg}"
-                >
-                    <div class="wrapLine">
-                        <div class="Message">
-                            <div class="messageText" > {{msg.content}} </div>
-                            <div class="timeWrap">
-                                <div class="time"> {{msg.time}} </div>   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="singleMessageDiv invis"></div>
-                
->>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
             </div>
             <div class="scrollDownButton" @click="scrollToEnd" v-if="!user.scrolled">
                 <i class="material-icons">keyboard_arrow_down</i>
@@ -155,12 +135,6 @@ export default {
     },
     mounted () {
         this.message = this.messages;
-<<<<<<< HEAD
-
-=======
-        this.scrollToEnd();
-        
->>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
     }
 }
 </script>
@@ -229,14 +203,11 @@ div.singleMessageDiv.my-message .wrapLine .Message{
     background-repeat: no-repeat;
 }
 .headChat{
-<<<<<<< HEAD
     border-style:solid;
     border-width: 3px;
     border-bottom-width: 0px;
     border-color: rgb(0, 155, 0);
-=======
-    border-style:solid;   
->>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
+    border-style:solid;
     display: flex;
     flex-direction: column;
     width: 550px;
@@ -279,7 +250,6 @@ margin-left: 10px;
     margin: 0 3% 0 2%;
 }
 .inputWrap input{
-<<<<<<< HEAD
     width: 84%;
     display: block;
     float: left;
@@ -287,7 +257,6 @@ margin-left: 10px;
     font-size: 18px;
     padding-left: 5px;
     margin-top: 4px;
-=======
     margin: 0 0 0px 4%;
     width: 88%;
     display: flex;
@@ -297,26 +266,21 @@ margin-left: 10px;
     border-width: 0;
     background-color: rgb(212, 228, 241);
     /* box-shadow: rgb(22, 22, 22) 10px -10px 50% 10px; */
->>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
 }
 
 .inputWrap button{
-<<<<<<< HEAD
     display: block;
     width: 30px;
     height: 30px;
     color: gray;
     background-color: rgb(0, 0, 0);
-=======
     color: rgb(97, 97, 97);
->>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
     font-weight: bolder;
     font-family: sans-serif;
     font-size: 18px;
     float: right;
     border: 2px solid gray;
     border-radius: 30px;
-<<<<<<< HEAD
     margin: 4px;
     background-image: url('../assets/microphone_icon.png');
     background-size: 40px 40px;
@@ -338,13 +302,11 @@ margin-left: 10px;
   display: block;
   border-radius: 30px;
   float: left;
-=======
 }
 .dopuna{
     background-color: rgb(119, 158, 122);
     display: flex;
     height: 6px;
->>>>>>> 87fd0d2f4ce7e7f5ab7e3871e90c4090399b5703
 }
 /*
 CHATHEAD

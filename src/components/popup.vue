@@ -40,7 +40,7 @@ export default {
                 this.connectToWS();
                 this.getClient();
             });
-            
+
             router.push('/chatpage');
         },
         getClient () {
@@ -78,7 +78,7 @@ export default {
     },
     mounted(){
         this.typing();
-        
+
     }
 }
 </script>
