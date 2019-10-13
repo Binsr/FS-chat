@@ -190,6 +190,9 @@ div.singleMessageDiv.my-message .wrapLine .Message{
     justify-content: center;
     align-items: center;
 }
+.chatWrap{
+  background-color: rgb(119, 158, 122);
+}
 .chatIcon{
     width: 60px;
     height: 60px;
