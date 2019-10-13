@@ -147,10 +147,10 @@ export default {
 .input button{
     margin-top: 2px;
     margin-left: 10px;
-    border-radius: 20px;
+    border-radius: 50%;
     font-size: 15px;
-    width: 100px;
-    height:35px;
+    width: 50px;
+    height: 50px;
     font-weight:bolder;
     background-color: rgba(112, 112, 112, 0.267);
     color: rgb(141, 0, 0);
