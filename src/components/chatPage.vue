@@ -12,36 +12,36 @@
         </div>
         <div class="chatWrap">
             <div class="ChatWindow">
-
-                    <div class="singleMessageDiv"
-                    v-for="(msg, index) in message"
-                    v-bind:key="index"
-                    :class="[msg.myMsg ? 'my-message': '',msg.newUser ? 'new-user': '']"
-                    >
-                        <div class="wrapLine">
-                            <div class="Message">
-                                <div class="messageText" > {{msg.content}} </div>
-                                <div class="timeWrap">
-                                    <div class="time"> {{msg.time}} </div>
-                                </div>
+                <div class="singleMessageDiv"
+                v-for="(msg, index) in message"
+                v-bind:key="index"
+                :class="[msg.myMsg ? 'my-message': '',msg.newUser ? 'new-user': '']"
+                >
+                    <div class="wrapLine">
+                        <div class="Message">
+                            <div class="messageText" > {{msg.content}} </div>
+                            <div class="timeWrap">
+                                <div class="time"> {{msg.time}} </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="singleMessageDiv invis"></div>
-                <div class="scrollDownButton" @click="scrollToEnd" v-if="!user.scrolled">
+                </div>
+            <div class="singleMessageDiv invis"></div>
+            <div class="scrollDownButton" @click="scrollToEnd" v-if="!user.scrolled">
                 <i class="material-icons">keyboard_arrow_down</i>
             </div>
             </div>
-            <div class="inputWrap">
-                <div @click="files" class="content">
-                  &nbsp;
-                </div>
-                <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="changeIcon" @focus="scrollToEnd">
-                <button @click="submit" class="btn_icon"></button>
-            </div>
-            <div class="dopuna"></div>
         </div>
+        <div class="inputOMEGAWrap">
+            <div class="inputWrap">
+                <div @click="files" class="content"></div>
+                <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="changeIcon" @focus="scrollToEnd">
+                <div @click="submit" class="sendBtnWrap">
+                    <button @click="submit" class="btn_icon"></button>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>
 </template>
@@ -49,9 +49,7 @@
 <script>
 import api from '../api';
 import store from '../store.js';
-
-import { mapState } from 'vuex';
-import { setTimeout } from 'timers';
+import { mapState, mapActions } from 'vuex';
 export default {
     data(){
         return{
@@ -68,8 +66,9 @@ export default {
         ...mapState(['messages','user','client'])
     },
     methods:{
+        ...mapActions(['disconnectWS']),
         test () {
-            console.log(this.messages)
+            console.log(this.messages);
         },
         scrollToEnd: function() {
             var container = this.$el.querySelector(".ChatWindow");
@@ -137,7 +136,6 @@ export default {
           let icon = this.$el.querySelector('.btn_icon');
           let inputValue = this.myMessage;
           if(inputValue !== ''){
-            console.log('radi');
             icon.style.display = 'block';
           }else{
             icon.style.display = 'none';
@@ -146,15 +144,16 @@ export default {
         files(){
           console.log('radi');
         }
-
-
     },
     created () {
-        //dodati api za nalazenje cafe room name
+
     },
     mounted () {
         this.message = this.messages;
         this.userJoined();
+    },
+    beforeDestroy(){
+        this.disconnectWS();
     }
 }
 </script>
@@ -162,37 +161,29 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .scrollDownButton {
-  animation: MoveUpDown 1s ease-in-out infinite;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  position: fixed;
-
-    /* padding: 2em; */
-    left: 65%;
-    top: 81%;
+    animation: MoveUpDown 1s ease-in-out infinite;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    position: fixed;
     transform: translateX(-50%);
-
-
-  right: 10px;
-  bottom: 10px;
-  border-radius: 50%;
-  background-color: rgba(121, 121, 121, 0.65);
-  border: 1px rgb(58, 58, 58);
+    right: 10px;
+    bottom: 500px;
+    border-radius: 50%;
+    background-color: rgba(121, 121, 121, 0.65);
+    border: 1px rgb(58, 58, 58);
 }
-
 @keyframes MoveUpDown {
-  0%, 100% {
-    bottom: 10px;
-  }
-  50% {
-    bottom: 20px;
-  }
+    0%, 100% {
+        bottom: 10vh;
+    }
+    50% {
+        bottom: 11vh;
+    }
 }
-
 div.singleMessageDiv.my-message{
     justify-content: flex-end;
 }
@@ -204,9 +195,6 @@ div.singleMessageDiv.my-message{
     display: flex;
     justify-content: flex-start;
 }
-.singleMessageDiv Message{
-    background-color: rgb(212, 228, 241);
-}
 
 div.singleMessageDiv.my-message .wrapLine .Message{
     background-color:rgb(62, 145, 76);
@@ -214,8 +202,9 @@ div.singleMessageDiv.my-message .wrapLine .Message{
 
 div.singleMessageDiv.new-user .wrapLine .Message{
     background-color: rgba(255, 255, 255, 0);
-    box-shadow: 0 0;
+    width: 100%;
     color:rgb(78, 78, 78);
+    box-shadow: 0 0;
     font-size: 15px;
 }
 
@@ -224,20 +213,23 @@ div.singleMessageDiv.new-user{
 }
 
 div.singleMessageDiv.new-user .timeWrap{
-      justify-content: center;
+    justify-content: center;
 }
 body{
     display: flex;
     justify-content: center;
 }
 .tatkoNaMafiu{
+    background-color: rgb(119, 158, 122);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 .chatWrap{
-  background-color: rgb(119, 158, 122);
+    width: 100%;
+    background-color: rgb(119, 158, 122);
 }
 .chatIcon{
     width: 60px;
@@ -259,7 +251,8 @@ body{
     border-style:solid;
     display: flex;
     flex-direction: column;
-    width: 550px;
+    width: 100%;
+    height: 13vh;
     border-width: 0px;
     background-color: rgba(7, 43, 8, 0.979);
 }
@@ -279,43 +272,102 @@ body{
     margin: 17px 0 5px 0px;
 }
 .roomWrap{
-width: 100%;
-display: flex;
-align-items: flex-start;
-flex-direction: column;
-margin-left: 10px;
-}
-.typingShell{
-    background-color: rgb(119, 158, 122);
+    width: 100%;
     display: flex;
-    width: fit-content;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 10px;
+}
+.inputOMEGAWrap{
+    position: absolute;
+    bottom: 10px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .inputWrap{
-    display: flex;
-    flex-direction: row;
-    border-radius: 30px;
-    flex:1;
     background-color: rgb(212, 228, 241);
-    margin: 0 3% 0 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    height: 5vh;
+    width: 90vw;
 }
 .inputWrap input{
     display: block;
-    float: left;
-    border-radius: 30px;
     font-size: 18px;
-    padding-left: 5px;
-    margin-top: 4px;
-    margin: 0 0 0px 4%;
-    width: 80%;
-    display: flex;
-    float: left;
+    width: calc(100% - 50px);
+    height: 5vh;
+    padding: 0 5px;
     font-size: 14px;
-    padding-left: 5px;
     border-width: 0;
     background-color: rgb(212, 228, 241);
-    /* box-shadow: rgb(22, 22, 22) 10px -10px 50% 10px; */
 }
-
+.sendBtnWrap{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Message{
+  min-width: 100px;
+  height: auto;
+  min-height: 20px;
+  background-color: rgb(245, 209, 209);
+  float: right;
+  margin: 7px 20px;
+  font-size: 17px;
+  border-radius: 15px;
+  color: rgb(0, 0, 0);
+  font-weight: 300;
+  word-break: break-all;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 1px;
+}
+.messageText{
+  text-align: left;
+  margin:3px 5px;
+}
+.wrapLine{
+  display:flex;
+  max-width: 500px;
+  height: fit-content;
+  flex-wrap:  wrap;
+  justify-content:flex-end;
+  margin-right: 0;
+}
+.time{
+  font-size: 10px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+.timeWrap{
+  color: rgb(78, 78, 78);
+  background-color: rgba(255, 255, 255, 0);
+  display:flex;
+  justify-content: flex-end;
+  margin: 0 6px 4px 0 ; 
+}
+.chatWrap{
+  align-content: center;
+  display: inline-block; 
+  color: white;
+  height: 80vh; 
+}
+.ChatWindow{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-width: 0px;
+  border-style:solid;
+  overflow-y: scroll;
+  display: flexbox;
+  /* flex-direction: column; */
+}
 .inputWrap button{
     /* display: none; */
     width: 29px;
@@ -351,127 +403,6 @@ margin-left: 10px;
   border-radius: 30px;
   float: left;
 }
-.dopuna{
-    background-color: rgb(119, 158, 122);
-    display: flex;
-    height: 6px;
-}
-/*
-CHATHEAD
-    <div class="topHead">
-        <div class="chatIcon"></div>
-        <p class="roomName">Chat area:</p>
-    </div>
-    <p class="botHead">Number of users online:</p>
-*/
-/* ----------------------- RESPONSIVE --------------------------*/
-@media screen and (max-width: 360px) {
 
-  .ChatWindow{
-    width: 320px;
-    height: 380px;
-  }
-  .headChat{
-    width: 320px;
 
-  }
-  .topHead{
-    width: 320px;
-    font-size: 5px;
-  }
-  .chatIcon{
-      width: 40px;
-      height: 40px;
-      margin-top: 15px;
-  }
-  .roomName{
-      font-size: 16px;
-      margin-top: 20px;
-  }
-  div.singleMessageDiv.new-user .wrapLine .Message{
-        font-size: 10px;
-    }
-    div.singleMessageDiv.new-user .time{
-        font-size: 8px;
-    }
-    .singleMessageDiv .Message{
-    font-size: 12px;
-}
-    #app{
-        height: 450px;
-        margin: 0 auto;
-    }
-}
-@media screen and (max-width: 320px) {
-
-  .ChatWindow{
-    width: 300px;
-    height: 380px;
-  }
-  .headChat{
-    width: 300px;
-
-  }
-  .topHead{
-    width: 300px;
-    font-size: 5px;
-  }
-  .chatIcon{
-      width: 40px;
-      height: 40px;
-      margin-top: 15px;
-  }
-  .roomName{
-      font-size: 16px;
-      margin-top: 20px;
-  }
-  div.singleMessageDiv.new-user .wrapLine .Message{
-        font-size: 10px;
-    }
-    div.singleMessageDiv.new-user .time{
-        font-size: 8px;
-    }
-    .singleMessageDiv .Message{
-    font-size: 12px;
-}
-    #app{
-        height: 450px;
-    }
-}
-@media screen and (max-width: 414px) {
-  .ChatWindow{
-    width: 300px;
-    height: 380px;
-  }
-  .headChat{
-    width: 300px;
-
-  }
-  .topHead{
-    width: 300px;
-    font-size: 5px;
-  }
-  .chatIcon{
-      width: 40px;
-      height: 40px;
-      margin-top: 15px;
-  }
-  .roomName{
-      font-size: 16px;
-      margin-top: 20px;
-  }
-  div.singleMessageDiv.new-user .wrapLine .Message{
-        font-size: 10px;
-    }
-    div.singleMessageDiv.new-user .time{
-        font-size: 8px;
-    }
-    .singleMessageDiv .Message{
-    font-size: 12px;
-}
-    #app{
-        height: 450px;
-        margin: 0 auto;
-    }
-}
 </style>

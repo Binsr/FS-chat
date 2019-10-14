@@ -1,12 +1,13 @@
 <template>
     <div class="popwrap">
-        <div class="popupwrap">
-            <div class="space"></div>
-            <p id="poptext"></p>
-        </div>
-        <div class="input">
-                <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
-                <button @click="submitName">Oki</button>
+        <div>
+            <div class="popupwrap">
+                <p id="poptext"></p>
+            </div>
+            <div class="input">
+                    <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
+                    <button @click="submitName">Oki</button>
+            </div>
         </div>
     </div>
 </template>
@@ -39,21 +40,8 @@ export default {
                 this.user.ip = Response.data.ip;
                 console.log(this.user);
                 this.connectToWS();
-                this.getClient();
             });
             router.push('/firstpage');
-        },
-        getClient () {
-            let sid = this.user.sid
-            api.getclient(sid).then(response =>{
-                console.log(response)
-                if(response.data.cafe === null){
-                    this.user.ip = "NOT_CONNECTED";
-                    console.log(this.user.ip);
-                }
-                this.client.name = response.data.cafe.caf_name;
-                this.client.number = response.data.cafe.caf_number;
-            })
         },
         typing() {
           var i = 0;
@@ -88,37 +76,25 @@ export default {
 </script>
 
 <style>
-.popupwrap{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  max-width: 350px;
-  max-height: 400px;
-}
-
-.space{
-    height: 20px;
-}
 #poptext{
     color:rgb(255, 0, 0);
-    height: 15px;
     font-weight: bolder;
-    justify-self: center;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: 2px 2px;
+}
+.popwrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
 .popupwrap{
     background-image: url(../assets/monitor.png);
-    width: 400px;
-    height: 400px;
+    width: 80%;
+    height: 61px;
+    margin:  auto;
     display: flex;
-    flex-direction: column;
-    margin-top: auto;
-    border-style: solid;
-    border-color: rgb(68, 67, 68);
-    border-width: 4px;
-    border-radius: 20px;
+    justify-content: center;
 }
 .input{
     margin: 0 auto;

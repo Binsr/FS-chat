@@ -77,11 +77,15 @@ const store = new Vuex.Store({
     },
     disconnectWS (store) {
       store.state.user.ws.close();
+      console.log('WS closed');
     },
     getClient () {
       let sid = store.state.user.sid
       api.getclient(sid).then(response =>{
           console.log(response)
+          if(response.data.cafe === null){
+            store.state.user.ip = "NOT_CONNECTED";
+          }
           store.state.client.name = response.data.cafe.caf_name;
           store.state.client.number = response.data.cafe.caf_number;
       })

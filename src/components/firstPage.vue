@@ -1,42 +1,24 @@
 
 // KAD SE VIDIMO VIDACE OBJASNI MI POCICIONIRANJE PARETNT CHILD MARGIN: 0 AUTO I TAKO TO
 <template>
-<div class="tatko">
-        <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="icon" type="image/ico" href="../assets/logo.jpg"/>
-        <link href="https://fonts.googleapis.com/css?family=Shojumaru&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Ultra&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/startPage.css">
-        <link rel="stylesheet" href="css/chatPage.css">
-        <title>Friend-Sheep Area</title>
-        </head>
-        <body>
-            <div class="wrap">
-                <header>
-                    <h1 class="title"><span class="thisIsPart">this is</span>
-                            <br><span class="titleFSpart">F - S </span>
-                            <span class="areaPart"><br> App</span>
-                    </h1>
-                </header>
-                <div class="monitor">
-                    <p class="textType" id="text"></p>
-                </div>
-                    <button class="button" @click="changeGot"><p class="btParagraf" id="clickme">get in</p>
-                        <div class="imageShip">
-                            <img src="../assets/mainlogo.jpg"/>
-                        </div>
-                    </button>
-                </div>
-        </body>
+  <div class="tatko">
+    <div class="wrap">
+      <header>
+        <h1 class="title"><span class="thisIsPart">this is</span>
+          <br><span class="titleFSpart">F - S </span>
+          <span class="areaPart"><br> App</span>
+        </h1>
+      </header>
+      <div class="monitor">
+        <p class="textType" id="text"></p>
+      </div>
+      <button class="getInBtn" @click="toChatPage"><p class="btParagraf" id="clickme">get in</p>
+        <div class="imageShip">
+          <img src="../assets/mainlogo.jpg"/>
+        </div>
+      </button>
     </div>
+  </div>
 </template>
 
 <script>
@@ -52,7 +34,7 @@ export default {
       }
     },
     methods: {
-      ...mapActions(['addUsername','client','state','user']),
+      ...mapActions(['addUsername','client','user']),
         typing() {
           var i = 0;
           var j = 0;
@@ -97,12 +79,10 @@ export default {
             i++;
           }, 90);
         },
-        changeGot () {
-          //console.log(this.interval)
+        toChatPage () {
           clearInterval(this.interval);
-          // console.log(this.state.client.name);
           if(this.user.ip != "NOT_CONNECTED")
-          router.push('/chatpage');
+            router.push('/chatpage');
           else{
             this.typing();
           }
@@ -113,12 +93,16 @@ export default {
     },
     computed: {
       ...mapState(['user']),
+    },
+    beforeDestroy() {
+      clearInterval(this.interval);
     }
 }
 </script>
 
 <style>
 .tatko{
+    background-color: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,16 +110,10 @@ export default {
     margin: 0 auto;
 }
 .wrap{
-    width: 500px;
+    width: 100vw;
+    height: 100vh;
 }
 
-body {
-  background-color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-}
 
 header {
   background: linear-gradient(
@@ -196,23 +174,23 @@ header {
   padding: 10px;
   color: rgb(157, 255, 0);
 }
-.button {
+.getInBtn {
   align-content: center;
-  width: 200px;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 20%;
   font-size: 20px;
-  margin: 0 auto;
+  margin: 5px auto;
   background-color: rgba(224, 20, 20, 0);
-  border-radius: 10%;
+  border-radius: 10px;
   border-width: 8px;
   border-style: solid;
   border-color: rgb(255, 0, 0);
   max-height: 200px;
+  max-width: 300px;
 }
-
 .btParagraf {
   float: left;
   font-size: 35px;
@@ -226,85 +204,5 @@ header {
   margin-left: 20px;
 }
 
-/* ``````````````````````````````````````````````````RESPONSIVE``````````````````````````````````````````````````` */
 
-@media screen and (max-width: 320px) {
-  body {
-    width: 320px;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  body {
-    width: 300px;
-  }
-  .button{
-    width: 300px;
-    height: 150px;
-  }
-  .wrap{
-    width: 350px;
-}
-}
-
-@media screen and (max-width: 375px) {
-  body {
-    width: 375px;
-  }
-  .button{
-  width: 300px;
-  height: 150px;
-  }
-  .wrap{
-    width: 350px;
-  }
-}
-
-@media screen and (max-width: 384px) {
-  .monitor {
-    margin-top: 5%;
-  }
-  .button{
-    width: 300px;
-    height: 150px;
-  }
-  .wrap{
-    width: 350px;
-}
-}
-@media screen and (max-width: 414px) {
-  .monitor {
-    margin-bottom: 10px;
-  }
-  .button{
-    width: 350px;
-    height: 150px;
-  }
-  .wrap{
-    width: 390px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .monitor {
-    margin-bottom: 10px;
-  }
-  body {
-    width: 480px;
-  }
-}
-
-@media screen and (min-width: 600px) {
-  header {
-    font-size: 25px;
-  }
-  body {
-    width: 600px;
-  }
-  .button {
-    width: 360px;
-    height: 150px;
-    margin: 0 auto;
-    margin-top: 40px;
-  }
-}
 </style>
