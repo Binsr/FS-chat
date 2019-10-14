@@ -204,6 +204,7 @@ header {
   justify-content: center;
   height: 20%;
   font-size: 20px;
+  margin: 0 auto;
   background-color: rgba(224, 20, 20, 0);
   border-radius: 10%;
   border-width: 8px;
@@ -235,13 +236,27 @@ header {
 
 @media screen and (max-width: 360px) {
   body {
-    width: 360px;
+    width: 300px;
   }
+  .button{
+    width: 300px;
+    height: 150px;
+  }
+  .wrap{
+    width: 350px;
+}
 }
 
 @media screen and (max-width: 375px) {
   body {
     width: 375px;
+  }
+  .button{
+  width: 300px;
+  height: 150px;
+  }
+  .wrap{
+    width: 350px;
   }
 }
 
@@ -249,16 +264,24 @@ header {
   .monitor {
     margin-top: 5%;
   }
-  body {
-    width: 400px;
+  .button{
+    width: 300px;
+    height: 150px;
   }
+  .wrap{
+    width: 350px;
+}
 }
 @media screen and (max-width: 414px) {
   .monitor {
     margin-bottom: 10px;
   }
-  body {
-    width: 414px;
+  .button{
+    width: 350px;
+    height: 150px;
+  }
+  .wrap{
+    width: 390px;
   }
 }
 @media screen and (max-width: 480px) {

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="ceoPage">
     <router-view>      
     </router-view>
     <!-- <chatPage v-if="gotIn" />
@@ -55,7 +55,17 @@ export default {
 textarea:focus, input:focus, button:focus{
     outline: none;
 }
-
+body{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+html {
+    overflow: auto;
+}
+.ceoPage{
+  margin: 0 auto;
+}
 .Message{
   min-width: 100px;
   height: auto;
@@ -172,4 +182,6 @@ textarea:focus, input:focus, button:focus{
   color: #2c3e50;
   margin-top: 60px;
 }
+/*----------------------------------------- RESPONSIVEE -------------------------------------------------*/
+
 </style>

@@ -126,7 +126,7 @@ export default {
 
             let name = this.user.name;
             let newMsg = {
-                "content": "~~~~~~~~~~"+name + " has joined room~~~~~~~~~~",
+                "content": "~~~"+name + " has joined room~~~",
                 "time": timeNow,
                 "sid": this.user.sid,
                 "name": name
@@ -226,7 +226,10 @@ div.singleMessageDiv.new-user{
 div.singleMessageDiv.new-user .timeWrap{
       justify-content: center;
 }
-
+body{
+    display: flex;
+    justify-content: center;
+}
 .tatkoNaMafiu{
     display: flex;
     flex-direction: column;
@@ -361,5 +364,114 @@ CHATHEAD
     </div>
     <p class="botHead">Number of users online:</p>
 */
+/* ----------------------- RESPONSIVE --------------------------*/
+@media screen and (max-width: 360px) {
 
+  .ChatWindow{
+    width: 320px;
+    height: 380px;
+  }
+  .headChat{
+    width: 320px;
+
+  }
+  .topHead{
+    width: 320px;
+    font-size: 5px;
+  }
+  .chatIcon{
+      width: 40px;
+      height: 40px;
+      margin-top: 15px;
+  }
+  .roomName{
+      font-size: 16px;
+      margin-top: 20px;
+  }
+  div.singleMessageDiv.new-user .wrapLine .Message{
+        font-size: 10px;
+    }
+    div.singleMessageDiv.new-user .time{
+        font-size: 8px;
+    }
+    .singleMessageDiv .Message{
+    font-size: 12px;
+}
+    #app{
+        height: 450px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 320px) {
+
+  .ChatWindow{
+    width: 300px;
+    height: 380px;
+  }
+  .headChat{
+    width: 300px;
+
+  }
+  .topHead{
+    width: 300px;
+    font-size: 5px;
+  }
+  .chatIcon{
+      width: 40px;
+      height: 40px;
+      margin-top: 15px;
+  }
+  .roomName{
+      font-size: 16px;
+      margin-top: 20px;
+  }
+  div.singleMessageDiv.new-user .wrapLine .Message{
+        font-size: 10px;
+    }
+    div.singleMessageDiv.new-user .time{
+        font-size: 8px;
+    }
+    .singleMessageDiv .Message{
+    font-size: 12px;
+}
+    #app{
+        height: 450px;
+    }
+}
+@media screen and (max-width: 414px) {
+  .ChatWindow{
+    width: 300px;
+    height: 380px;
+  }
+  .headChat{
+    width: 300px;
+
+  }
+  .topHead{
+    width: 300px;
+    font-size: 5px;
+  }
+  .chatIcon{
+      width: 40px;
+      height: 40px;
+      margin-top: 15px;
+  }
+  .roomName{
+      font-size: 16px;
+      margin-top: 20px;
+  }
+  div.singleMessageDiv.new-user .wrapLine .Message{
+        font-size: 10px;
+    }
+    div.singleMessageDiv.new-user .time{
+        font-size: 8px;
+    }
+    .singleMessageDiv .Message{
+    font-size: 12px;
+}
+    #app{
+        height: 450px;
+        margin: 0 auto;
+    }
+}
 </style>
