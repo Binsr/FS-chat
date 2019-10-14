@@ -8,7 +8,6 @@ const store = new Vuex.Store({
   state: {
     messages: null,
     connected:false,
-    typingAllowed: true,
     client:{
       name:null,
       number:null
