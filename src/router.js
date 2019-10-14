@@ -13,8 +13,8 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [{
       path: '/',
-      component: firstPage,
-      name: 'firstPage',
+      component: popup,
+      name: 'popup',
       beforeEnter(to, from, next) {
         // var type = localStorage.getItem('whodat');
         // if (type !== null)
@@ -31,14 +31,14 @@ const router = new Router({
       }
     },
     {
-      path: '/popup',
-      component: popup,
-      name: 'popup',
-    },
-    { //===================================user router begin==========================================
       path: '/chatpage',
       component: chatPage,
-      name: 'chatPage',
+      name: 'chatpage',
+    },
+    { //===================================user router begin==========================================
+      path: '/firstpage',
+      component: firstPage,
+      name: 'firstpage',
     //   children: [{
     //       path: 'about',
     //       component: About,

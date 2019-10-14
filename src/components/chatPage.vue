@@ -16,7 +16,7 @@
                     <div class="singleMessageDiv"
                     v-for="(msg, index) in message"
                     v-bind:key="index"
-                    :class="{'my-message':msg.myMsg}"
+                    :class="[msg.myMsg ? 'my-message': '',msg.newUser ? 'new-user': '']"
                     >
                         <div class="wrapLine">
                             <div class="Message">
@@ -101,7 +101,7 @@ export default {
                 "content":currentMessage,
                 "time": name + " " + timeNow,
                 "sid": this.user.sid,
-                "name": name
+                "name": "Logged"
             }
             // console.log(this.messages);
             // this.messages.push(newMsg);
@@ -111,16 +111,27 @@ export default {
             this.myMessage = '';
         },
         userJoined() {
-            let namee = this.user.name;
-            let newMsge = {
-                "content": namee + " has joined room ",
-                "time": "",
-                "sid": this.user.sid,
-                "name": namee
+            let time = new Date();
+            let min = time.getMinutes();
+            let hours = time.getHours();
+
+            if(hours < 10){
+                hours = "0" + hours;
             }
-            // this.store.user.ws.send(JSON.stringify(newMsge));
-            // this.user.ws.send(JSON.stringify(newMsge));
-            store.state.user.ws.send(JSON.stringify(newMsge));
+            if(min < 10){
+                min = "0" + min;
+            }
+            let timeNow = hours + ":" + min;
+            let currentMessage = this.myMessage;
+
+            let name = this.user.name;
+            let newMsg = {
+                "content": "~~~~~~~~~~"+name + " has joined room~~~~~~~~~~",
+                "time": timeNow,
+                "sid": this.user.sid,
+                "name": name
+            }
+            store.state.user.ws.send(JSON.stringify(newMsg));
         },
         changeIcon(){
           let icon = this.$el.querySelector('.btn_icon');
@@ -196,8 +207,24 @@ div.singleMessageDiv.my-message{
 .singleMessageDiv Message{
     background-color: rgb(212, 228, 241);
 }
+
 div.singleMessageDiv.my-message .wrapLine .Message{
     background-color:rgb(62, 145, 76);
+}
+
+div.singleMessageDiv.new-user .wrapLine .Message{
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 0;
+    color:rgb(78, 78, 78);
+    font-size: 15px;
+}
+
+div.singleMessageDiv.new-user{
+    justify-content: center;
+}
+
+div.singleMessageDiv.new-user .timeWrap{
+      justify-content: center;
 }
 
 .tatkoNaMafiu{

@@ -41,19 +41,23 @@ export default {
                 this.connectToWS();
                 this.getClient();
             });
-            router.push('/chatpage');
+            router.push('/firstpage');
         },
         getClient () {
             let sid = this.user.sid
             api.getclient(sid).then(response =>{
                 console.log(response)
+                if(response.data.cafe === null){
+                    this.user.ip = "NOT_CONNECTED";
+                    console.log(this.user.ip);
+                }
                 this.client.name = response.data.cafe.caf_name;
                 this.client.number = response.data.cafe.caf_number;
             })
         },
         typing() {
           var i = 0;
-          const text = "...Unesite ime ako zelite...";
+          const text = "...Dobrodosli na Friend-Sheep App! Unesite ime ako zelite...";
           const el = document.querySelector("#poptext");
           this.interval = setInterval(function () {
 

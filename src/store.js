@@ -7,6 +7,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     messages: null,
+    connected:false,
+    typingAllowed: true,
     client:{
       name:null,
       number:null
@@ -16,8 +18,8 @@ const store = new Vuex.Store({
       ip: null,
       ws: null,
       sid: null,
-      scrolled: true
-    },
+      scrolled: true,
+    }
   },
   mutations: {
     // =================================================UTILITY MUTATIONS START=======================================================
@@ -61,6 +63,11 @@ const store = new Vuex.Store({
               object.myMsg = true
             else
               object.myMsg = false
+            if(object.name == "Logged"){
+              object.newUser = false;
+            }else{
+              object.newUser = true;
+            }
               
             store.state.messages.push( object )
             store.state.user.scrolled = false;

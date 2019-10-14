@@ -52,14 +52,23 @@ export default {
       }
     },
     methods: {
-      ...mapActions(['addUsername']),
+      ...mapActions(['addUsername','client','state','user']),
         typing() {
           var i = 0;
           var j = 0;
-          const text = "...OVO JE BRANCH MASTER. . . . . ....";
+          let text = "";
+          if(this.user.ip != "NOT_CONNECTED")
+            text = "...Dobro u FS kafic....                     .";
+          else{
+            text = "Na zalost ne postoji cet soba za mesto gde se nalazite trenutno";
+          }
           const el = document.getElementById("text");
+          if(this.user.ip == "NOT_CONNECTED")
+            document.getElementById("text").style.color = "red";
+          if(el.textContent.length != 0){
+            el.textContent = "";
+          }
           this.interval = setInterval(function () {
-
             if (i < text.length) {
               el.textContent += text[i];
 
@@ -91,12 +100,16 @@ export default {
         changeGot () {
           //console.log(this.interval)
           clearInterval(this.interval);
-          router.push('/popup');
+          // console.log(this.state.client.name);
+          if(this.user.ip != "NOT_CONNECTED")
+          router.push('/chatpage');
+          else{
+            this.typing();
+          }
         }
     },
     mounted() {
-        this.typing();
-
+          this.typing();
     },
     computed: {
       ...mapState(['user']),
@@ -173,7 +186,7 @@ header {
   border-color: rgb(55, 56, 54);
   font-family: "Righteous", cursive;
   text-align: left;
-  font-size: 16px;
+  font-size: 14px;
   background-image: url(../assets/monitor.png);
   margin-top: 10%;
   margin:0 auto;
