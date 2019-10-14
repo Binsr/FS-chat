@@ -47,8 +47,11 @@
 </template>
 
 <script>
-import api from '../api'
+import api from '../api';
+import store from '../store.js';
+
 import { mapState } from 'vuex';
+import { setTimeout } from 'timers';
 export default {
     data(){
         return{
@@ -107,7 +110,18 @@ export default {
             this.scrollToEnd();
             this.myMessage = '';
         },
-
+        userJoined() {
+            let namee = this.user.name;
+            let newMsge = {
+                "content": namee + " has joined room ",
+                "time": "",
+                "sid": this.user.sid,
+                "name": namee
+            }
+            // this.store.user.ws.send(JSON.stringify(newMsge));
+            // this.user.ws.send(JSON.stringify(newMsge));
+            store.state.user.ws.send(JSON.stringify(newMsge));
+        },
         changeIcon(){
           let icon = this.$el.querySelector('.btn_icon');
           let inputValue = this.myMessage;
@@ -126,10 +140,10 @@ export default {
     },
     created () {
         //dodati api za nalazenje cafe room name
-
     },
     mounted () {
         this.message = this.messages;
+        this.userJoined();
     }
 }
 </script>

@@ -15,6 +15,7 @@
 import {mapActions, mapState} from 'vuex';
 import router from '../router';
 import api from '../api'
+import { setTimeout } from 'timers';
 
 export default {
     data(){
@@ -26,7 +27,7 @@ export default {
     ...mapState(['user','client']),
     },
     methods:{
-        ...mapActions(['addUsername','connectToWS']),
+        ...mapActions(['addUsername','connectToWS','messages']),
         submitName(){
             if(this.name == '')
                 this.name = 'Anonymous'
@@ -40,7 +41,6 @@ export default {
                 this.connectToWS();
                 this.getClient();
             });
-//OVDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
             router.push('/chatpage');
         },
         getClient () {
