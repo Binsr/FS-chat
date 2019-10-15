@@ -35,13 +35,50 @@
         <div class="inputOMEGAWrap">
             <div class="inputWrap">
                 <div @click="files" class="content"></div>
-                <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="changeIcon" @focus="scrollToEnd">
+                <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="showIcon" @focus="scrollToEnd">
+                <emoji-picker @emoji="insert">
+                    <div class="emoji-invoker" slot="emoji-invoker" slot-scope="{ events }" v-on="events">
+                        <button type="button">open</button>
+                    </div>
+                    <div slot="emoji-picker" slot-scope="{ emojis, insert, display }">
+                        <div>
+                            <div>
+                                <div v-for="(emojiGroup, category) in emojis" :key="category">
+                                    <h5>{{ category }}</h5>
+                                    <div>
+                                        <span
+                                            v-for="(emoji, emojiName) in emojiGroup"
+                                            :key="emojiName"
+                                            @click="insert(emoji)"
+                                            :title="emojiName"
+                                        >{{ emoji }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </emoji-picker>
                 <div @click="submit" class="sendBtnWrap">
                     <button @click="submit" class="btn_icon"></button>
                 </div>
             </div>
         </div>
-        
+        <div class="contentWraper">
+          <div class="">
+            <ul>
+              <li @click="getContent">Camera</li>
+              <li>Photo & Video Library</li>
+              <li @click="chooseDocument">Document</li>
+              <li class="secret"><input type="file" name="document"></li>
+            </ul>
+          </div>
+          <div class="triangle">
+          </div>
+        </div>
+    </div>
+    <div class="videoWrapper secret">
+      <video src="" autoplay class="video">
+      </video>
     </div>
 </div>
 </template>
@@ -50,12 +87,14 @@
 import api from '../api';
 import store from '../store.js';
 import { mapState, mapActions } from 'vuex';
+import EmojiPicker from 'vue-emoji-picker'
 export default {
     data(){
         return{
             otherMessages: [],
             myMessage:'',
             message:[],
+            EmojiPicker,
         }
     },
     name: 'chatPage',
@@ -132,7 +171,7 @@ export default {
             }
             store.state.user.ws.send(JSON.stringify(newMsg));
         },
-        changeIcon(){
+        showIcon(){
           let icon = this.$el.querySelector('.btn_icon');
           let inputValue = this.myMessage;
           if(inputValue !== ''){
@@ -141,8 +180,29 @@ export default {
             icon.style.display = 'none';
           }
         },
-        files(){
-          console.log('radi');
+        files(e){
+          let files = document.querySelector('.contentWraper');
+          files.style.display = 'block';
+          // TO DO: close the fucking window
+        },
+        getContent(){
+          var constraints = { audio: false, video: { width: 1280, height: 720 } };
+          navigator.mediaDevices.getUserMedia(constraints)
+            .then(function(mediaStream) {
+              var videoWrapper = document.querySelector('.videoWrapper');
+              videoWrapper.style.display = 'block';
+              var video = document.querySelector('.video');
+              video.srcObject = mediaStream;
+              video.onloadedmetadata = function(e) {
+                video.play();
+              };
+            }).catch(function(err) { console.log(err.name + ": " + err.message); });
+            // TO DO: finish with the camera thing
+        },
+        chooseDocument(){
+           var inputDocument = document.querySelector('[name="document"]');
+           inputDocument.click();
+           // TO DO: insert the document in to the input
         }
     },
     created () {
@@ -160,6 +220,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .secret{
+    display: none !important;
+  }
 .scrollDownButton {
     animation: MoveUpDown 1s ease-in-out infinite;
     cursor: pointer;
@@ -350,13 +413,13 @@ body{
   background-color: rgba(255, 255, 255, 0);
   display:flex;
   justify-content: flex-end;
-  margin: 0 6px 4px 0 ; 
+  margin: 0 6px 4px 0 ;
 }
 .chatWrap{
   align-content: center;
-  display: inline-block; 
+  display: inline-block;
   color: white;
-  height: 80vh; 
+  height: 80vh;
 }
 .ChatWindow{
   position: relative;
@@ -402,7 +465,46 @@ body{
   display: block;
   border-radius: 30px;
   float: left;
+  cursor: pointer;
 }
-
-
+.contentWraper{
+  display: none;
+  position: absolute;
+  bottom: 7%;
+  left: 1%;
+  width: 150px;
+  text-align: center;
+}
+.contentWraper ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contentWraper ul li{
+  border-bottom: 1px solid gray;
+  padding: 15px;
+  background-color: #fff;
+  padding-bottom: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  color: rgba(7, 43, 8, 0.979);
+  cursor: pointer;
+}
+.contentWraper ul li:hover{
+  background-color: rgba(7, 43, 8, 0.979);
+  color: #fff;
+}
+.triangle {
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-top: 50px solid #fff;
+}
+.videoWrapper{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
 </style>
