@@ -244,6 +244,7 @@ body{
     background-repeat: no-repeat;
 }
 .headChat{
+    /* position: fixed; */
     border-style:solid;
     border-width: 3px;
     border-bottom-width: 0px;
@@ -252,7 +253,7 @@ body{
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 13vh;
+    /* height: 13vh; */
     border-width: 0px;
     background-color: rgba(7, 43, 8, 0.979);
 }
@@ -279,7 +280,7 @@ body{
     margin-left: 10px;
 }
 .inputOMEGAWrap{
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     width: 100vw;
     display: flex;
@@ -292,7 +293,7 @@ body{
     justify-content: space-between;
     align-items: center;
     border-radius: 30px;
-    height: 5vh;
+    /* height: 5vh; */
     width: 90vw;
 }
 .inputWrap input{
