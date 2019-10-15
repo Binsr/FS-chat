@@ -1,6 +1,9 @@
 <template>
 <div>
     <div class="tatkoNaMafiu">
+        <div class="physicallyBodyOfHeader">
+            <div class="chatIcon"></div>
+        </div>
         <div class="headChat">
                 <div class="topHead">
                     <div class="chatIcon"></div>
@@ -244,7 +247,21 @@ body{
     background-repeat: no-repeat;
 }
 .headChat{
-    /* position: fixed; */
+    position: fixed;
+    z-index: 1;
+    border-style:solid;
+    border-width: 3px;
+    border-bottom-width: 0px;
+    border-color: rgb(0, 155, 0);
+    border-style:solid;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* height: 13vh; */
+    border-width: 0px;
+    background-color: rgba(7, 43, 8, 0.979);
+}
+.physicallyBodyOfHeader{
     border-style:solid;
     border-width: 3px;
     border-bottom-width: 0px;
