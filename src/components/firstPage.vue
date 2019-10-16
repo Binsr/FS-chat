@@ -38,16 +38,12 @@ export default {
         typing() {
           var i = 0;
           var j = 0;
-<<<<<<< HEAD
           let text = "";
           if(this.user.ip != "NOT_CONNECTED")
             text = "...Dobrodosli na Friend-Sheep App!....                     .";
           else{
             text = "Na zalost ne postoji cet soba za mesto gde se nalazite trenutno";
           }
-=======
-          const text = "...Poskupeli prilozi u poncu sa 30 na 50 din i pice i sendvici isto...";
->>>>>>> 34a05ee4d95580cb4d558bdd86a7708b18951ab3
           const el = document.getElementById("text");
           if(this.user.ip == "NOT_CONNECTED")
             document.getElementById("text").style.color = "red";
@@ -182,11 +178,7 @@ header {
   border-style: solid;
   border-color: rgb(119, 158, 122);
   max-height: 200px;
-<<<<<<< HEAD
   max-width: 300px;
-=======
-  cursor: pointer;
->>>>>>> 34a05ee4d95580cb4d558bdd86a7708b18951ab3
 }
 .btParagraf {
   float: left;
