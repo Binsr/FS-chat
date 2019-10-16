@@ -237,15 +237,10 @@ div.singleMessageDiv.my-message{
     justify-content: flex-start;
 }
 
-<<<<<<< HEAD
-/* div.singleMessageDiv.my-message .wrapLine .Message{
-    background-color: #;
-} */
-=======
+
 div.singleMessageDiv.my-message .wrapLine .Message{
     background-color:#FF3232;
 }
->>>>>>> 4caa7fc62bb14bff88681d3dc4b9d5f0dc4c9c79
 
 div.singleMessageDiv.new-user .wrapLine .Message{
     background-color: rgba(255, 255, 255, 0);
@@ -267,11 +262,9 @@ body{
     justify-content: center;
 }
 .tatkoNaMafiu{
-<<<<<<< HEAD
+
     background-color: rgb(194, 176, 158);
-=======
     background-color: rgb(194, 176, 158); ;
->>>>>>> 4caa7fc62bb14bff88681d3dc4b9d5f0dc4c9c79
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -280,11 +273,9 @@ body{
 }
 .chatWrap{
     width: 100%;
-<<<<<<< HEAD
+
     background-color: rgb(194, 176, 158);
-=======
     background-color: rgb(255, 255, 255);
->>>>>>> 4caa7fc62bb14bff88681d3dc4b9d5f0dc4c9c79
 }
 .chatIcon{
     width: 60px;
@@ -309,11 +300,9 @@ body{
     flex-direction: column;
     width: 100%;
     border-width: 0px;
-<<<<<<< HEAD
+
     background-color: #D50000;
-=======
     background-color: #B71C1C;
->>>>>>> 4caa7fc62bb14bff88681d3dc4b9d5f0dc4c9c79
 }
 .physicallyBodyOfHeader{
     opacity: 0;
@@ -356,17 +345,15 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
+
     background-color: rgb(194, 176, 158);
 }
 .inputWrap{
     background-color: #ffe5e5;
-=======
-    background-color:rgb(194, 176, 158); 
+    background-color:rgb(194, 176, 158);
 }
 .inputWrap{
     background-color: #F7E7CE;
->>>>>>> 4caa7fc62bb14bff88681d3dc4b9d5f0dc4c9c79
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -382,11 +369,9 @@ body{
     padding: 0 5px;
     font-size: 14px;
     border-width: 0;
-<<<<<<< HEAD
+
     background-color: #ffe5e5;
-=======
     background-color: #F7E7CE;
->>>>>>> 4caa7fc62bb14bff88681d3dc4b9d5f0dc4c9c79
 }
 .sendBtnWrap{
     width: 35px;
@@ -399,11 +384,9 @@ body{
   min-width: 120px;
   height: auto;
   min-height: 20px;
-<<<<<<< HEAD
+
   background-color: #ff3232;
-=======
   background-color: #F7E7CE;
->>>>>>> 4caa7fc62bb14bff88681d3dc4b9d5f0dc4c9c79
   float: right;
   margin: 7px 20px;
   font-size: 19px;
@@ -444,12 +427,10 @@ body{
   align-content: center;
   display: inline-block;
   color: white;
-<<<<<<< HEAD
+
   height: 80vh;
-=======
-  height: 80vh; 
-  background-color:rgb(194, 176, 158); 
->>>>>>> 4caa7fc62bb14bff88681d3dc4b9d5f0dc4c9c79
+  height: 80vh;
+  background-color:rgb(194, 176, 158);
 }
 .ChatWindow{
   position: relative;
