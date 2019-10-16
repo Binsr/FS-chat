@@ -264,11 +264,6 @@ body{
     justify-content: center;
 }
 .tatkoNaMafiu{
-
-
-    background-color: rgb(194, 176, 158);
-    background-color: rgb(194, 176, 158); ;
-    /* background-color: rgb(194, 176, 158); */
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -277,11 +272,6 @@ body{
 }
 .chatWrap{
     width: 100%;
-
-
-    background-color: rgb(194, 176, 158);
-    background-color: rgb(255, 255, 255);
-    /* background-color: rgb(194, 176, 158); */
 }
 .chatIcon{
     width: 60px;
@@ -306,10 +296,6 @@ body{
     flex-direction: column;
     width: 100%;
     border-width: 0px;
-    background-color: #D50000;
-    background-color: #B71C1C;
-    /* background-color: #D50000; */
-
 }
 .physicallyBodyOfHeader{
     opacity: 0;
@@ -352,13 +338,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(194, 176, 158);
-    /* background-color: rgb(194, 176, 158); */
+
 
 }
 .inputWrap{
-    background-color: #ffe5e5;
-    background-color:rgb(194, 176, 158);
 }
 .inputWrap{
     background-color: #F7E7CE;
@@ -433,10 +416,8 @@ body{
   align-content: center;
   display: inline-block;
   color: white;
-
   height: 80vh;
   height: 80vh;
-  background-color:rgb(194, 176, 158);
 }
 .ChatWindow{
   position: relative;
