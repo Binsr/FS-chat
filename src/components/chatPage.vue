@@ -200,7 +200,7 @@ div.singleMessageDiv.my-message{
 }
 
 div.singleMessageDiv.my-message .wrapLine .Message{
-    background-color:rgb(62, 145, 76);
+    background-color:#FF3232;
 }
 
 div.singleMessageDiv.new-user .wrapLine .Message{
@@ -223,7 +223,7 @@ body{
     justify-content: center;
 }
 .tatkoNaMafiu{
-    background-color: rgb(119, 158, 122);
+    background-color: rgb(194, 176, 158); ;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -232,7 +232,7 @@ body{
 }
 .chatWrap{
     width: 100%;
-    background-color: rgb(119, 158, 122);
+    background-color: rgb(255, 255, 255);
 }
 .chatIcon{
     width: 60px;
@@ -252,21 +252,19 @@ body{
     border-style:solid;
     border-width: 3px;
     border-bottom-width: 0px;
-    border-color: rgb(0, 155, 0);
     border-style:solid;
     display: flex;
     flex-direction: column;
     width: 100%;
     /* height: 13vh; */
     border-width: 0px;
-    background-color: rgba(7, 43, 8, 0.979);
+    background-color: #B71C1C;
 }
 .physicallyBodyOfHeader{
     opacity: 0;
     border-style:solid;
     border-width: 3px;
     border-bottom-width: 0px;
-    border-color: rgb(0, 155, 0);
     border-style:solid;
     display: flex;
     flex-direction: column;
@@ -304,9 +302,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color:rgb(194, 176, 158); 
 }
 .inputWrap{
-    background-color: rgb(212, 228, 241);
+    background-color: rgb(128, 128, 128);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -322,7 +321,7 @@ body{
     padding: 0 5px;
     font-size: 14px;
     border-width: 0;
-    background-color: rgb(212, 228, 241);
+    background-color: rgb(128, 128, 128);
 }
 .sendBtnWrap{
     width: 35px;
@@ -332,13 +331,14 @@ body{
     align-items: center;
 }
 .Message{
-  min-width: 100px;
+  min-width: 40vw;
   height: auto;
   min-height: 20px;
-  background-color: rgb(245, 209, 209);
+  background-color: #FFE5E5;
   float: right;
   margin: 7px 20px;
-  font-size: 17px;
+  font-size: 19px;
+  font-weight: bold;
   border-radius: 15px;
   color: rgb(0, 0, 0);
   font-weight: 300;
@@ -376,6 +376,7 @@ body{
   display: inline-block; 
   color: white;
   height: 80vh; 
+  background-color:rgb(194, 176, 158); 
 }
 .ChatWindow{
   position: relative;
