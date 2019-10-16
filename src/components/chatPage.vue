@@ -235,15 +235,9 @@ div.singleMessageDiv.my-message{
     display: flex;
     justify-content: flex-start;
 }
-
-
-
 div.singleMessageDiv.my-message .wrapLine .Message{
     background-color:#FF3232;
 }
-
-
-
 div.singleMessageDiv.new-user .wrapLine .Message{
     background-color: rgba(255, 255, 255, 0);
     width: 100%;
@@ -289,23 +283,18 @@ body{
     position: fixed;
     z-index: 1;
     border-style:solid;
-    border-width: 3px;
-    border-bottom-width: 0px;
-    border-style:solid;
     display: flex;
     flex-direction: column;
     width: 100%;
-    border-width: 0px;
+    border-color: rgb(153, 0, 0);
+    border-width: 0 0 2px 0;
 }
 .physicallyBodyOfHeader{
     opacity: 0;
-    border-style:solid;
-    border-width: 3px;
     border-bottom-width: 0px;
-    border-style:solid;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     border-width: 0px;
     /* background-color: #B71C1C; */
 }
@@ -338,10 +327,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-
-
-}
-.inputWrap{
 }
 .inputWrap{
     background-color: #F7E7CE;
