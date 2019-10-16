@@ -268,9 +268,7 @@ body{
 
     background-color: rgb(194, 176, 158);
     background-color: rgb(194, 176, 158); ;
-
     /* background-color: rgb(194, 176, 158); */
-
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -283,9 +281,7 @@ body{
 
     background-color: rgb(194, 176, 158);
     background-color: rgb(255, 255, 255);
-
     /* background-color: rgb(194, 176, 158); */
-
 }
 .chatIcon{
     width: 60px;
@@ -310,11 +306,8 @@ body{
     flex-direction: column;
     width: 100%;
     border-width: 0px;
-
-
     background-color: #D50000;
     background-color: #B71C1C;
-
     /* background-color: #D50000; */
 
 }
@@ -359,10 +352,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-
-
     background-color: rgb(194, 176, 158);
-
     /* background-color: rgb(194, 176, 158); */
 
 }
@@ -387,7 +377,6 @@ body{
     padding: 0 5px;
     font-size: 14px;
     border-width: 0;
-
     background-color: #ffe5e5;
     background-color: #F7E7CE;
 }
@@ -402,7 +391,6 @@ body{
   min-width: 120px;
   height: auto;
   min-height: 20px;
-
   background-color: #ff3232;
   background-color: #F7E7CE;
   float: right;
