@@ -38,14 +38,30 @@
         <div class="inputOMEGAWrap">
             <div class="inputWrap">
                 <div @click="files" class="content"></div>
-                <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="changeIcon" @focus="scrollToEnd">
+                <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="showIcon" @focus="scrollToEnd">
                 <div @click="submit" class="sendBtnWrap">
                     <button @click="submit" class="btn_icon"></button>
                 </div>
             </div>
         </div>
-        
     </div>
+        <div class="contentWraper">
+          <div class="">
+            <ul>
+              <li @click="getContent">Camera</li>
+              <li>Photo & Video Library</li>
+              <li @click="chooseDocument">Document</li>
+              <li class="secret"><input type="file" name="document"></li>
+            </ul>
+          </div>
+          <div class="triangle">
+          </div>
+        </div>
+        <div class="videoWrapper secret">
+          <video src="" autoplay class="video">
+          </video>
+        </div>
+      </div>
 </div>
 </template>
 
@@ -135,7 +151,7 @@ export default {
             }
             store.state.user.ws.send(JSON.stringify(newMsg));
         },
-        changeIcon(){
+        showIcon(){
           let icon = this.$el.querySelector('.btn_icon');
           let inputValue = this.myMessage;
           if(inputValue !== ''){
@@ -145,7 +161,29 @@ export default {
           }
         },
         files(){
-          console.log('radi');
+          let files = document.querySelector('.contentWraper');
+          files.style.display = 'block';
+          // TO DO: close the fucking window
+        },
+
+        getContent(){
+          var constraints = { audio: false, video: { width: 1280, height: 720 } };
+          navigator.mediaDevices.getUserMedia(constraints)
+            .then(function(mediaStream) {
+              var videoWrapper = document.querySelector('.videoWrapper');
+              videoWrapper.style.display = 'block';
+              var video = document.querySelector('.video');
+              video.srcObject = mediaStream;
+              video.onloadedmetadata = function(e) {
+                video.play();
+              };
+            }).catch(function(err) { console.log(err.name + ": " + err.message); });
+            // TO DO: finish with the camera thing
+        },
+        chooseDocument(){
+           var inputDocument = document.querySelector('[name="document"]');
+           inputDocument.click();
+           // TO DO: insert the document in to the input
         }
     },
     created () {
@@ -199,9 +237,9 @@ div.singleMessageDiv.my-message{
     justify-content: flex-start;
 }
 
-div.singleMessageDiv.my-message .wrapLine .Message{
-    background-color:rgb(62, 145, 76);
-}
+/* div.singleMessageDiv.my-message .wrapLine .Message{
+    background-color: #;
+} */
 
 div.singleMessageDiv.new-user .wrapLine .Message{
     background-color: rgba(255, 255, 255, 0);
@@ -223,7 +261,7 @@ body{
     justify-content: center;
 }
 .tatkoNaMafiu{
-    background-color: rgb(119, 158, 122);
+    background-color: rgb(194, 176, 158);
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -232,7 +270,7 @@ body{
 }
 .chatWrap{
     width: 100%;
-    background-color: rgb(119, 158, 122);
+    background-color: rgb(194, 176, 158);
 }
 .chatIcon{
     width: 60px;
@@ -241,7 +279,7 @@ body{
     background-color: white;
     align-self: flex-start;
     margin: 10px 0 10px 10px;
-    background-image: url("../assets/avatar.png");
+    background-image: url("../assets/avatarce.png");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -257,23 +295,20 @@ body{
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* height: 13vh; */
     border-width: 0px;
-    background-color: rgba(7, 43, 8, 0.979);
+    background-color: #D50000;
 }
 .physicallyBodyOfHeader{
     opacity: 0;
     border-style:solid;
     border-width: 3px;
     border-bottom-width: 0px;
-    border-color: rgb(0, 155, 0);
     border-style:solid;
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* height: 13vh; */
     border-width: 0px;
-    background-color: rgba(7, 43, 8, 0.979);
+    background-color: #B71C1C;
 }
 .topHead{
     display: flex;
@@ -304,9 +339,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(194, 176, 158);
 }
 .inputWrap{
-    background-color: rgb(212, 228, 241);
+    background-color: #ffe5e5;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -322,7 +358,7 @@ body{
     padding: 0 5px;
     font-size: 14px;
     border-width: 0;
-    background-color: rgb(212, 228, 241);
+    background-color: #ffe5e5;
 }
 .sendBtnWrap{
     width: 35px;
@@ -335,7 +371,7 @@ body{
   min-width: 100px;
   height: auto;
   min-height: 20px;
-  background-color: rgb(245, 209, 209);
+  background-color: #ff3232;
   float: right;
   margin: 7px 20px;
   font-size: 17px;
@@ -369,13 +405,13 @@ body{
   background-color: rgba(255, 255, 255, 0);
   display:flex;
   justify-content: flex-end;
-  margin: 0 6px 4px 0 ; 
+  margin: 0 6px 4px 0 ;
 }
 .chatWrap{
   align-content: center;
-  display: inline-block; 
+  display: inline-block;
   color: white;
-  height: 80vh; 
+  height: 80vh;
 }
 .ChatWindow{
   position: relative;
@@ -421,6 +457,49 @@ body{
   display: block;
   border-radius: 30px;
   float: left;
+}
+.secret{
+  display: none !important;
+}
+.contentWraper{
+  display: none;
+  position: absolute;
+  bottom: 7%;
+  left: 1%;
+  width: 150px;
+  text-align: center;
+}
+.contentWraper ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contentWraper ul li{
+  border-bottom: 1px solid gray;
+  padding: 15px;
+  background-color: #fff;
+  padding-bottom: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  color: rgba(7, 43, 8, 0.979);
+  cursor: pointer;
+}
+.contentWraper ul li:hover{
+  background-color: rgba(7, 43, 8, 0.979);
+  color: #fff;
+}
+.triangle {
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-top: 50px solid #fff;
+}
+.videoWrapper{
+  position: absolute;
+  top: 10%;
+  left: 10%;
 }
 
 
