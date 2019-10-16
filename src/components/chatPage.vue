@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
 </template>
@@ -199,9 +199,9 @@ div.singleMessageDiv.my-message{
     justify-content: flex-start;
 }
 
-div.singleMessageDiv.my-message .wrapLine .Message{
-    background-color:rgb(62, 145, 76);
-}
+/* div.singleMessageDiv.my-message .wrapLine .Message{
+    background-color: #;
+} */
 
 div.singleMessageDiv.new-user .wrapLine .Message{
     background-color: rgba(255, 255, 255, 0);
@@ -223,7 +223,7 @@ body{
     justify-content: center;
 }
 .tatkoNaMafiu{
-    background-color: rgb(119, 158, 122);
+    background-color: rgb(194, 176, 158);
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -232,7 +232,7 @@ body{
 }
 .chatWrap{
     width: 100%;
-    background-color: rgb(119, 158, 122);
+    background-color: rgb(194, 176, 158);
 }
 .chatIcon{
     width: 60px;
@@ -241,7 +241,7 @@ body{
     background-color: white;
     align-self: flex-start;
     margin: 10px 0 10px 10px;
-    background-image: url("../assets/avatar.png");
+    background-image: url("../assets/avatarce.png");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -257,23 +257,20 @@ body{
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* height: 13vh; */
     border-width: 0px;
-    background-color: rgba(7, 43, 8, 0.979);
+    background-color: #D50000;
 }
 .physicallyBodyOfHeader{
     opacity: 0;
     border-style:solid;
     border-width: 3px;
     border-bottom-width: 0px;
-    border-color: rgb(0, 155, 0);
     border-style:solid;
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* height: 13vh; */
     border-width: 0px;
-    background-color: rgba(7, 43, 8, 0.979);
+    background-color: #B71C1C;
 }
 .topHead{
     display: flex;
@@ -304,9 +301,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(194, 176, 158);
 }
 .inputWrap{
-    background-color: rgb(212, 228, 241);
+    background-color: #ffe5e5;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -322,7 +320,7 @@ body{
     padding: 0 5px;
     font-size: 14px;
     border-width: 0;
-    background-color: rgb(212, 228, 241);
+    background-color: #ffe5e5;
 }
 .sendBtnWrap{
     width: 35px;
@@ -335,7 +333,7 @@ body{
   min-width: 100px;
   height: auto;
   min-height: 20px;
-  background-color: rgb(245, 209, 209);
+  background-color: #ff3232;
   float: right;
   margin: 7px 20px;
   font-size: 17px;
@@ -369,13 +367,13 @@ body{
   background-color: rgba(255, 255, 255, 0);
   display:flex;
   justify-content: flex-end;
-  margin: 0 6px 4px 0 ; 
+  margin: 0 6px 4px 0 ;
 }
 .chatWrap{
   align-content: center;
-  display: inline-block; 
+  display: inline-block;
   color: white;
-  height: 80vh; 
+  height: 80vh;
 }
 .ChatWindow{
   position: relative;
