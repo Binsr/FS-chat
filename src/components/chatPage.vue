@@ -1,67 +1,66 @@
 <template>
-<div>
-    <div class="tatkoNaMafiu">
-        <div class="physicallyBodyOfHeader">
-            <div class="chatIcon"></div>
-        </div>
-        <div class="headChat">
-                <div class="topHead">
-                    <div class="chatIcon"></div>
-                    <div class="roomWrap">
-                        <p class="roomName">F-S area: {{client.name}}</p>
-                        <p class="botHead">Number of users online:{{client.number}}</p>
-                    </div>
-                </div>
-        </div>
-        <div class="chatWrap">
-            <div class="ChatWindow">
-                <div class="singleMessageDiv"
-                v-for="(msg, index) in message"
-                v-bind:key="index"
-                :class="[msg.myMsg ? 'my-message': '',msg.newUser ? 'new-user': '']"
-                >
-                    <div class="wrapLine">
-                        <div class="Message">
-                            <div class="messageText" > {{msg.content}} </div>
-                            <div class="timeWrap">
-                                <div class="time"> {{msg.time}} </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <div class="singleMessageDiv invis"></div>
-            <div class="scrollDownButton" @click="scrollToEnd" v-if="!user.scrolled">
-                <i class="material-icons">keyboard_arrow_down</i>
-            </div>
-            </div>
-        </div>
-        <div class="inputOMEGAWrap">
-            <div class="inputWrap">
-                <div @click="files" class="content"></div>
-                <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="showIcon" @focus="scrollToEnd">
-                <div @click="submit" class="sendBtnWrap">
-                    <button @click="submit" class="btn_icon"></button>
-                </div>
-            </div>
-        </div>
+<div class="background">
+  <div class="tatkoNaMafiu">
+    <div class="physicallyBodyOfHeader">
+      <div class="chatIcon"></div>
     </div>
-        <div class="contentWraper">
-          <div class="">
-            <ul>
-              <li @click="getContent">Camera</li>
-              <li>Photo & Video Library</li>
-              <li @click="chooseDocument">Document</li>
-              <li class="secret"><input type="file" name="document"></li>
-            </ul>
-          </div>
-          <div class="triangle">
-          </div>
-        </div>
-        <div class="videoWrapper secret">
-          <video src="" autoplay class="video">
-          </video>
+    <div class="headChat">
+      <div class="topHead">
+        <div class="chatIcon"></div>
+        <div class="roomWrap">
+          <p class="roomName">F-S area: {{client.name}}</p>
+          <p class="botHead">Number of users online:{{client.number}}</p>
         </div>
       </div>
+    </div>
+    <div class="chatWrap">
+      <div class="ChatWindow">
+        <div class="singleMessageDiv"
+        v-for="(msg, index) in message"
+        v-bind:key="index"
+        :class="[msg.myMsg ? 'my-message': '',msg.newUser ? 'new-user': '']"
+        >
+          <div class="wrapLine">
+            <div class="Message">
+              <div class="messageText" > {{msg.content}} </div>
+              <div class="timeWrap">
+                <div class="time"> {{msg.time}} </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        <div class="singleMessageDiv invis"></div>
+        <div class="scrollDownButton" @click="scrollToEnd" v-if="!user.scrolled">
+            <i class="material-icons">keyboard_arrow_down</i>
+        </div>
+      </div>
+    </div>
+    <div class="inputOMEGAWrap">
+      <div class="inputWrap">
+        <div @click="files" class="content"></div>
+        <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="showIcon" @focus="scrollToEnd">
+        <div @click="submit" class="sendBtnWrap">
+            <button @click="submit" class="btn_icon"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contentWraper">
+    <div>
+      <ul>
+        <li @click="getContent">Camera</li>
+        <li>Photo & Video Library</li>
+        <li @click="chooseDocument">Document</li>
+        <li class="secret"><input type="file" name="document"></li>
+      </ul>
+    </div>
+    <div class="triangle">
+    </div>
+  </div>
+  <div class="videoWrapper secret">
+    <video src="" autoplay class="video">
+    </video>
+  </div>
 </div>
 </template>
 
@@ -238,9 +237,12 @@ div.singleMessageDiv.my-message{
 }
 
 
+
 div.singleMessageDiv.my-message .wrapLine .Message{
     background-color:#FF3232;
 }
+
+
 
 div.singleMessageDiv.new-user .wrapLine .Message{
     background-color: rgba(255, 255, 255, 0);
@@ -263,8 +265,12 @@ body{
 }
 .tatkoNaMafiu{
 
+
     background-color: rgb(194, 176, 158);
     background-color: rgb(194, 176, 158); ;
+
+    /* background-color: rgb(194, 176, 158); */
+
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -274,8 +280,12 @@ body{
 .chatWrap{
     width: 100%;
 
+
     background-color: rgb(194, 176, 158);
     background-color: rgb(255, 255, 255);
+
+    /* background-color: rgb(194, 176, 158); */
+
 }
 .chatIcon{
     width: 60px;
@@ -301,8 +311,12 @@ body{
     width: 100%;
     border-width: 0px;
 
+
     background-color: #D50000;
     background-color: #B71C1C;
+
+    /* background-color: #D50000; */
+
 }
 .physicallyBodyOfHeader{
     opacity: 0;
@@ -314,7 +328,7 @@ body{
     flex-direction: column;
     width: 100%;
     border-width: 0px;
-    background-color: #B71C1C;
+    /* background-color: #B71C1C; */
 }
 .topHead{
     display: flex;
@@ -346,7 +360,11 @@ body{
     justify-content: center;
     align-items: center;
 
+
     background-color: rgb(194, 176, 158);
+
+    /* background-color: rgb(194, 176, 158); */
+
 }
 .inputWrap{
     background-color: #ffe5e5;
@@ -520,6 +538,14 @@ body{
   top: 10%;
   left: 10%;
 }
-
+.background{
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../assets/coldwarm.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 </style>
