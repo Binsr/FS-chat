@@ -8,7 +8,7 @@
       <div class="topHead">
         <div class="chatIcon"></div>
         <div class="roomWrap">
-          <p class="roomName">Friend-Sheep: {{client.name}}</p>
+          <p class="roomName">F-S area: {{client.name}}</p>
           <p class="botHead">Number of users online:{{client.number}}</p>
         </div>
       </div>
@@ -143,7 +143,7 @@ export default {
 
             let name = this.user.name;
             let newMsg = {
-                "content": ""+name + " has joined room",
+                "content": "~~~"+name + " has joined room~~~",
                 "time": timeNow,
                 "sid": this.user.sid,
                 "name": name
@@ -239,7 +239,7 @@ div.singleMessageDiv.my-message{
 div.singleMessageDiv.new-user .wrapLine .Message{
     background-color: rgba(255, 255, 255, 0);
     width: 100%;
-    color: #fff;
+    color:rgb(78, 78, 78);
     box-shadow: 0 0;
     font-size: 15px;
 }
@@ -256,6 +256,7 @@ body{
     justify-content: center;
 }
 .tatkoNaMafiu{
+    /* background-color: rgb(194, 176, 158); */
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -264,6 +265,7 @@ body{
 }
 .chatWrap{
     width: 100%;
+    /* background-color: rgb(194, 176, 158); */
 }
 .chatIcon{
     width: 60px;
@@ -289,6 +291,7 @@ body{
     flex-direction: column;
     width: 100%;
     border-width: 0px;
+    /* background-color: #D50000; */
 }
 .physicallyBodyOfHeader{
     opacity: 0;
@@ -300,6 +303,7 @@ body{
     flex-direction: column;
     width: 100%;
     border-width: 0px;
+    /* background-color: #B71C1C; */
 }
 .topHead{
     display: flex;
@@ -330,6 +334,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-color: rgb(194, 176, 158); */
 }
 .inputWrap{
     background-color: #ffe5e5;
@@ -361,12 +366,12 @@ body{
   min-width: 100px;
   height: auto;
   min-height: 20px;
-  background-color: #131256;
+  background-color: #ff3232;
   float: right;
   margin: 7px 20px;
   font-size: 17px;
   border-radius: 15px;
-  color: #fff;
+  color: rgb(0, 0, 0);
   font-weight: 300;
   word-break: break-all;
   display: flex;
@@ -391,7 +396,7 @@ body{
   font-weight: bold;
 }
 .timeWrap{
-  color: #fff;
+  color: rgb(78, 78, 78);
   background-color: rgba(255, 255, 255, 0);
   display:flex;
   justify-content: flex-end;
