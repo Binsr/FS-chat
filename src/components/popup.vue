@@ -48,7 +48,7 @@ export default {
         },
         typing() {
           var i = 0;
-          const text = "...Dobrodosli na Friend-Sheep App! Unesite ime ako zelite...";
+          const text = "...Unesite ime ako zelite...";
           const el = document.querySelector("#poptext");
           this.interval = setInterval(function () {
 
@@ -134,7 +134,7 @@ export default {
     height: 30px;
     border-radius: 12px;
     background: #fafafa;
-    color: rgb(119, 158, 122);
+    color: cyan;
     font-size: 16px;
     padding-left: 20px;
 }
