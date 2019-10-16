@@ -1,46 +1,51 @@
-
-// KAD SE VIDIMO VIDACE OBJASNI MI POCICIONIRANJE PARETNT CHILD MARGIN: 0 AUTO I TAKO TO
 <template>
-  <div class="tatko">
-    <div class="wrap">
-      <header>
-        <div class="imageShip">
-          <img src="../assets/mainlogo.jpg"/>
-        </div>
-        <h1 class="title"><span class="thisIsPart">this is</span>
-          <br><span class="titleFSpart">Friend - Sheep </span>
-          <span class="areaPart"><br> App</span>
-        </h1>
-      </header>
+    <div class="popwrap">
+      <div class="sliderContainer">
+        <img src="" alt="shopAdd">
+      </div>
       <div class="monitor">
         <p class="textType" id="text"></p>
       </div>
-      <button class="getInBtn" @click="toChatPage"><p class="btParagraf" id="clickme">get in</p>
-      </button>
+      <div class="buttons">
+        <button class="getInBtn" @click="toChatPage"><p class="btParagraf" id="clickme">chat</p>
+        </button>
+        <button class="getInBtn"><p class="btParagraf" id="konobar">pozovi konobara</p>
+        </button>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
-import router from "../router.js"
+import {mapActions, mapState} from 'vuex';
+import router from '../router';
 import api from '../api'
-import { mapState, mapActions } from "vuex"
+import { setTimeout } from 'timers';
 
 export default {
-    name: "startPage",
-    data() {
-      return{
-        interval:null
-      }
+    data(){
+        return {
+            name: ''
+        }
     },
-    methods: {
-      ...mapActions(['addUsername','client','user']),
+    computed:{
+    ...mapState(['user','client']),
+    },
+    methods:{
+        ...mapActions(['addUsername','connectToWS','messages']),
+        toChatPage () {
+          clearInterval(this.interval);
+          if(this.user.ip != "NOT_CONNECTED")
+            router.push('/chatpage');
+          else{
+            this.typing();
+          }
+        },
         typing() {
           var i = 0;
           var j = 0;
           let text = "";
           if(this.user.ip != "NOT_CONNECTED")
-            text = "...Dobrodosli na Friend-Sheep App!....                     .";
+            text = "Dobrodosli, odaberite opciju!                     .";
           else{
             text = "Na zalost ne postoji cet soba za mesto gde se nalazite trenutno";
           }
@@ -68,9 +73,11 @@ export default {
             }
             if (j % 20 == 0) {
               document.getElementById("clickme").style.color = "rgb(119, 158, 122)";
+              document.getElementById("konobar").style.color = "rgb(119, 158, 122)";
             }
             if (j % 40 == 0) {
               document.getElementById("clickme").style.color = "rgb(0, 0, 0)";
+              document.getElementById("konobar").style.color = "rgb(0, 0, 0)";
             }
             if (j == 40) {
               j = 0;
@@ -79,76 +86,88 @@ export default {
             i++;
           }, 90);
         },
-        toChatPage () {
-          clearInterval(this.interval);
-          if(this.user.ip != "NOT_CONNECTED")
-            router.push('/chatpage');
-          else{
-            this.typing();
-          }
+        backgroundSlider(){
+          var i = 0;
+          const popwrap = document.querySelector('.popwrap');
+          const images = ['/img/code-cafe.395c94cd.jpg', '/img/roll-bar.2e42ee66.jpg', '/img/witch-bar-caffe.76538e7c.jpg', '/img/witch-bar.8988a771.jpg'];
+          var  img = document.querySelector('.sliderContainer img');
+          img.src = images[i];
+          console.log(img);
+          var background = setInterval(() => {
+            if (i < images.length -1) {
+              i += 1;
+              img.src = images[i];
+            }else {
+              clearInterval(background);
+              this.backgroundSlider();
+            }
+          }, 5000)
         }
     },
-    mounted() {
-          this.typing();
-    },
-    computed: {
-      ...mapState(['user']),
-    },
-    beforeDestroy() {
-      clearInterval(this.interval);
+    mounted(){
+        this.typing();
+        this.backgroundSlider();
     }
 }
 </script>
 
 <style>
-.tatko{
-    background-color: #000000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    margin: 0 auto;
-    width: 100%;
-    overflow: hidden;
+.clearfix::after{
+  content: '';
+  clear: both;
+  display: block;
+  height: 1px;
+  visibility: hidden;
 }
-.wrap{
-    width: 100%;
+#poptext{
+    color: cyan;
+    font-weight: bolder;
+    margin: 2px 2px;
+}
+.popwrap{
+    height: 100vh;
+    width: 100vw;
+    background-color: #000;
 }
 
-
-header {
-  height: 200px; /* Deo za promenu  */
-  font-size: 20px;
-  font-family: "Righteous", cursive, "Ultra", serif;
+.sliderContainer{
+  display: block;
+  width: 100%;
+  height: 70vh;
+}
+.sliderContainer img{
+  display: block;
+  height: 70vh;
   width: 100%;
 }
-
-/* TITLE EDIT PART
-------------------------------------*/
-.title {
-  text-align: center;
+ .getInBtn {
+  width: 40%;
+  display: block;
+  float: left;
+  height: 20%;
+  font-size: 20px;
+  margin: 20px;
+  background-color: rgba(224, 20, 20, 0);
+  border-radius: 100px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: rgb(119, 158, 122);
+  max-height: 200px;
+  max-width: 300px;
+  cursor: pointer;
 }
-
-.thisIsPart {
-  color: rgb(119, 158, 122);
-  text-shadow: 2px 2px cyan;
-}
-
-.titleFSpart {
-  color: rgb(255, 255, 255);
-  letter-spacing: 3px;
+ .btParagraf {
+  font-size: 26px;
   font-family: "Bangers", cursive;
-  text-shadow: 2px 2px black;
-}
-.areaPart {
   color: rgb(119, 158, 122);
-  text-shadow: 2px 2px cyan;
 }
-
-/* ----------------------------------*/
-
+.buttons{
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
 .monitor {
-  height: 100px;
+  height: 50px;
   width: 50%;
   display: flex;
   align-items: top;
@@ -157,36 +176,9 @@ header {
   text-align: left;
   font-size: 14px;
   margin:0 auto;
-  margin-top: 10%;
 }
 .textType {
   padding: 10px;
   color: rgb(119, 158, 122);
 }
-.getInBtn {
-  align-content: center;
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 20%;
-  font-size: 20px;
-  margin: 5px auto;
-  background-color: rgba(224, 20, 20, 0);
-  border-radius: 100px;
-  border-width: 4px;
-  border-style: solid;
-  border-color: rgb(119, 158, 122);
-  max-height: 200px;
-  max-width: 300px;
-}
-.btParagraf {
-  float: left;
-  font-size: 35px;
-  font-family: "Bangers", cursive;
-  color: rgb(119, 158, 122);
-  padding-top: 2%;
-}
-
-
 </style>

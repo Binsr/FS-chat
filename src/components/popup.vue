@@ -1,54 +1,47 @@
+
+// KAD SE VIDIMO VIDACE OBJASNI MI POCICIONIRANJE PARETNT CHILD MARGIN: 0 AUTO I TAKO TO
 <template>
-    <div class="popwrap">
-      <div class="sliderContainer clearfix">
-        <img src="" alt="shopAdd">
-      </div>
-        <div>
-            <div class="popupwrap">
-                <p id="poptext"></p>
-            </div>
-            <div class="input">
-                    <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
-                    <button @click="submitName">Dalje</button>
-            </div>
+  <div class="tatko">
+    <div class="wrap">
+      <header>
+        <div class="imageShip">
+          <img src="../assets/mainlogo.jpg"/>
         </div>
+        <h1 class="title"><span class="thisIsPart">this is</span>
+          <br><span class="titleFSpart">Friend - Sheep </span>
+          <span class="areaPart"><br> App</span>
+        </h1>
+      </header>
+      <div>
+          <div class="popupwrap">
+              <p id="poptext"></p>
+          </div>
+          <div class="input">
+                  <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
+                  <button @click="submitName">Dalje</button>
+          </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex';
-import router from '../router';
+import router from "../router.js"
 import api from '../api'
-import { setTimeout } from 'timers';
+import { mapState, mapActions } from "vuex"
 
 export default {
-    data(){
-        return {
-            name: ''
-        }
+    name: "startPage",
+    data() {
+      return{
+        interval:null
+      }
     },
-    computed:{
-    ...mapState(['user','client']),
-    },
-    methods:{
-        ...mapActions(['addUsername','connectToWS','messages']),
-        submitName(){
-            if(this.name == '')
-                this.name = 'Anonymous'
-            this.addUsername(this.name);
-            api.login(this.name).then(Response => {
-                // console.log(Response.data)
-                this.user.sid = Response.data.sid;
-                this.user.name = Response.data.name;
-                this.user.ip = Response.data.ip;
-                console.log(this.user);
-                this.connectToWS();
-            });
-            router.push('/firstpage');
-        },
+    methods: {
+      ...mapActions(['addUsername','client','user']),
         typing() {
           var i = 0;
-          const text = "...Unesite ime ako zelite...";
+          const text = "Dobrodosli na Friend-Sheep App, unesite ime ako zelite";
           const el = document.querySelector("#poptext");
           this.interval = setInterval(function () {
 
@@ -70,54 +63,88 @@ export default {
             i++;
           }, 90);
         },
-        backgroundSlider(){
-          var i = 0;
-          const popwrap = document.querySelector('.popwrap');
-          const images = ['/img/code-cafe.395c94cd.jpg', '/img/roll-bar.2e42ee66.jpg', '/img/witch-bar-caffe.76538e7c.jpg', '/img/witch-bar.8988a771.jpg'];
-          var  img = document.querySelector('.sliderContainer img');
-          img.src = images[i];
-          var background = setInterval(() => {
-            if (i < images.length -1) {
-              i += 1;
-              img.src = images[i];
-            }else {
-              clearInterval(background);
-              this.backgroundSlider();
-            }
-          }, 5000)
-        }
+        submitName(){
+            if(this.name == '')
+                this.name = 'Anonymous'
+            this.addUsername(this.name);
+            api.login(this.name).then(Response => {
+                // console.log(Response.data)
+                this.user.sid = Response.data.sid;
+                this.user.name = Response.data.name;
+                this.user.ip = Response.data.ip;
+                console.log(this.user);
+                this.connectToWS();
+            });
+            router.push('/firstpage');
+        },
+
     },
-    mounted(){
-        this.typing();
-        this.backgroundSlider();
+    mounted() {
+          this.typing();
+    },
+    computed: {
+      ...mapState(['user']),
+    },
+    beforeDestroy() {
+      clearInterval(this.interval);
     }
 }
 </script>
 
 <style>
-.clearfix::after{
-  content: '';
-  clear: both;
-  display: block;
-  height: 1px;
-  visibility: hidden;
+.tatko{
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
 }
-#poptext{
-    color: cyan;
-    font-weight: bolder;
-    margin: 2px 2px;
+.wrap{
+    width: 100%;
 }
-.popwrap{
-    height: 100vh;
-    width: 100vw;
-    background-color: #000;
+
+
+header {
+  height: 200px; /* Deo za promenu  */
+  font-size: 20px;
+  font-family: "Righteous", cursive, "Ultra", serif;
+  width: 100%;
 }
+
+/* TITLE EDIT PART
+------------------------------------*/
+.title {
+  text-align: center;
+}
+
+.thisIsPart {
+  color: rgb(119, 158, 122);
+  text-shadow: 2px 2px cyan;
+}
+
+.titleFSpart {
+  color: rgb(255, 255, 255);
+  letter-spacing: 3px;
+  font-family: "Bangers", cursive;
+  text-shadow: 2px 2px black;
+}
+.areaPart {
+  color: rgb(119, 158, 122);
+  text-shadow: 2px 2px cyan;
+}
+
+/* ----------------------------------*/
+
 .popupwrap{
     width: 50%;
     height: 61px;
     margin: 0 auto;
     display: block;
     clear: both;
+    margin-top: 15%;
 }
 .input{
     width: 30%;
@@ -162,15 +189,7 @@ export default {
     font-weight: bold;
     border-radius: 20px;
     text-decoration: none;
+    cursor: pointer;
 }
-.sliderContainer{
-  display: block;
-  width: 100%;
-  height: 450px;
-}
-.sliderContainer img{
-  display: block;
-  height: 100vh;
-  width: 100vw;
-}
+
 </style>
