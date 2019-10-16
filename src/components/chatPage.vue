@@ -305,7 +305,7 @@ body{
     background-color:rgb(194, 176, 158); 
 }
 .inputWrap{
-    background-color: rgb(128, 128, 128);
+    background-color: #F7E7CE;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -321,7 +321,7 @@ body{
     padding: 0 5px;
     font-size: 14px;
     border-width: 0;
-    background-color: rgb(128, 128, 128);
+    background-color: #F7E7CE;
 }
 .sendBtnWrap{
     width: 35px;
@@ -334,11 +334,11 @@ body{
   min-width: 40vw;
   height: auto;
   min-height: 20px;
-  background-color: #FFE5E5;
+  background-color: #F7E7CE;
   float: right;
   margin: 7px 20px;
   font-size: 19px;
-  font-weight: bold;
+  font-weight: bolder;
   border-radius: 15px;
   color: rgb(0, 0, 0);
   font-weight: 300;
