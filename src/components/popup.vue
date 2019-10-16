@@ -1,4 +1,7 @@
+
+// KAD SE VIDIMO VIDACE OBJASNI MI POCICIONIRANJE PARETNT CHILD MARGIN: 0 AUTO I TAKO TO
 <template>
+<<<<<<< HEAD
     <div class="popwrap">
       <header>
         <div class="imageShip">
@@ -20,44 +23,49 @@
                     <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
                     <button @click="submitName">Oki</button>
             </div>
+=======
+  <div class="tatko">
+    <div class="wrap">
+      <header>
+        <div class="imageShip">
+          <img src="../assets/mainlogo.jpg"/>
+>>>>>>> df83fbb46646ce18234510d3546bea3bc26b17ff
         </div>
+        <h1 class="title"><span class="thisIsPart">this is</span>
+          <br><span class="titleFSpart">Friend - Sheep </span>
+          <span class="areaPart"><br> App</span>
+        </h1>
+      </header>
+      <div>
+          <div class="popupwrap">
+              <p id="poptext"></p>
+          </div>
+          <div class="input">
+                  <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
+                  <button @click="submitName">Dalje</button>
+          </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex';
-import router from '../router';
+import router from "../router.js"
 import api from '../api'
-import { setTimeout } from 'timers';
+import { mapState, mapActions } from "vuex"
 
 export default {
-    data(){
-        return {
-            name: ''
-        }
+    name: "startPage",
+    data() {
+      return{
+        interval:null
+      }
     },
-    computed:{
-    ...mapState(['user','client']),
-    },
-    methods:{
-        ...mapActions(['addUsername','connectToWS','messages']),
-        submitName(){
-            if(this.name == '')
-                this.name = 'Anonymous'
-            this.addUsername(this.name);
-            api.login(this.name).then(Response => {
-                // console.log(Response.data)
-                this.user.sid = Response.data.sid;
-                this.user.name = Response.data.name;
-                this.user.ip = Response.data.ip;
-                console.log(this.user);
-                this.connectToWS();
-            });
-            router.push('/firstpage');
-        },
+    methods: {
+      ...mapActions(['addUsername','client','user']),
         typing() {
           var i = 0;
-          const text = "...Dobrodosli na Friend-Sheep App! Unesite ime ako zelite...";
+          const text = "Dobrodosli na Friend-Sheep App, unesite ime ako zelite";
           const el = document.querySelector("#poptext");
           this.interval = setInterval(function () {
 
@@ -79,15 +87,36 @@ export default {
             i++;
           }, 90);
         },
-    },
-    mounted(){
-        this.typing();
+        submitName(){
+            if(this.name == '')
+                this.name = 'Anonymous'
+            this.addUsername(this.name);
+            api.login(this.name).then(Response => {
+                // console.log(Response.data)
+                this.user.sid = Response.data.sid;
+                this.user.name = Response.data.name;
+                this.user.ip = Response.data.ip;
+                console.log(this.user);
+                this.connectToWS();
+            });
+            router.push('/firstpage');
+        },
 
+    },
+    mounted() {
+          this.typing();
+    },
+    computed: {
+      ...mapState(['user']),
+    },
+    beforeDestroy() {
+      clearInterval(this.interval);
     }
 }
 </script>
 
 <style>
+<<<<<<< HEAD
 .areaPart,
 .title{
   color: cyan;
@@ -96,6 +125,61 @@ export default {
 .titleFSpart{
   color: #fff;
   text-shadow: 2px 2px #fff;
+=======
+.tatko{
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+}
+.wrap{
+    width: 100%;
+}
+
+
+header {
+  height: 200px; /* Deo za promenu  */
+  font-size: 20px;
+  font-family: "Righteous", cursive, "Ultra", serif;
+  width: 100%;
+}
+
+/* TITLE EDIT PART
+------------------------------------*/
+.title {
+  text-align: center;
+}
+
+.thisIsPart {
+  color: rgb(119, 158, 122);
+  text-shadow: 2px 2px cyan;
+}
+
+.titleFSpart {
+  color: rgb(255, 255, 255);
+  letter-spacing: 3px;
+  font-family: "Bangers", cursive;
+  text-shadow: 2px 2px black;
+}
+.areaPart {
+  color: rgb(119, 158, 122);
+  text-shadow: 2px 2px cyan;
+}
+
+/* ----------------------------------*/
+
+.popupwrap{
+    width: 50%;
+    height: 61px;
+    margin: 0 auto;
+    display: block;
+    clear: both;
+    margin-top: 15%;
+>>>>>>> df83fbb46646ce18234510d3546bea3bc26b17ff
 }
 .input{
     width: 30%;
@@ -142,4 +226,5 @@ export default {
     text-decoration: none;
     cursor: pointer;
 }
+
 </style>

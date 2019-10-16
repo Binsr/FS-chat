@@ -1,6 +1,5 @@
-
-// KAD SE VIDIMO VIDACE OBJASNI MI POCICIONIRANJE PARETNT CHILD MARGIN: 0 AUTO I TAKO TO
 <template>
+<<<<<<< HEAD
   <div class="tatko">
     <div class="images" v-for="image in images">
       <img v-bind:src ="image" alt="cafeAdd">
@@ -11,31 +10,64 @@
       <button class="getInBtn"><p class="btParagraf" id="konobar">call</p>
       </button>
     </div>
+=======
+    <div class="popwrap">
+      <div class="sliderContainer">
+        <img src="" alt="shopAdd">
+      </div>
+      <div class="monitor">
+        <p class="textType" id="text"></p>
+      </div>
+      <div class="buttons">
+        <button class="getInBtn" @click="toChatPage"><p class="btParagraf" id="clickme">chat</p>
+        </button>
+        <button class="getInBtn"><p class="btParagraf" id="konobar">pozovi konobara</p>
+        </button>
+      </div>
+>>>>>>> df83fbb46646ce18234510d3546bea3bc26b17ff
     </div>
-  </div>
 </template>
 
 <script>
-import router from "../router.js"
+import {mapActions, mapState} from 'vuex';
+import router from '../router';
 import api from '../api'
-import { mapState, mapActions } from "vuex"
+import { setTimeout } from 'timers';
 
 export default {
+<<<<<<< HEAD
     name: "startPage",
     data() {
       return{
         interval:null,
         images:['/img/1.76538e7c.jpg','/img/2.8988a771.jpg','/img/3.395c94cd.jpg','/img/4.2e42ee66.jpg']
       }
+=======
+    data(){
+        return {
+            name: ''
+        }
+>>>>>>> df83fbb46646ce18234510d3546bea3bc26b17ff
     },
-    methods: {
-      ...mapActions(['addUsername','client','user']),
+    computed:{
+    ...mapState(['user','client']),
+    },
+    methods:{
+        ...mapActions(['addUsername','connectToWS','messages']),
+        toChatPage () {
+          clearInterval(this.interval);
+          if(this.user.ip != "NOT_CONNECTED")
+            router.push('/chatpage');
+          else{
+            this.typing();
+          }
+        },
         typing() {
           var i = 0;
           var j = 0;
           let text = "";
           if(this.user.ip != "NOT_CONNECTED")
-            text = "...Dobro u FS kafic....                     .";
+            text = "Dobrodosli, odaberite opciju!                     .";
           else{
             text = "Na zalost ne postoji cet soba za mesto gde se nalazite trenutno";
           }
@@ -62,8 +94,13 @@ export default {
               }
             }
             if (j % 20 == 0) {
+<<<<<<< HEAD
               document.getElementById("clickme").style.color = "rgb(255, 0, 0)";
               document.getElementById("konobar").style.color = "rgb(255, 0, 0)";
+=======
+              document.getElementById("clickme").style.color = "rgb(119, 158, 122)";
+              document.getElementById("konobar").style.color = "rgb(119, 158, 122)";
+>>>>>>> df83fbb46646ce18234510d3546bea3bc26b17ff
             }
             if (j % 40 == 0) {
               document.getElementById("clickme").style.color = "rgb(0, 0, 0)";
@@ -76,23 +113,27 @@ export default {
             i++;
           }, 90);
         },
-        toChatPage () {
-          clearInterval(this.interval);
-          if(this.user.ip != "NOT_CONNECTED")
-            router.push('/chatpage');
-          else{
-            this.typing();
-          }
+        backgroundSlider(){
+          var i = 0;
+          const popwrap = document.querySelector('.popwrap');
+          const images = ['/img/code-cafe.395c94cd.jpg', '/img/roll-bar.2e42ee66.jpg', '/img/witch-bar-caffe.76538e7c.jpg', '/img/witch-bar.8988a771.jpg'];
+          var  img = document.querySelector('.sliderContainer img');
+          img.src = images[i];
+          console.log(img);
+          var background = setInterval(() => {
+            if (i < images.length -1) {
+              i += 1;
+              img.src = images[i];
+            }else {
+              clearInterval(background);
+              this.backgroundSlider();
+            }
+          }, 5000)
         }
     },
-    mounted() {
-          this.typing();
-    },
-    computed: {
-      ...mapState(['user']),
-    },
-    beforeDestroy() {
-      clearInterval(this.interval);
+    mounted(){
+        this.typing();
+        this.backgroundSlider();
     }
 }
 </script>
@@ -115,6 +156,20 @@ export default {
     width: 100vw;
     background-color: #000;
 }
+<<<<<<< HEAD
+=======
+
+.sliderContainer{
+  display: block;
+  width: 100%;
+  height: 70vh;
+}
+.sliderContainer img{
+  display: block;
+  height: 70vh;
+  width: 100%;
+}
+>>>>>>> df83fbb46646ce18234510d3546bea3bc26b17ff
  .getInBtn {
   width: 40%;
   display: block;
@@ -156,6 +211,7 @@ export default {
   padding: 10px;
   color: rgb(119, 158, 122);
 }
+<<<<<<< HEAD
 .wrap{
   position: fixed;
   bottom: 10vh;
@@ -164,4 +220,6 @@ export default {
   display: block;
   width: 100%;
 }
+=======
+>>>>>>> df83fbb46646ce18234510d3546bea3bc26b17ff
 </style>

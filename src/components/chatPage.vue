@@ -38,14 +38,34 @@
         <div class="inputOMEGAWrap">
             <div class="inputWrap">
                 <div @click="files" class="content"></div>
-                <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="changeIcon" @focus="scrollToEnd">
+                <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="showIcon" @focus="scrollToEnd">
                 <div @click="submit" class="sendBtnWrap">
                     <button @click="submit" class="btn_icon"></button>
                 </div>
             </div>
         </div>
 
+<<<<<<< HEAD
     </div>
+=======
+        <div class="contentWraper">
+          <div class="">
+            <ul>
+              <li @click="getContent">Camera</li>
+              <li>Photo & Video Library</li>
+              <li @click="chooseDocument">Document</li>
+              <li class="secret"><input type="file" name="document"></li>
+            </ul>
+          </div>
+          <div class="triangle">
+          </div>
+        </div>
+        <div class="videoWrapper secret">
+          <video src="" autoplay class="video">
+          </video>
+        </div>
+      </div>
+>>>>>>> df83fbb46646ce18234510d3546bea3bc26b17ff
 </div>
 </template>
 
@@ -135,7 +155,7 @@ export default {
             }
             store.state.user.ws.send(JSON.stringify(newMsg));
         },
-        changeIcon(){
+        showIcon(){
           let icon = this.$el.querySelector('.btn_icon');
           let inputValue = this.myMessage;
           if(inputValue !== ''){
@@ -145,7 +165,29 @@ export default {
           }
         },
         files(){
-          console.log('radi');
+          let files = document.querySelector('.contentWraper');
+          files.style.display = 'block';
+          // TO DO: close the fucking window
+        },
+
+        getContent(){
+          var constraints = { audio: false, video: { width: 1280, height: 720 } };
+          navigator.mediaDevices.getUserMedia(constraints)
+            .then(function(mediaStream) {
+              var videoWrapper = document.querySelector('.videoWrapper');
+              videoWrapper.style.display = 'block';
+              var video = document.querySelector('.video');
+              video.srcObject = mediaStream;
+              video.onloadedmetadata = function(e) {
+                video.play();
+              };
+            }).catch(function(err) { console.log(err.name + ": " + err.message); });
+            // TO DO: finish with the camera thing
+        },
+        chooseDocument(){
+           var inputDocument = document.querySelector('[name="document"]');
+           inputDocument.click();
+           // TO DO: insert the document in to the input
         }
     },
     created () {
@@ -419,6 +461,49 @@ body{
   display: block;
   border-radius: 30px;
   float: left;
+}
+.secret{
+  display: none !important;
+}
+.contentWraper{
+  display: none;
+  position: absolute;
+  bottom: 7%;
+  left: 1%;
+  width: 150px;
+  text-align: center;
+}
+.contentWraper ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contentWraper ul li{
+  border-bottom: 1px solid gray;
+  padding: 15px;
+  background-color: #fff;
+  padding-bottom: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  color: rgba(7, 43, 8, 0.979);
+  cursor: pointer;
+}
+.contentWraper ul li:hover{
+  background-color: rgba(7, 43, 8, 0.979);
+  color: #fff;
+}
+.triangle {
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-top: 50px solid #fff;
+}
+.videoWrapper{
+  position: absolute;
+  top: 10%;
+  left: 10%;
 }
 
 
