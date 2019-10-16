@@ -331,7 +331,7 @@ body{
     align-items: center;
 }
 .Message{
-  min-width: 40vw;
+  min-width: 120px;
   height: auto;
   min-height: 20px;
   background-color: #F7E7CE;
