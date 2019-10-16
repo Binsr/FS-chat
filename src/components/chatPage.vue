@@ -44,10 +44,7 @@
                 </div>
             </div>
         </div>
-
-<<<<<<< HEAD
     </div>
-=======
         <div class="contentWraper">
           <div class="">
             <ul>
@@ -65,7 +62,6 @@
           </video>
         </div>
       </div>
->>>>>>> df83fbb46646ce18234510d3546bea3bc26b17ff
 </div>
 </template>
 

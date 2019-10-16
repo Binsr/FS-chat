@@ -1,7 +1,7 @@
 
 // KAD SE VIDIMO VIDACE OBJASNI MI POCICIONIRANJE PARETNT CHILD MARGIN: 0 AUTO I TAKO TO
 <template>
-<<<<<<< HEAD
+
     <div class="popwrap">
       <header>
         <div class="imageShip">
@@ -23,30 +23,8 @@
                     <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
                     <button @click="submitName">Oki</button>
             </div>
-=======
-  <div class="tatko">
-    <div class="wrap">
-      <header>
-        <div class="imageShip">
-          <img src="../assets/mainlogo.jpg"/>
->>>>>>> df83fbb46646ce18234510d3546bea3bc26b17ff
         </div>
-        <h1 class="title"><span class="thisIsPart">this is</span>
-          <br><span class="titleFSpart">Friend - Sheep </span>
-          <span class="areaPart"><br> App</span>
-        </h1>
-      </header>
-      <div>
-          <div class="popupwrap">
-              <p id="poptext"></p>
-          </div>
-          <div class="input">
-                  <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
-                  <button @click="submitName">Dalje</button>
-          </div>
       </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -116,7 +94,7 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
+
 .areaPart,
 .title{
   color: cyan;
@@ -125,7 +103,7 @@ export default {
 .titleFSpart{
   color: #fff;
   text-shadow: 2px 2px #fff;
-=======
+}
 .tatko{
     background-color: #000000;
     display: flex;
@@ -179,7 +157,6 @@ header {
     display: block;
     clear: both;
     margin-top: 15%;
->>>>>>> df83fbb46646ce18234510d3546bea3bc26b17ff
 }
 .input{
     width: 30%;
