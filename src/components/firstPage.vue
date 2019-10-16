@@ -4,8 +4,11 @@
   <div class="tatko">
     <div class="wrap">
       <header>
+        <div class="imageShip">
+          <img src="../assets/mainlogo.jpg"/>
+        </div>
         <h1 class="title"><span class="thisIsPart">this is</span>
-          <br><span class="titleFSpart">F - S </span>
+          <br><span class="titleFSpart">Friend - Sheep </span>
           <span class="areaPart"><br> App</span>
         </h1>
       </header>
@@ -13,9 +16,6 @@
         <p class="textType" id="text"></p>
       </div>
       <button class="getInBtn" @click="toChatPage"><p class="btParagraf" id="clickme">get in</p>
-        <div class="imageShip">
-          <img src="../assets/mainlogo.jpg"/>
-        </div>
       </button>
     </div>
   </div>
@@ -40,7 +40,7 @@ export default {
           var j = 0;
           let text = "";
           if(this.user.ip != "NOT_CONNECTED")
-            text = "...Dobro u FS kafic....                     .";
+            text = "...Dobrodosli na Friend-Sheep App!....                     .";
           else{
             text = "Na zalost ne postoji cet soba za mesto gde se nalazite trenutno";
           }
@@ -67,7 +67,7 @@ export default {
               }
             }
             if (j % 20 == 0) {
-              document.getElementById("clickme").style.color = "rgb(255, 0, 0)";
+              document.getElementById("clickme").style.color = "rgb(119, 158, 122)";
             }
             if (j % 40 == 0) {
               document.getElementById("clickme").style.color = "rgb(0, 0, 0)";
@@ -108,20 +108,15 @@ export default {
     justify-content: center;
     align-content: center;
     margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
 }
 .wrap{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
 }
 
 
 header {
-  background: linear-gradient(
-    #000000,
-    rgb(41, 41, 41),
-    rgb(28, 196, 6),
-    #000000
-  );
   height: 200px; /* Deo za promenu  */
   font-size: 20px;
   font-family: "Righteous", cursive, "Ultra", serif;
@@ -132,47 +127,41 @@ header {
 ------------------------------------*/
 .title {
   text-align: center;
-  padding-top: 4%;
 }
 
 .thisIsPart {
-  color: rgb(65, 177, 0);
-  text-shadow: 2px 2px rgb(0, 0, 0);
+  color: rgb(119, 158, 122);
+  text-shadow: 2px 2px cyan;
 }
 
 .titleFSpart {
   color: rgb(255, 255, 255);
+  letter-spacing: 3px;
   font-family: "Bangers", cursive;
   text-shadow: 2px 2px black;
 }
 .areaPart {
-  color: rgb(0, 0, 0);
-  text-shadow: 2px 2px rgb(11, 114, 2);
+  color: rgb(119, 158, 122);
+  text-shadow: 2px 2px cyan;
 }
 
 /* ----------------------------------*/
 
 .monitor {
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 50%;
   display: flex;
   align-items: top;
-  justify-content: flex-start;
-  border-radius: 10%;
-  border-width: 8px;
-  border-style: solid;
-  border-color: rgb(55, 56, 54);
+  justify-content: center;
   font-family: "Righteous", cursive;
   text-align: left;
   font-size: 14px;
-  background-image: url(../assets/monitor.png);
-  margin-top: 10%;
   margin:0 auto;
   margin-top: 10%;
 }
 .textType {
   padding: 10px;
-  color: rgb(157, 255, 0);
+  color: rgb(119, 158, 122);
 }
 .getInBtn {
   align-content: center;
@@ -184,10 +173,10 @@ header {
   font-size: 20px;
   margin: 5px auto;
   background-color: rgba(224, 20, 20, 0);
-  border-radius: 10px;
-  border-width: 8px;
+  border-radius: 100px;
+  border-width: 4px;
   border-style: solid;
-  border-color: rgb(255, 0, 0);
+  border-color: rgb(119, 158, 122);
   max-height: 200px;
   max-width: 300px;
 }
@@ -195,13 +184,8 @@ header {
   float: left;
   font-size: 35px;
   font-family: "Bangers", cursive;
-  color: rgb(255, 0, 0);
+  color: rgb(119, 158, 122);
   padding-top: 2%;
-}
-.imageShip {
-  float: right;
-  margin-right: 5%;
-  margin-left: 20px;
 }
 
 

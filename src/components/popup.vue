@@ -1,12 +1,15 @@
 <template>
     <div class="popwrap">
+      <div class="sliderContainer clearfix">
+        <img src="" alt="shopAdd">
+      </div>
         <div>
             <div class="popupwrap">
                 <p id="poptext"></p>
             </div>
             <div class="input">
                     <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
-                    <button @click="submitName">Oki</button>
+                    <button @click="submitName">Dalje</button>
             </div>
         </div>
     </div>
@@ -67,73 +70,107 @@ export default {
             i++;
           }, 90);
         },
+        backgroundSlider(){
+          var i = 0;
+          const popwrap = document.querySelector('.popwrap');
+          const images = ['/img/code-cafe.395c94cd.jpg', '/img/roll-bar.2e42ee66.jpg', '/img/witch-bar-caffe.76538e7c.jpg', '/img/witch-bar.8988a771.jpg'];
+          var  img = document.querySelector('.sliderContainer img');
+          img.src = images[i];
+          var background = setInterval(() => {
+            if (i < images.length -1) {
+              i += 1;
+              img.src = images[i];
+            }else {
+              clearInterval(background);
+              this.backgroundSlider();
+            }
+          }, 5000)
+        }
     },
     mounted(){
         this.typing();
-
+        this.backgroundSlider();
     }
 }
 </script>
 
 <style>
+.clearfix::after{
+  content: '';
+  clear: both;
+  display: block;
+  height: 1px;
+  visibility: hidden;
+}
 #poptext{
-    color:rgb(255, 0, 0);
+    color: cyan;
     font-weight: bolder;
     margin: 2px 2px;
 }
 .popwrap{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     width: 100vw;
+    background-color: #000;
 }
 .popupwrap{
-    background-image: url(../assets/monitor.png);
-    width: 80%;
+    width: 50%;
     height: 61px;
-    margin:  auto;
-    display: flex;
-    justify-content: center;
+    margin: 0 auto;
+    display: block;
+    clear: both;
 }
 .input{
+    width: 30%;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 .input input{
-    color: red;
-    background-color: rgba(112, 112, 112, 0.267);
-    width: 199px;
-    height: 35px;
+    width: 78%;
     text-align: center;
     border-width: 0px;
-
+    height: 30px;
+    border-radius: 12px;
+    background: #fafafa;
+    color: rgb(119, 158, 122);
+    font-size: 16px;
+    padding-left: 20px;
 }
 .input input::placeholder{
-    color: red;
+    color: cyan;
     font-size: 15px;
     font-weight:bolder;
 }
 .input input:focus{
-    border-color: red;
+    border-color: gray;
 }
 .input input:focus::placeholder{
        color:transparent;
        font-size: 20px;
   }
 .input button{
-    margin-top: 2px;
-    margin-left: 10px;
-    border-radius: 50%;
-    font-size: 15px;
-    width: 50px;
-    height: 50px;
-    font-weight:bolder;
-    background-color: rgba(112, 112, 112, 0.267);
-    color: rgb(141, 0, 0);
-    border-width: 0px;
+    margin: 2px;
+    color: cyan;
+    border: none;
+    outline: none;
+    width: 20%;
+    height: 40px;
+    background-color: rgba(112, 112, 112, 0.867);
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    text-decoration: none;
+}
+.sliderContainer{
+  display: block;
+  width: 100%;
+  height: 450px;
+}
+.sliderContainer img{
+  display: block;
+  height: 100vh;
+  width: 100vw;
 }
 </style>
