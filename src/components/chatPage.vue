@@ -262,6 +262,7 @@ body{
     background-color: rgba(7, 43, 8, 0.979);
 }
 .physicallyBodyOfHeader{
+    opacity: 0;
     border-style:solid;
     border-width: 3px;
     border-bottom-width: 0px;
