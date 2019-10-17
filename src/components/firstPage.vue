@@ -3,6 +3,7 @@
 <template>
   <div class="tatko">
     <div class="textType">
+      <p>#</p>
       <p id="text"></p>
     </div>
     <div class="imagesContainer">
@@ -11,7 +12,7 @@
       <div class="btnContainer">
         <button class="chatBtn" @click="toChatPage"><p class="btParagraf" id="clickme">Cet</p>
         </button>
-        <button class="meniBtn"><p class="btParagraf">Karta pica</p>
+        <button class="meniBtn"><p class="btParagraf">Meni</p>
       </button>
       </div>
   </div>
@@ -37,7 +38,7 @@ export default {
           var j = 0;
           let text = "";
           if(this.user.ip != "NOT_CONNECTED")
-            text = "#Dobro u FS kafic#";
+            text = "Dobro u FS kafic#";
           else{
             text = "Na zalost ne postoji cet soba za mesto gde se nalazite trenutno";
           }
@@ -107,14 +108,14 @@ export default {
 } */
 
 .textType {
+  display: flex;
   width: 100vw;
-  height: 5vh;
   background-color: white;
   top: 0;
   position: fixed;
   z-index: 1;
   color: rgb(119, 158, 122);
-  font-size: 20px;
+  font-size: 15px;
   align-content: center;
 }
 
@@ -126,15 +127,15 @@ export default {
 }
 .images{
   display: block;
-  width: 50vw;
+  width: 60vw;
   height: 30vh;
 }
 .btnContainer{
   display: flex;
   flex-direction: row;
-  margin: 0 auto;
   position: fixed;
   bottom: 0;
+  text-align: center;
 }
 .chatBtn {
   width: 50vw;
@@ -142,6 +143,10 @@ export default {
   font-size: 40px;
   background-color: rgb(255, 255, 255);
   border-color: rgb(119, 158, 122);
+  text-align: center;
+}
+.btParagraf{
+  margin: 0 auto;
 }
 .meniBtn{
   width: 50vw;
