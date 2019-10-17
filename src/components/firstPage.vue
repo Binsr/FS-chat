@@ -127,7 +127,8 @@ export default {
   display: flex;
   align-content: center;
   flex-direction: column;
-  margin-top: 5vh; /* TESTIRAJ NA CHAT PAGE ZA  CHAT DA SE OSIGURAS  */
+  margin-top: 10vh;
+  margin-bottom: 10vh; /* TESTIRAJ NA CHAT PAGE ZA  CHAT DA SE OSIGURAS  */
   margin: 0 auto;
 }
 .images{

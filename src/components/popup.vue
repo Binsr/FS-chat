@@ -14,7 +14,7 @@
                 <p id="poptext"></p>
             </div>
             <div class="input">
-                    <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
+                    <input type="text" v-model="name" @keyup.enter="submitName">
             </div>
             <div class="btnOkContainer">
                 <button @click="submitName">Oki</button>
@@ -89,16 +89,8 @@ export default {
 <style>
 .sheepLogo{
     margin: 0 auto;
-    width: 18vw;
-    height: 10vw;
-    border-style: solid;
-    border-width: 4px;
-    border-color: white;
-    display: flex;
-    align-content: center;
-    border-radius: 50%;
-    border-top: none;
-    border-bottom: none;
+    width: 100px;
+    height: 100px;
 }
 .sheepLogo img{
     margin: 0 auto;
@@ -122,7 +114,7 @@ export default {
 .title {
     display: flex;
     text-align: center;
-    font-size: 5vw;
+    font-size: 10vw;
     margin: 0 auto;
     flex-direction: column;
 }
@@ -152,17 +144,20 @@ export default {
     margin: 0 auto;
 }
 .input input{
-    width: 20vw;
-    height: 4vh;
+    width: 40vw;
+    height: 6vh;
+    background-color: red;
+    border-radius: 20px;
 }
 
-.input input::placeholder{
-    color: cyan;
-    font-size: 15px;
-    font-weight:bolder;
-}
 .input input:focus{
     border-color: gray;
+    margin-top: 10vh;
+    width: 100vw;
+    height: 80vh;
+    font-size: 20vw;
+    background-color: black;
+    color: white;
 }
 .btnOkContainer{
     width: 100vw;
@@ -171,13 +166,12 @@ export default {
 }
 .btnOkContainer button{
     margin: 0 auto;
-    color: cyan;
+    color: rgb(184, 0, 0);
     border: none;
     outline: none;
-    width: 4vw;
-    height: 4vw;
-    background-color: rgba(112, 112, 112, 0.867);
-    font-size: 14px;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    font-size: 10vw;
     font-weight: bold;
     border-radius: 20px;
     cursor: pointer;
