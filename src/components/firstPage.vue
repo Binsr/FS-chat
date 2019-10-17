@@ -2,17 +2,21 @@
 // KAD SE VIDIMO VIDACE OBJASNI MI POCICIONIRANJE PARETNT CHILD MARGIN: 0 AUTO I TAKO TO
 <template>
   <div class="tatko">
-    <div class="textType">
-      <p>#</p>
-      <p id="text"></p>
+    <div class="headerText"> <!--TextType -->
+      <div class="headerTextContainer">
+        <p>#</p>
+        <p id="text">F-S   "get to know Area"</p>
+      </div>
     </div>
     <div class="imagesContainer">
-      <img class="images" v-for="(image,index) in images" v-bind:key="index" :src="image.url" :alt="image.alt">
+      <div v-for="(image,index) in images" v-bind:key="index" >
+       <img class="images" :src='imagesBuild(image)'>
+      </div>
     </div>
       <div class="btnContainer">
-        <button class="chatBtn" @click="toChatPage"><p class="btParagraf" id="clickme">Cet</p>
+        <button class="chatBtn" @click="toChatPage"><p class="btParagraf" id="clickme">Chat</p>
         </button>
-        <button class="meniBtn"><p class="btParagraf">Meni</p>
+        <button class="meniBtn"><p class="btParagraf">Menu</p>
       </button>
       </div>
   </div>
@@ -28,7 +32,12 @@ export default {
     data() {
       return{
         interval:null,
-        images:[{url:'../assets/witch-bar.jpg'},{url:'../assets/witch-bar-caffe.jpg'},{url:'../assets/white_clip.png'},{url:'../assets/roll-bar.jpg'}]
+        images:
+        ["www.yorkshireeveningpost.co.uk/images-a.jpimedia.uk/imagefetch/http://www.lep.co.uk/webimage/1.9969596!image/image",
+          "www.officelovin.com/wp-content/uploads/2014/10/google-campus-tel-aviv-h2",
+          "alwayshungry.ph/wp-content/uploads/2016/10/8be33d0f41db2eae6ac5d316c8bba8e2_1475770150",
+          "www.cafesunflower.com/wp-content/uploads/2015/07/Buckhead-Main-Dining-Room-01"
+        ]
       }
     },
     methods: {
@@ -38,7 +47,7 @@ export default {
           var j = 0;
           let text = "";
           if(this.user.ip != "NOT_CONNECTED")
-            text = "Dobro u FS kafic#";
+            text = "Videcemo";
           else{
             text = "Na zalost ne postoji cet soba za mesto gde se nalazite trenutno";
           }
@@ -65,7 +74,7 @@ export default {
               }
             }
             if (j % 20 == 0) {
-              document.getElementById("clickme").style.color = "rgb(255, 0, 0)";
+              document.getElementById("clickme").style.color = "rgb(255, 255, 255)";
             }
             if (j % 40 == 0) {
               document.getElementById("clickme").style.color = "rgb(0, 0, 0)";
@@ -84,10 +93,13 @@ export default {
           else{
             this.typing();
           }
+        },
+        imagesBuild(img){
+          return ('https://' + img + '.jpg');
         }
     },
     mounted() {
-          this.typing();
+          // this.typing();
     },
     computed: {
       ...mapState(['user']),
@@ -99,6 +111,7 @@ export default {
 </script>
 
 <style>
+
 .clearfix::after{
   content: '';
   clear: both;
@@ -108,21 +121,28 @@ export default {
 }
 .tatko{
   display: flex;
-  background-color: #000;
+  background-color: rgb(0, 0, 0);
 }
 
-.textType {
+.headerText {
   display: flex;
   width: 100vw;
-  background-color: white;
+  background-color: rgb(179, 77, 29);
+  border-style: solid;
+  border-color: white;
+  border-width: 0 0 3px 0;
   top: 0;
   position: fixed;
   z-index: 1;
-  color: rgb(119, 158, 122);
-  font-size: 15px;
-  align-content: center;
+  color:white;
+    font-family: "Bangers", cursive;
+  font-size: 20px;
 }
-
+.headerTextContainer{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}
 .imagesContainer{
   display: flex;
   align-content: center;
@@ -133,8 +153,9 @@ export default {
 }
 .images{
   display: block;
-  width: 60vw;
-  height: 30vh;
+  width: 80vw;
+  height: 60vh;
+  margin-bottom: 5vh;
 }
 .btnContainer{
   display: flex;
@@ -142,24 +163,33 @@ export default {
   position: fixed;
   bottom: 0;
   text-align: center;
+  background-color: rgb(179, 77, 29);
 }
 .chatBtn {
   width: 50vw;
   height: 10vh;
   font-size: 40px;
-  background-color: rgb(255, 255, 255);
-  border-color: rgb(119, 158, 122);
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
+  border-color: rgb(255, 255, 255);
   text-align: center;
-}
-.btParagraf{
-  margin: 0 auto;
+  font-family: "Bangers", cursive;
+  border-right-style: solid;
+  border-width: 3px 3px 0 0;
 }
 .meniBtn{
   width: 50vw;
   height: 10vh;
   font-size: 40px;
-  background-color: white;
-  color: #000;
+  background-color: rgba(255, 255, 255, 0);
+  border-width: 3px 0 0 0;
+  border-color: white;
+  color: rgb(255, 255, 255);
+  font-family: "Bangers", cursive;
 }
+.btParagraf{
+  margin: 0 auto;
+}
+
 
 </style>
