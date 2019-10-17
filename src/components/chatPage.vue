@@ -9,7 +9,7 @@
         <div class="chatIcon"></div>
         <div class="roomWrap">
           <p class="roomName">F-S area: {{client.name}}</p>
-          <p class="botHead">Number of users online:{{client.number}}</p>
+          <p class="botHead">Number of users online:</p>
         </div>
       </div>
     </div>

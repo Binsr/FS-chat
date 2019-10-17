@@ -1,21 +1,24 @@
 <template>
-    <div class="popwrap">
-      <header>
-        <div class="imageShip">
+    <div class="popupContainer">
+        <div class="sheepLogo">
           <img src="../assets/mainlogo.jpg"/>
         </div>
-        <h1 class="title"><span class="thisIsPart">this is</span>
-          <br><span class="titleFSpart">F - S </span>
-          <span class="areaPart"><br> App</span>
-        </h1>
-      </header>
+        <div class="title">
+            <div class="titleFSpart"> Friend - Sheep </div>
+          <div class="areaPart">App</div>
+        </div>
       <div>
-          <div class="popupwrap">
-              <p id="poptext"></p>
-          </div>
-          <div class="input">
-                  <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
-                  <button @click="submitName">Oki</button>
+          <div class="inputContainer">
+            <div class="writingTextContainter">
+                <p>.</p>
+                <p id="poptext"></p>
+            </div>
+            <div class="input">
+                    <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
+            </div>
+            <div class="btnOkContainer">
+                <button @click="submitName">Oki</button>
+            </div>
           </div>
       </div>
     </div>
@@ -53,7 +56,7 @@ export default {
         },
         typing() {
           var i = 0;
-          const text = "...Dobrodosli na Friend-Sheep App! Unesite ime ako zelite...";
+          const text = "Unesite ime koje ce biti vidljivo samo u cetu...";
           const el = document.querySelector("#poptext");
           this.interval = setInterval(function () {
 
@@ -84,8 +87,22 @@ export default {
 </script>
 
 <style>
-
-.areaPart,
+.sheepLogo{
+    margin: 0 auto;
+    width: 18vw;
+    height: 10vw;
+    border-style: solid;
+    border-width: 4px;
+    border-color: white;
+    display: flex;
+    align-content: center;
+    border-radius: 50%;
+    border-top: none;
+    border-bottom: none;
+}
+.sheepLogo img{
+    margin: 0 auto;
+}
 .title{
   color: rgb(119, 158, 122);
   text-shadow: 2px 2px #fff;
@@ -94,38 +111,22 @@ export default {
   color: #fff;
   text-shadow: 2px 2px #fff;
 }
-.tatko{
-    background-color: #000000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    margin: 0 auto;
-    width: 100%;
-    overflow: hidden;
-}
-.wrap{
-    width: 100%;
-}
-
-
-header {
-  height: 200px; /* Deo za promenu  */
-  font-size: 20px;
-  font-family: "Righteous", cursive, "Ultra", serif;
-  width: 100%;
-}
 
 /* TITLE EDIT PART
 ------------------------------------*/
+
+.popupContainer{
+    width: 100vw;
+    height: 100vh;
+}
 .title {
-  text-align: center;
+    display: flex;
+    text-align: center;
+    font-size: 5vw;
+    margin: 0 auto;
+    flex-direction: column;
 }
 
-.thisIsPart {
-  color: rgb(119, 158, 122);
-  text-shadow: 2px 2px cyan;
-}
 
 .titleFSpart {
   color: rgb(255, 255, 255);
@@ -139,34 +140,22 @@ header {
 }
 
 /* ----------------------------------*/
-
-.popupwrap{
-    width: 50%;
-    height: 61px;
-    margin: 0 auto;
-    display: block;
-    clear: both;
-    margin-top: 15%;
+.inputContainer{
+    display:flex;
+    width: 100vw;
+    position: absolute;
+    bottom: 0%;
+    flex-direction: column;
+    margin-bottom: 10vh;
 }
 .input{
-    width: 30%;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
 }
 .input input{
-    width: 78%;
-    text-align: center;
-    border-width: 0px;
-    height: 30px;
-    border-radius: 12px;
-    background: #fafafa;
-    color: cyan;
-    font-size: 16px;
-    padding-left: 20px;
+    width: 20vw;
+    height: 4vh;
 }
+
 .input input::placeholder{
     color: cyan;
     font-size: 15px;
@@ -175,22 +164,22 @@ header {
 .input input:focus{
     border-color: gray;
 }
-.input input:focus::placeholder{
-       color:transparent;
-       font-size: 20px;
-  }
-.input button{
-    margin: 2px;
+.btnOkContainer{
+    width: 100vw;
+    display: flex;
+    align-content: center;
+}
+.btnOkContainer button{
+    margin: 0 auto;
     color: cyan;
     border: none;
     outline: none;
-    width: 20%;
-    height: 40px;
+    width: 4vw;
+    height: 4vw;
     background-color: rgba(112, 112, 112, 0.867);
     font-size: 14px;
     font-weight: bold;
     border-radius: 20px;
-    text-decoration: none;
     cursor: pointer;
 }
 

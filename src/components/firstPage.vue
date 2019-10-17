@@ -99,13 +99,17 @@ export default {
 </script>
 
 <style>
-/* .clearfix::after{
+.clearfix::after{
   content: '';
   clear: both;
   display: block;
   height: 1px;
   visibility: hidden;
-} */
+}
+.tatko{
+  display: flex;
+  background-color: #000;
+}
 
 .textType {
   display: flex;
@@ -124,6 +128,7 @@ export default {
   align-content: center;
   flex-direction: column;
   margin-top: 5vh; /* TESTIRAJ NA CHAT PAGE ZA  CHAT DA SE OSIGURAS  */
+  margin: 0 auto;
 }
 .images{
   display: block;
