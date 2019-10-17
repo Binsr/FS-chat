@@ -2,18 +2,18 @@
 // KAD SE VIDIMO VIDACE OBJASNI MI POCICIONIRANJE PARETNT CHILD MARGIN: 0 AUTO I TAKO TO
 <template>
   <div class="tatko">
-    <div class="images" v-for="image in images">
-     <img v-bind:src ="image" alt="cafeAdd">
-     </div>
-    <div class="wrap">
-      <div class="monitor">
-        <p class="textType" id="text"></p>
-      </div>
-      <button class="getInBtn" @click="toChatPage"><p class="btParagraf" id="clickme">get in</p>
-      </button>
-      <button class="getInBtn"><p class="btParagraf" id="konobar">call</p>
-      </button>
+    <div class="textType">
+      <p id="text"></p>
     </div>
+    <div class="imagesContainer">
+      <img class="images" v-for="(image,index) in images" v-bind:key="index" :src="image.url" :alt="image.alt">
+    </div>
+      <div class="btnContainer">
+        <button class="chatBtn" @click="toChatPage"><p class="btParagraf" id="clickme">Cet</p>
+        </button>
+        <button class="meniBtn"><p class="btParagraf">Karta pica</p>
+      </button>
+      </div>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
     data() {
       return{
         interval:null,
-        images:['/img/1.76538e7c.jpg','/img/2.8988a771.jpg','/img/3.395c94cd.jpg','/img/4.2e42ee66.jpg']
+        images:[{url:'../assets/witch-bar.jpg'},{url:'../assets/witch-bar-caffe.jpg'},{url:'../assets/white_clip.png'},{url:'../assets/roll-bar.jpg'}]
       }
     },
     methods: {
@@ -37,7 +37,7 @@ export default {
           var j = 0;
           let text = "";
           if(this.user.ip != "NOT_CONNECTED")
-            text = "...Dobro u FS kafic....                     .";
+            text = "#Dobro u FS kafic#";
           else{
             text = "Na zalost ne postoji cet soba za mesto gde se nalazite trenutno";
           }
@@ -65,11 +65,9 @@ export default {
             }
             if (j % 20 == 0) {
               document.getElementById("clickme").style.color = "rgb(255, 0, 0)";
-              document.getElementById("konobar").style.color = "rgb(255, 0, 0)";
             }
             if (j % 40 == 0) {
               document.getElementById("clickme").style.color = "rgb(0, 0, 0)";
-              document.getElementById("konobar").style.color = "rgb(0, 0, 0)";
             }
             if (j == 40) {
               j = 0;
@@ -100,78 +98,57 @@ export default {
 </script>
 
 <style>
-.clearfix::after{
+/* .clearfix::after{
   content: '';
   clear: both;
   display: block;
   height: 1px;
   visibility: hidden;
-}
-#poptext{
-    color: cyan;
-    font-weight: bolder;
-    margin: 2px 2px;
-}
-.popwrap{
-    height: 100vh;
-    width: 100vw;
-    background-color: #000;
-}
- .getInBtn {
-  width: 40%;
-  display: block;
-  float: left;
-  height: 20%;
-  font-size: 20px;
-  margin: 20px;
-  background-color: rgba(224, 20, 20, 0);
-  border-radius: 100px;
-  border-width: 4px;
-  border-style: solid;
-  border-color: rgb(119, 158, 122);
-  max-height: 200px;
-  max-width: 300px;
-  cursor: pointer;
-}
- .btParagraf {
-  font-size: 26px;
-  font-family: "Bangers", cursive;
-  color: rgb(119, 158, 122);
-}
-.buttons{
-  display: block;
-  width: 50%;
-  margin: 0 auto;
-}
-.monitor {
-  height: 50px;
-  width: 50%;
-  display: flex;
-  align-items: top;
-  justify-content: center;
-  font-family: "Righteous", cursive;
-  text-align: left;
-  font-size: 14px;
-  margin:0 auto;
-}
+} */
+
 .textType {
-  padding: 10px;
-  color: rgb(119, 158, 122);
-}
-.wrap{
+  width: 100vw;
+  height: 5vh;
+  background-color: white;
+  top: 0;
   position: fixed;
-  bottom: 10vh;
-  width: 50% !important;
-  margin: 0 auto;
+  z-index: 1;
+  color: rgb(119, 158, 122);
+  font-size: 20px;
+  align-content: center;
+}
+
+.imagesContainer{
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  margin-top: 5vh; /* TESTIRAJ NA CHAT PAGE ZA  CHAT DA SE OSIGURAS  */
 }
 .images{
   display: block;
-  width: 100%;
+  width: 50vw;
+  height: 30vh;
 }
-.images img{
-  display: block;
-  width: 80vw;
-  height: 50vh;
+.btnContainer{
+  display: flex;
+  flex-direction: row;
   margin: 0 auto;
+  position: fixed;
+  bottom: 0;
 }
+.chatBtn {
+  width: 50vw;
+  height: 10vh;
+  font-size: 40px;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(119, 158, 122);
+}
+.meniBtn{
+  width: 50vw;
+  height: 10vh;
+  font-size: 40px;
+  background-color: white;
+  color: #000;
+}
+
 </style>
