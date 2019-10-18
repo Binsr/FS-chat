@@ -10,7 +10,8 @@
     </div>
     <div class="imagesContainer">
       <div v-for="(image,index) in images" v-bind:key="index" >
-       <img class="images" :src='imagesBuild(image)'>
+       <img class="images" :src='imagesBuild(image.slika)'>
+       <p class="tagovi">{{image.tag}}</p>
       </div>
     </div>
       <div class="btnContainer">
@@ -33,10 +34,14 @@ export default {
       return{
         interval:null,
         images:
-        ["www.yorkshireeveningpost.co.uk/images-a.jpimedia.uk/imagefetch/http://www.lep.co.uk/webimage/1.9969596!image/image",
-          "www.officelovin.com/wp-content/uploads/2014/10/google-campus-tel-aviv-h2",
-          "alwayshungry.ph/wp-content/uploads/2016/10/8be33d0f41db2eae6ac5d316c8bba8e2_1475770150",
-          "www.cafesunflower.com/wp-content/uploads/2015/07/Buckhead-Main-Dining-Room-01"
+        [{"slika":"www.yorkshireeveningpost.co.uk/images-a.jpimedia.uk/imagefetch/http://www.lep.co.uk/webimage/1.9969596!image/image",
+          "tag":"#Beograd #VeseliKafe"},
+          {"slika":"www.officelovin.com/wp-content/uploads/2014/10/google-campus-tel-aviv-h2",
+          "tag":"#Nis #BeerRes"},
+          {"slika":"alwayshungry.ph/wp-content/uploads/2016/10/8be33d0f41db2eae6ac5d316c8bba8e2_1475770150",
+          "tag":"#Zajecar #KafeCaffe"},
+          {"slika":"www.cafesunflower.com/wp-content/uploads/2015/07/Buckhead-Main-Dining-Room-01",
+          "tag":"#Pozarevac #BluePlace"}
         ]
       }
     },
@@ -147,15 +152,17 @@ export default {
   display: flex;
   align-content: center;
   flex-direction: column;
-  margin-top: 10vh;
-  margin-bottom: 10vh; /* TESTIRAJ NA CHAT PAGE ZA  CHAT DA SE OSIGURAS  */
-  margin: 0 auto;
+ /* TESTIRAJ NA CHAT PAGE ZA  CHAT DA SE OSIGURAS  */
+  margin: 15vh auto 15vh auto;
 }
 .images{
   display: block;
   width: 80vw;
   height: 60vh;
-  margin-bottom: 5vh;
+}
+.tagovi{
+  color: white;
+  font-size: 15px;
 }
 .btnContainer{
   display: flex;
