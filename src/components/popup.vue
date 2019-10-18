@@ -7,10 +7,12 @@
             <div class="titleFSpart"> Friend - Sheep </div>
           <div class="areaPart">App</div>
         </div>
+        <div class="wifiContainer">
+            <img class="wifiImg" src="../assets/wifi.png"/>
+        </div>
       <div>
           <div class="inputContainer">
             <div class="writingTextContainter">
-                <p>.</p>
                 <p id="poptext"></p>
             </div>
             <div class="input">
@@ -87,18 +89,26 @@ export default {
 </script>
 
 <style>
+.popupContainer{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(179, 77, 29);
+    border-style: solid; 
+    border-color: white;
+}
 .sheepLogo{
     margin: 0 auto;
-    width: 100px;
-    height: 100px;
+    width: 100vw;
+    background-color: rgb(179, 77, 29);
 }
 .sheepLogo img{
     margin: 0 auto;
+    border-width: 20px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 50%;
 }
-.title{
-  color: rgb(119, 158, 122);
-  text-shadow: 2px 2px #fff;
-}
+
 .titleFSpart{
   color: #fff;
   text-shadow: 2px 2px #fff;
@@ -107,10 +117,6 @@ export default {
 /* TITLE EDIT PART
 ------------------------------------*/
 
-.popupContainer{
-    width: 100vw;
-    height: 100vh;
-}
 .title {
     display: flex;
     text-align: center;
@@ -127,8 +133,21 @@ export default {
   text-shadow: 2px 2px black;
 }
 .areaPart {
-  color: rgb(119, 158, 122);
-  text-shadow: 2px 2px cyan;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px rgb(255, 255, 255);
+}
+.wifiImg{
+    width: 50vw;
+    height: 50vw;
+    margin: 0 auto;
+}
+.wifiContainer{
+    display: flex;
+    width: 100vw;
+}
+.writingTextContainter{
+    transform: rotate(10deg);
+    color:white;
 }
 
 /* ----------------------------------*/
@@ -138,7 +157,7 @@ export default {
     position: absolute;
     bottom: 0%;
     flex-direction: column;
-    margin-bottom: 10vh;
+    margin-bottom: 2vh;
 }
 .input{
     margin: 0 auto;
@@ -163,6 +182,8 @@ export default {
     width: 100vw;
     display: flex;
     align-content: center;
+    transform: rotate(-20deg);
+    margin-top: 5vh;
 }
 .btnOkContainer button{
     margin: 0 auto;

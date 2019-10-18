@@ -5,7 +5,7 @@
     <div class="headerText"> <!--TextType -->
       <div class="headerTextContainer">
         <p>#</p>
-        <p id="text">F-S   "get to know Area"</p>
+        <p id="text">F-S   "get to know" Area</p>
       </div>
     </div>
     <div class="imagesContainer">
