@@ -163,6 +163,7 @@ export default {
 .tagovi{
   color: white;
   font-size: 15px;
+  text-align: left;
 }
 .btnContainer{
   display: flex;
