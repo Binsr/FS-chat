@@ -16,7 +16,7 @@
                 <p id="poptext"></p>
             </div>
             <div class="input">
-                    <input type="text" v-model="name" @keyup.enter="submitName">
+                    <input type="text" v-model="name" @keyup.enter="submitName" placeholder="~~~Ime~~~">
             </div>
             <div class="btnOkContainer">
                 <button @click="submitName">Oki</button>
@@ -167,6 +167,10 @@ export default {
     height: 6vh;
     background-color: red;
     border-radius: 20px;
+    text-align: center;   
+}
+.input ::placeholder{
+    color: white;
 }
 
 .input input:focus{
