@@ -1,11 +1,11 @@
 
-// KAD SE VIDIMO VIDACE OBJASNI MI POCICIONIRANJE PARETNT CHILD MARGIN: 0 AUTO I TAKO TO
 <template>
   <div class="tatko">
+    <cafeList v-if="showCaffeList" @update="showCaffeList = false"></cafeList>
     <div class="headerText"> <!--TextType -->
       <div class="headerTextContainer">
         <p>#</p>
-        <p id="text">F-S   "get to know" Area</p>
+        <p id="text">F-S "get to know" Area</p>
       </div>
     </div>
     <div class="imagesContainer">
@@ -17,7 +17,7 @@
       <div class="btnContainer">
         <button class="chatBtn" @click="toChatPage"><p class="btParagraf" id="clickme">Chat</p>
         </button>
-        <button class="meniBtn"><p class="btParagraf">Menu</p>
+        <button class="meniBtn" @click="showCaffeList = true"><p class="btParagraf">Menu</p>
       </button>
       </div>
   </div>
@@ -27,11 +27,16 @@
 import router from "../router.js"
 import api from '../api'
 import { mapState, mapActions } from "vuex"
+import cafeList from './cafeList.vue'
 
 export default {
     name: "startPage",
+    components: {
+      cafeList
+    },
     data() {
       return{
+        showCaffeList: false,
         interval:null,
         images:
         [{"slika":"www.yorkshireeveningpost.co.uk/images-a.jpimedia.uk/imagefetch/http://www.lep.co.uk/webimage/1.9969596!image/image",
@@ -101,7 +106,7 @@ export default {
         },
         imagesBuild(img){
           return ('https://' + img + '.jpg');
-        }
+        },
     },
     mounted() {
           // this.typing();
