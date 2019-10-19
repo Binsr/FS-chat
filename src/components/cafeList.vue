@@ -1,6 +1,9 @@
 <template>
     <div class="caffeListWraper">
         <div class="caffeList">
+            <div class="namesCaffe" v-for="(names,index) in listOfCaffes" v-bind:key = index>
+                <p class="namesOfCaffes">{{names}}</p>
+            </div>
             <button class="btnClose" @click="close">Close</button>
         </div>    
     </div>
@@ -16,11 +19,11 @@ export default {
     },
     name: 'cafeList',
     data(){
-        return{testa: "da"}
+        return{
+            testa: "da",
+            listOfCaffes: ["","Ledeni Udar","Nebeska Munja","Bugarski trotinet","Leteci Kolac","Ugrejana Pritka","Svecnjak"]
+        }
     },
-    props: {
-            listOfCaffes: ["Kurac kafe","Ledeni Udar","Nebeska Munja","Bugarski trotinet","Leteci Kolac","Ugrejana Pritka"],
-         }
 }
 </script>
 
@@ -40,17 +43,26 @@ export default {
     border-width: 7px;
     border-style: solid;
     border-color: rgb(126, 71, 0);
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+.namesOfCaffes{
+    font-size: 17px;
+    border-style: solid;
+    border-width: 0 0 3px 0;
+    border-color: rgb(126, 71, 0);
+    height: 10vw;
+    color:white;
 }
 .btnClose{
     width: 40vw;
     height: 5vh;
-    color: white;
+    color: rgb(248, 239, 239);
     font-size: 15px;
     background-color: rgb(126, 71, 0);
     border-width: 0;
-    border-top-left-radius: 20px;
-	position: absolute;
-	bottom: 0;
-    right: 0;
+    border-bottom-right-radius: 20px; 
+    position: fixed;
 }
 </style>
