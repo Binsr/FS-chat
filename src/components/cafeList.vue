@@ -21,7 +21,7 @@ export default {
     data(){
         return{
             testa: "da",
-            listOfCaffes: ["","Ledeni Udar","Nebeska Munja","Bugarski trotinet","Leteci Kolac","Ugrejana Pritka","Svecnjak"]
+            listOfCaffes: ["","Ledenko","Topli Caffe","Ledeni Udar","Nebeska Munja","Bugarski trotinet","Leteci Kolac","Ugrejana Pritka","Svecnjak"]
         }
     },
 }
@@ -42,7 +42,7 @@ export default {
     display: flex;
     border-width: 7px;
     border-style: solid;
-    border-color: rgb(126, 71, 0);
+    border-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
@@ -51,16 +51,16 @@ export default {
     font-size: 17px;
     border-style: solid;
     border-width: 0 0 3px 0;
-    border-color: rgb(126, 71, 0);
+    border-color: rgb(255, 255, 255);
     height: 10vw;
     color:white;
 }
 .btnClose{
     width: 40vw;
     height: 5vh;
-    color: rgb(248, 239, 239);
-    font-size: 15px;
-    background-color: rgb(126, 71, 0);
+    color: rgb(146, 83, 1);
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
     border-width: 0;
     border-bottom-right-radius: 20px; 
     position: fixed;

@@ -17,7 +17,7 @@
       <div class="btnContainer">
         <button class="chatBtn" @click="toChatPage"><p class="btParagraf" id="clickme">Chat</p>
         </button>
-        <button class="meniBtn" @click="showCaffeList = true"><p class="btParagraf">Menu</p>
+        <button class="meniBtn" @click="showCaffeList = true"><p class="btParagraf">List of F-S Areas</p>
       </button>
       </div>
   </div>
@@ -193,7 +193,7 @@ export default {
 .meniBtn{
   width: 50vw;
   height: 10vh;
-  font-size: 40px;
+  font-size: 30px;
   background-color: rgba(255, 255, 255, 0);
   border-width: 3px 0 0 0;
   border-color: white;

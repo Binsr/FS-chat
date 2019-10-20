@@ -13,13 +13,13 @@
       <div>
           <div class="inputContainer">
             <div class="writingTextContainter">
-                <p id="poptext"></p>
+                <p id="poptext">Unesite ime koje ce biti vidljivo samo u cetu</p>
             </div>
             <div class="input">
                     <input type="text" v-model="name" @keyup.enter="submitName" placeholder="~~~Ime~~~">
             </div>
             <div class="btnOkContainer">
-                <button @click="submitName">Oki</button>
+                <button @click="submitName">Next</button>
             </div>
           </div>
       </div>
@@ -29,12 +29,13 @@
 import {mapActions, mapState} from 'vuex';
 import router from '../router';
 import api from '../api'
-import { setTimeout } from 'timers';
+import { setTimeout, clearInterval } from 'timers';
 
 export default {
     data(){
         return {
-            name: ''
+            name: '',
+            typingAllowed: true
         }
     },
     computed:{
@@ -42,48 +43,45 @@ export default {
     },
     methods:{
         ...mapActions(['addUsername','connectToWS','messages']),
-        submitName(){
-            if(this.name == '')
-                this.name = 'Anonymous'
-            this.addUsername(this.name);
-            api.login(this.name).then(Response => {
-                // console.log(Response.data)
-                this.user.sid = Response.data.sid;
-                this.user.name = Response.data.name;
-                this.user.ip = Response.data.ip;
-                console.log(this.user);
-                this.connectToWS();
-            });
-            router.push('/firstpage');
-        },
-        typing() {
-          var i = 0;
-          const text = "Unesite ime koje ce biti vidljivo samo u cetu...";
-          const el = document.querySelector("#poptext");
-          this.interval = setInterval(function () {
+            submitName(){
+                if(this.name == ''){
+                    if(this.typingAllowed)
+                        this.typing("Morate uneti ime prvo");
+                        this.typingAllowed = false;
+                    return;
+                }    
+                this.addUsername(this.name);
+                api.login(this.name).then(Response => {
+                    // console.log(Response.data)
+                    this.user.sid = Response.data.sid;
+                    this.user.name = Response.data.name;
+                    this.user.ip = Response.data.ip;
+                    console.log(this.user);
+                    this.connectToWS();
+                });
+                router.push('/firstpage');
+            },
+            typing(poruka) {
+                let text = poruka;
+                const el = document.querySelector("#poptext");
+                if(poruka){
+                    el.textContent = "";
+                }
 
-            if (i < text.length) {
-              el.textContent += text[i];
+                var i = 0;
+                this.interval = setInterval(function () {
+                    if (i < text.length) {
+                        el.textContent += text[i];
 
-              if (i == text.length) {
-                i = 0;
-                el.textContent = "";
-              }
-            }
-            if (i > text.length) {
-              if (i == (text.length + 30)) {
-                /* when text end how long till typing again */
-                i = -1;
-                el.textContent = "";
-              }
-            }
-            i++;
-          }, 90);
+                        if (i == text.length) {
+                            return;
+                        }
+                    }
+                    i++;
+                }, 90);
+            },
         },
-    },
     mounted(){
-        this.typing();
-
     }
 }
 </script>
@@ -177,8 +175,8 @@ export default {
     border-color: gray;
     margin-top: 10vh;
     width: 100vw;
-    height: 80vh;
-    font-size: 20vw;
+    height: 100vh;
+    font-size: 20px;
     background-color: black;
     color: white;
 }
