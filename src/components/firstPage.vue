@@ -181,7 +181,7 @@ export default {
 .chatBtn {
   width: 50vw;
   height: 10vh;
-  font-size: 40px;
+  font-size: 30px;
   color: white;
   background-color: rgba(255, 255, 255, 0);
   border-color: rgb(255, 255, 255);
@@ -193,7 +193,7 @@ export default {
 .meniBtn{
   width: 50vw;
   height: 10vh;
-  font-size: 30px;
+  font-size: 25px;
   background-color: rgba(255, 255, 255, 0);
   border-width: 3px 0 0 0;
   border-color: white;

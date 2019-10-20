@@ -163,7 +163,7 @@ export default {
 .input input{
     width: 40vw;
     height: 6vh;
-    background-color: red;
+    background-color: rgb(0, 0, 0);
     border-radius: 20px;
     text-align: center;   
 }
@@ -179,6 +179,10 @@ export default {
     font-size: 20px;
     background-color: black;
     color: white;
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    left:0;
 }
 .btnOkContainer{
     width: 100vw;
