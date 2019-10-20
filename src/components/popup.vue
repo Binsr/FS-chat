@@ -45,6 +45,7 @@ export default {
         ...mapActions(['addUsername','connectToWS','messages']),
             submitName(){
                 if(this.name == ''){
+                    console.log("Name needed");
                     if(this.typingAllowed)
                         this.typing("Morate uneti ime prvo");
                         this.typingAllowed = false;

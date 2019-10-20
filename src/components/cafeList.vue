@@ -1,8 +1,8 @@
 <template>
     <div class="caffeListWraper">
         <div class="caffeList">
-            <div class="namesCaffe" v-for="(names,index) in listOfCaffes" v-bind:key = index>
-                <p class="namesOfCaffes">{{names}}</p>
+            <div class="namesCaffe" v-for="(names,index) in caffes" v-bind:key = index>
+                <p class="namesOfCaffes">{{names.caf_name}}</p>
             </div>
             <button class="btnClose" @click="close">Close</button>
         </div>    
@@ -18,11 +18,16 @@ export default {
          }
     },
     name: 'cafeList',
+    props: ['caffes'],
     data(){
         return{
             testa: "da",
             listOfCaffes: ["","Ledenko","Topli Caffe","Ledeni Udar","Nebeska Munja","Bugarski trotinet","Leteci Kolac","Ugrejana Pritka","Svecnjak"]
         }
+    },
+
+    mounted() {
+        // console.log(this.caffes.caf_name);
     },
 }
 </script>
