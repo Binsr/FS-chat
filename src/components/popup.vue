@@ -170,7 +170,9 @@ export default {
 .input ::placeholder{
     color: white;
 }
-
+.input input:focus::placeholder{
+    color:black;
+}
 .input input:focus{
     border-color: gray;
     margin-top: 10vh;
