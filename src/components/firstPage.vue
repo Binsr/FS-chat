@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="imagesContainer">
-      <cafeList class="cafeList" v-if="showCaffeList" @update="showCaffeList = false"></cafeList>
+      <cafeList :caffes="caffeNames" class="cafeList" v-if="showCaffeList" @update="showCaffeList = false"></cafeList>
       <div v-for="(image,index) in images" v-bind:key="index" >
        <img class="images" :src='imagesBuild(image.slika)'>
        <p class="tagovi">{{image.tag}}</p>
