@@ -17,7 +17,7 @@
       <div class="btnContainer">
         <button class="chatBtn" @click="toChatPage"><p class="btParagraf" id="clickme">Chat</p>
         </button>
-        <button class="meniBtn" @click="this.showCaffes" v-bind:caffes="this.caffeNames"><p class="btParagraf">List of F-S Areas</p>
+        <button class="meniBtn" @click="this.showCaffes"><p class="btParagraf">List of F-S Areas</p>
       </button>
       </div>
   </div>
