@@ -50,13 +50,16 @@ export default {
                         this.typing("Morate uneti ime prvo");
                         this.typingAllowed = false;
                     return;
-                }    
+                }
                 this.addUsername(this.name);
                 api.login(this.name).then(Response => {
                     // console.log(Response.data)
                     this.user.sid = Response.data.sid;
+                        window.localStorage.setItem('sid', Response.data.sid);
                     this.user.name = Response.data.name;
+                        window.localStorage.setItem('name', this.user.name);
                     this.user.ip = Response.data.ip;
+                        window.localStorage.setItem('ip', Response.data.ip);
                     console.log(this.user);
                     this.connectToWS();
                 });

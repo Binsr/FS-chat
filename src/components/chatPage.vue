@@ -92,7 +92,6 @@ export default {
             var container = this.$el.querySelector(".ChatWindow");
             // console.log(container);
             container.scrollTop = container.scrollHeight - 55;
-
             this.user.scrolled = true;
         },
         submit() {
@@ -143,12 +142,12 @@ export default {
 
             let name = this.user.name;
             let newMsg = {
-                "content": "~~~"+name + " has joined room~~~",
+                "content": "~~~" + name + " has joined room~~~",
                 "time": timeNow,
                 "sid": this.user.sid,
                 "name": name
             }
-            store.state.user.ws.send(JSON.stringify(newMsg));
+            this.user.ws.send(JSON.stringify(newMsg));
         },
         showIcon(){
           let icon = this.$el.querySelector('.btn_icon');
@@ -186,11 +185,24 @@ export default {
         }
     },
     created () {
-
+        console.log(window.localStorage.getItem('name'));
+        console.log(window.localStorage.getItem('sid'));
+        console.log(window.localStorage.getItem('ip'));
+        console.log(window.localStorage.getItem('ws'));
     },
     mounted () {
+        if(this.user.name != null){
+            this.userJoined(); //ZAMENITI SA TRY AND CATCH
+        }else{
+            this.user.name = window.localStorage.getItem('name');
+            this.user.sid = window.localStorage.getItem('sid');
+            this.user.ip = window.localStorage.getItem('ip');
+            this.user.ws = window.localStorage.getItem('ws');
+            this.connectToWS();
+            // this.reconnectWS();
+            // this.userJoined();
+        }
         this.message = this.messages;
-        this.userJoined();
     },
     beforeDestroy(){
         this.disconnectWS();

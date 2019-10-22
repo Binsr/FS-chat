@@ -51,7 +51,7 @@ const store = new Vuex.Store({
       if(store.state.user.sid != null){
         let WS = new WebSocket('ws://990b121.mars1.mars-hosting.com/stockings?sid='+ store.state.user.sid);
         store.state.user.ws = WS;
-        
+        window.localStorage.setItem("ws",WS);
         store.state.user.ws.onopen = () =>{
           console.log('connected to WS')
           store.state.user.ws.onmessage = (data) => {
