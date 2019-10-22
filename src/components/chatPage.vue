@@ -46,7 +46,7 @@
     </div>
   </div>
   <div class="contentWraper">
-    <div>
+    <div class="telephone">
       <ul>
         <li @click="getContent">Camera</li>
         <li>Photo & Video Library</li>
@@ -55,6 +55,9 @@
       </ul>
     </div>
     <div class="triangle">
+    </div>
+    <div class="desktop">
+      <input type="file" name="document">
     </div>
   </div>
   <div class="videoWrapper secret">
@@ -161,8 +164,13 @@ export default {
         },
         files(){
           let files = document.querySelector('.contentWraper');
+          let content = document.querySelector('.content');
           files.style.display = 'block';
-          // TO DO: close the fucking window
+          window.addEventListener('click', (e) => {
+            if (e.target != content) {
+              files.style.display = 'none';
+            };
+          });
         },
 
         getContent(){
@@ -183,10 +191,10 @@ export default {
            var inputDocument = document.querySelector('[name="document"]');
            inputDocument.click();
            // TO DO: insert the document in to the input
-        }
+        },
     },
     created () {
-
+      this.windowSize();
     },
     mounted () {
         this.message = this.messages;
@@ -451,17 +459,15 @@ body{
     overflow: hidden;
 }
 .content{
-  border: 2px solid gray;
-  background-image: url('../assets/white_clip.png');
-  background-color: #fff;
-  background-size: 35px 35px;
+  background-image: url('../assets/clip.png');
+  background-color: #F7E7CE;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
   background-position: center center;
   margin: 4px;
   width: 25px;
   height: 25px;
   display: block;
-  border-radius: 30px;
   float: left;
 }
 .secret{

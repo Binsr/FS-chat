@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="wholePage">
-    <router-view>      
+    <router-view>
     </router-view>
     <!-- <chatPage v-if="gotIn" />
     <firstPage v-if="!gotIn"/>  -->
@@ -18,7 +18,7 @@ import { mapState, mapActions } from "vuex"
 export default {
   data(){
     return{
-      
+
     }
   },
   computed: {
@@ -31,7 +31,7 @@ export default {
   },
   methods:{
     ...mapActions(['addMessages','disconnectWS']),
-    
+
   },
   mounted () {
     //router.push('/');
