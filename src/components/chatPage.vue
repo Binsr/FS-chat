@@ -198,7 +198,6 @@ export default {
             this.user.sid = window.localStorage.getItem('sid');
             this.user.ip = window.localStorage.getItem('ip');
             this.user.ws = window.localStorage.getItem('ws');
-            this.connectToWS();
             // this.reconnectWS();
             // this.userJoined();
         }
