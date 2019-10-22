@@ -1,6 +1,7 @@
 <template>
     <div class="caffeListWraper">
         <div class="caffeList">
+            <div class="namesOfCaffes" style="border-bottom-width:0"></div>
             <div class="namesCaffe" v-for="(names,index) in caffes" v-bind:key = index>
                 <p class="namesOfCaffes">{{names.caf_name}}</p>
             </div>
