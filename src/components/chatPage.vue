@@ -45,9 +45,6 @@
       </div>
     </div>
   </div>
-  <div>
-    <img src="" class="image">
-  </div>
   <div class="contentWraper">
     <ul>
       <li @click="getContent">Camera</li>
