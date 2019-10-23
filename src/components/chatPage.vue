@@ -37,7 +37,7 @@
     </div>
     <div class="inputOMEGAWrap">
       <div class="inputWrap">
-        <div @click="files" class="content"></div>
+        <div @click="insertDocument" class="content"></div>
         <input  type="text" v-model="myMessage" @keyup.enter="submit" @keyup="showIcon" @focus="scrollToEnd">
         <div @click="submit" class="sendBtnWrap">
             <button @click="submit" class="btn_icon"></button>
@@ -45,19 +45,17 @@
       </div>
     </div>
   </div>
+  <div>
+    <img src="" class="image">
+  </div>
   <div class="contentWraper">
-    <div class="telephone">
-      <ul>
-        <li @click="getContent">Camera</li>
-        <li>Photo & Video Library</li>
-        <li @click="chooseDocument">Document</li>
-        <li class="secret"><input type="file" name="document"></li>
-      </ul>
-    </div>
+    <ul>
+      <li @click="getContent">Camera</li>
+      <li>Photo & Video Library</li>
+      <li @click="chooseDocument">Document</li>
+      <li class="secret"><input type="file" name="document" multiple accept="image/*"></li>
+    </ul>
     <div class="triangle">
-    </div>
-    <div class="desktop">
-      <input type="file" name="document">
     </div>
   </div>
   <div class="videoWrapper secret">
@@ -126,7 +124,7 @@ export default {
             // console.log(this.messages);
             // this.messages.push(newMsg);
             this.user.ws.send(JSON.stringify(newMsg));
-            console.log('sent');
+            // console.log('sent');
             this.scrollToEnd();
             this.myMessage = '';
         },
@@ -162,15 +160,19 @@ export default {
             icon.style.display = 'none';
           }
         },
-        files(){
-          let files = document.querySelector('.contentWraper');
-          let content = document.querySelector('.content');
-          files.style.display = 'block';
-          window.addEventListener('click', (e) => {
-            if (e.target != content) {
-              files.style.display = 'none';
-            };
-          });
+        insertDocument(){
+          if (this.windowSize()) {
+            let insertDocument = document.querySelector('.contentWraper');
+            let content = document.querySelector('.content');
+            files.style.display = 'block';
+            window.addEventListener('click', (e) => {
+              if (e.target != content) {
+                files.style.display = 'none';
+              };
+            });
+          }else{
+            this.chooseDocument();
+          }
         },
 
         getContent(){
@@ -188,10 +190,23 @@ export default {
             // TO DO: finish with the camera thing
         },
         chooseDocument(){
-           var inputDocument = document.querySelector('[name="document"]');
+           let inputDocument = document.querySelector('[name="document"]');
+           let image = document.querySelector('.image');
            inputDocument.click();
-           // TO DO: insert the document in to the input
+           inputDocument.addEventListener('change', (event) => {
+             let inputValue = event.target.files[0];
+             //need to save image so we can send it;
+              })
+
+           }, false);
         },
+        windowSize(){
+          if (window.matchMedia("(max-width: 1025px)").matches) {
+            return true;
+          }else{
+            return false;
+          }
+        }
     },
     created () {
       this.windowSize();
@@ -464,6 +479,7 @@ body{
   background-size: 25px 25px;
   background-repeat: no-repeat;
   background-position: center center;
+  cursor: pointer;
   margin: 4px;
   width: 25px;
   height: 25px;
