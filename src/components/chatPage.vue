@@ -196,9 +196,7 @@ export default {
            inputDocument.addEventListener('change', (event) => {
              let inputValue = event.target.files[0];
              //need to save image so we can send it;
-              })
-
-           }, false);
+           });
         },
         windowSize(){
           if (window.matchMedia("(max-width: 1025px)").matches) {
