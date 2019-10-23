@@ -20,6 +20,9 @@ export default {
     },
     getclient (sid) {
         return axios.get('/api/getClient?sid=' + sid);
+    },
+    getCaffeNames(){
+        return axios.get('/api/getCaffeNames');
     }
 
 }

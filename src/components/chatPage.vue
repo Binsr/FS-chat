@@ -9,7 +9,7 @@
         <div class="chatIcon"></div>
         <div class="roomWrap">
           <p class="roomName">F-S area: {{client.name}}</p>
-          <p class="botHead">Number of users online:{{client.number}}</p>
+          <p class="botHead">Number of users online:</p>
         </div>
       </div>
     </div>
@@ -258,21 +258,18 @@ div.singleMessageDiv.my-message{
     display: flex;
     justify-content: flex-start;
 }
-
-
-
 div.singleMessageDiv.my-message .wrapLine .Message{
-    background-color:#FF3232;
+    background-color:rgb(255, 248, 248);
 }
-
-
-
 div.singleMessageDiv.new-user .wrapLine .Message{
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(253, 0, 0, 0);
     width: 100%;
-    color:rgb(78, 78, 78);
+    color:rgb(255, 255, 255);
     box-shadow: 0 0;
     font-size: 15px;
+}
+div.singleMessageDiv.new-user .wrapLine .timeWrap{
+    color:white;
 }
 
 div.singleMessageDiv.new-user{
@@ -300,7 +297,7 @@ body{
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     align-self: flex-start;
     margin: 10px 0 10px 10px;
     background-image: url("../assets/avatarce.png");
@@ -312,23 +309,19 @@ body{
     position: fixed;
     z-index: 1;
     border-style:solid;
-    border-width: 3px;
-    border-bottom-width: 0px;
-    border-style:solid;
     display: flex;
     flex-direction: column;
     width: 100%;
-    border-width: 0px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(92, 0, 0);
+    border-width: 0 0 2px 0;
 }
 .physicallyBodyOfHeader{
     opacity: 0;
-    border-style:solid;
-    border-width: 3px;
     border-bottom-width: 0px;
-    border-style:solid;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     border-width: 0px;
     /* background-color: #B71C1C; */
 }
@@ -337,13 +330,13 @@ body{
     align-items: flex-start;
 }
 .botHead{
-    color: rgb(255, 255, 255);
+    color: rgb(48, 48, 48);
     font-size: 10px;
     margin: 0 0 5px 0;
 }
 .roomName{
     font-size: 10px;
-    color: rgb(255, 255, 255);
+    color: rgb(48, 48, 48);
     font-size: 20px;
     margin: 17px 0 5px 0px;
 }
@@ -361,10 +354,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-
-
-}
-.inputWrap{
 }
 .inputWrap{
     background-color: #F7E7CE;
@@ -383,7 +372,6 @@ body{
     padding: 0 5px;
     font-size: 14px;
     border-width: 0;
-    background-color: #ffe5e5;
     background-color: #F7E7CE;
 }
 .sendBtnWrap{
@@ -397,7 +385,6 @@ body{
   min-width: 120px;
   height: auto;
   min-height: 20px;
-  background-color: #ff3232;
   background-color: #F7E7CE;
   float: right;
   margin: 7px 20px;
@@ -439,7 +426,6 @@ body{
   align-content: center;
   display: inline-block;
   color: white;
-  height: 80vh;
   height: 80vh;
 }
 .ChatWindow{
@@ -529,9 +515,10 @@ body{
   top: 10%;
   left: 10%;
 }
+/*------------------------------------------------------------------------------*/
 .background{
   display: block;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   background-image: url('../assets/coldwarm.jpg');
   background-position: center center;

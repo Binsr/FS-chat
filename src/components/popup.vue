@@ -1,21 +1,26 @@
 <template>
-    <div class="popwrap">
-      <header>
-        <div class="imageShip">
+    <div class="popupContainer">
+        <div class="sheepLogo">
           <img src="../assets/mainlogo.jpg"/>
         </div>
-        <h1 class="title"><span class="thisIsPart">this is</span>
-          <br><span class="titleFSpart">F - S </span>
-          <span class="areaPart"><br> App</span>
-        </h1>
-      </header>
+        <div class="title">
+            <div class="titleFSpart"> Friend - Sheep </div>
+          <div class="areaPart">App</div>
+        </div>
+        <div class="wifiContainer">
+            <img class="wifiImg" src="../assets/wifi.png"/>
+        </div>
       <div>
-          <div class="popupwrap">
-              <p id="poptext"></p>
-          </div>
-          <div class="input">
-                  <input type="text" v-model="name" placeholder="Anonymous" @keyup.enter="submitName">
-                  <button @click="submitName">Oki</button>
+          <div class="inputContainer">
+            <div class="writingTextContainter">
+                <p id="poptext">Unesite ime koje ce biti vidljivo samo u cetu</p>
+            </div>
+            <div class="input">
+                    <input type="text" v-model="name" @keyup.enter="submitName" placeholder="~~~Ime~~~">
+            </div>
+            <div class="btnOkContainer">
+                <button @click="submitName">Next</button>
+            </div>
           </div>
       </div>
     </div>
@@ -24,12 +29,13 @@
 import {mapActions, mapState} from 'vuex';
 import router from '../router';
 import api from '../api'
-import { setTimeout } from 'timers';
+import { setTimeout, clearInterval } from 'timers';
 
 export default {
     data(){
         return {
-            name: ''
+            name: '',
+            typingAllowed: true
         }
     },
     computed:{
@@ -37,95 +43,87 @@ export default {
     },
     methods:{
         ...mapActions(['addUsername','connectToWS','messages']),
-        submitName(){
-            if(this.name == '')
-                this.name = 'Anonymous'
-            this.addUsername(this.name);
-            api.login(this.name).then(Response => {
-                // console.log(Response.data)
-                this.user.sid = Response.data.sid;
-                this.user.name = Response.data.name;
-                this.user.ip = Response.data.ip;
-                console.log(this.user);
-                this.connectToWS();
-            });
-            router.push('/firstpage');
-        },
-        typing() {
-          var i = 0;
-          const text = "...Dobrodosli na Friend-Sheep App! Unesite ime ako zelite...";
-          const el = document.querySelector("#poptext");
-          this.interval = setInterval(function () {
+            submitName(){
+                if(this.name == ''){
+                    console.log("Name needed");
+                    if(this.typingAllowed)
+                        this.typing("Morate uneti ime prvo");
+                        this.typingAllowed = false;
+                    return;
+                }    
+                this.addUsername(this.name);
+                api.login(this.name).then(Response => {
+                    // console.log(Response.data)
+                    this.user.sid = Response.data.sid;
+                    this.user.name = Response.data.name;
+                    this.user.ip = Response.data.ip;
+                    console.log(this.user);
+                    this.connectToWS();
+                });
+                router.push('/firstpage');
+            },
+            typing(poruka) {
+                let text = poruka;
+                const el = document.querySelector("#poptext");
+                if(poruka){
+                    el.textContent = "";
+                }
 
-            if (i < text.length) {
-              el.textContent += text[i];
+                var i = 0;
+                this.interval = setInterval(function () {
+                    if (i < text.length) {
+                        el.textContent += text[i];
 
-              if (i == text.length) {
-                i = 0;
-                el.textContent = "";
-              }
-            }
-            if (i > text.length) {
-              if (i == (text.length + 30)) {
-                /* when text end how long till typing again */
-                i = -1;
-                el.textContent = "";
-              }
-            }
-            i++;
-          }, 90);
+                        if (i == text.length) {
+                            return;
+                        }
+                    }
+                    i++;
+                }, 90);
+            },
         },
-    },
     mounted(){
-        this.typing();
-
     }
 }
 </script>
 
 <style>
-
-.areaPart,
-.title{
-  color: rgb(119, 158, 122);
-  text-shadow: 2px 2px #fff;
+.popupContainer{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(179, 77, 29);
+    border-style: solid; 
+    border-color: white;
 }
+.sheepLogo{
+    margin: 0 auto;
+    width: 100vw;
+    background-color: rgb(179, 77, 29);
+}
+.sheepLogo img{
+    margin: 0 auto;
+    border-width: 20px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 50%;
+}
+
 .titleFSpart{
   color: #fff;
   text-shadow: 2px 2px #fff;
 }
-.tatko{
-    background-color: #000000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    margin: 0 auto;
-    width: 100%;
-    overflow: hidden;
-}
-.wrap{
-    width: 100%;
-}
-
-
-header {
-  height: 200px; /* Deo za promenu  */
-  font-size: 20px;
-  font-family: "Righteous", cursive, "Ultra", serif;
-  width: 100%;
-}
 
 /* TITLE EDIT PART
 ------------------------------------*/
+
 .title {
-  text-align: center;
+    display: flex;
+    text-align: center;
+    font-size: 10vw;
+    margin: 0 auto;
+    flex-direction: column;
 }
 
-.thisIsPart {
-  color: rgb(119, 158, 122);
-  text-shadow: 2px 2px cyan;
-}
 
 .titleFSpart {
   color: rgb(255, 255, 255);
@@ -134,63 +132,78 @@ header {
   text-shadow: 2px 2px black;
 }
 .areaPart {
-  color: rgb(119, 158, 122);
-  text-shadow: 2px 2px cyan;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px rgb(255, 255, 255);
+}
+.wifiImg{
+    width: 50vw;
+    height: 50vw;
+    margin: 0 auto;
+}
+.wifiContainer{
+    display: flex;
+    width: 100vw;
+}
+.writingTextContainter{
+    transform: rotate(10deg);
+    color:white;
 }
 
 /* ----------------------------------*/
-
-.popupwrap{
-    width: 50%;
-    height: 61px;
-    margin: 0 auto;
-    display: block;
-    clear: both;
-    margin-top: 15%;
+.inputContainer{
+    display:flex;
+    width: 100vw;
+    position: absolute;
+    bottom: 0%;
+    flex-direction: column;
+    margin-bottom: 2vh;
 }
 .input{
-    width: 30%;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
 }
 .input input{
-    width: 78%;
-    text-align: center;
-    border-width: 0px;
-    height: 30px;
-    border-radius: 12px;
-    background: #fafafa;
-    color: cyan;
-    font-size: 16px;
-    padding-left: 20px;
+    width: 40vw;
+    height: 6vh;
+    background-color: rgb(0, 0, 0);
+    border-radius: 20px;
+    text-align: center;   
 }
-.input input::placeholder{
-    color: cyan;
-    font-size: 15px;
-    font-weight:bolder;
+.input ::placeholder{
+    color: white;
+}
+.input input:focus::placeholder{
+    color:black;
 }
 .input input:focus{
     border-color: gray;
+    margin-top: 10vh;
+    width: 100vw;
+    height: 100vh;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    left:0;
 }
-.input input:focus::placeholder{
-       color:transparent;
-       font-size: 20px;
-  }
-.input button{
-    margin: 2px;
-    color: cyan;
+.btnOkContainer{
+    width: 100vw;
+    display: flex;
+    align-content: center;
+    transform: rotate(-20deg);
+    margin-top: 5vh;
+}
+.btnOkContainer button{
+    margin: 0 auto;
+    color: rgb(184, 0, 0);
     border: none;
     outline: none;
-    width: 20%;
-    height: 40px;
-    background-color: rgba(112, 112, 112, 0.867);
-    font-size: 14px;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    font-size: 10vw;
     font-weight: bold;
     border-radius: 20px;
-    text-decoration: none;
     cursor: pointer;
 }
 
