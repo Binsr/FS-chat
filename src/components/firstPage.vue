@@ -53,12 +53,11 @@ export default {
     },
     methods: {
       ...mapActions(['addUsername','client']),
-
         showCaffes(){
           if(this.caffeApi){
             api.getCaffeNames().then(Response => {
               this.caffeNames = Response.data.caffes;
-              console.log(this.caffeNames);
+              // console.log(this.caffeNames);
             });
             this.caffeApi = false;
           }

@@ -95,7 +95,7 @@ const store = new Vuex.Store({
         window.localStorage.setItem('sid',  Response.data.sid);
         window.localStorage.setItem('name', namee);
         window.localStorage.setItem('ip',   Response.data.ip);
-        console.log('dosao do ovde')
+        // console.log('dosao do ovde')
         let response = store.dispatch('connectToWS');
         if(response == 'vrati na popup page')
           return 'vrati na popup page'

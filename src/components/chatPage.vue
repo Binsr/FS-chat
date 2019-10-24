@@ -220,9 +220,10 @@ export default {
         router.push('/')
       }
       setTimeout(() => {
+        console.log(this.user.sid)
         this.getClient();
         this.submit();
-      }, 100);
+      }, 1000);
     },
     beforeDestroy(){
       this.disconnectWS();
