@@ -9,7 +9,7 @@
         <div class="chatIcon"></div>
         <div class="roomWrap">
           <p class="roomName">F-S area: {{client.name}}</p>
-          <p class="botHead">Number of users online:</p>
+          <p class="botHead">Number of users online: {{client.number}}</p>
         </div>
       </div>
     </div>
@@ -74,6 +74,10 @@ export default {
             otherMessages: [],
             myMessage:'',
             message:[],
+            userChat: {
+              sid: null,
+              name: null
+            }
         }
     },
     name: 'chatPage',
@@ -84,10 +88,7 @@ export default {
         ...mapState(['messages','user','client'])
     },
     methods:{
-        ...mapActions(['disconnectWS']),
-        test () {
-            console.log(this.messages);
-        },
+        ...mapActions(['disconnectWS','connectToWS','subName','getClient']),
         scrollToEnd: function() {
             var container = this.$el.querySelector(".ChatWindow");
             // console.log(container);
@@ -99,7 +100,7 @@ export default {
             let min = time.getMinutes();
             let hours = time.getHours();
             let name = this.user.name;
-
+            this.message = this.messages;
             if(hours < 10){
                 hours = "0" + hours;
             }
@@ -179,32 +180,34 @@ export default {
             // TO DO: finish with the camera thing
         },
         chooseDocument(){
-           var inputDocument = document.querySelector('[name="document"]');
-           inputDocument.click();
-           // TO DO: insert the document in to the input
+          var inputDocument = document.querySelector('[name="document"]');
+          inputDocument.click();
+          // TO DO: insert the document in to the input
         }
     },
     created () {
-        console.log(window.localStorage.getItem('name'));
-        console.log(window.localStorage.getItem('sid'));
-        console.log(window.localStorage.getItem('ip'));
-        console.log(window.localStorage.getItem('ws'));
+      this.userChat.sid = window.localStorage.getItem('sid')
+      this.userChat.name = window.localStorage.getItem('name')
     },
     mounted () {
-        if(this.user.name != null){
-            this.userJoined(); //ZAMENITI SA TRY AND CATCH
-        }else{
-            this.user.name = window.localStorage.getItem('name');
-            this.user.sid = window.localStorage.getItem('sid');
-            this.user.ip = window.localStorage.getItem('ip');
-            this.user.ws = window.localStorage.getItem('ws');
-            // this.reconnectWS();
-            // this.userJoined();
-        }
-        this.message = this.messages;
+      console.log('xddd')
+      this.message = this.addedMessages;
+      if(this.user.name != null){
+        this.userJoined(); 
+      }else{
+        let namee = window.localStorage.getItem('name')
+        console.log('userChat nameee: ',namee)
+        let response = this.subName(namee)
+        if(response == 'nema ime' || response == 'vrati na popup page')
+        router.push('/')
+      }
+      setTimeout(() => {
+        this.getClient();
+        this.submit();
+      }, 100);
     },
     beforeDestroy(){
-        this.disconnectWS();
+      this.disconnectWS();
     }
 }
 </script>

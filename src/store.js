@@ -6,7 +6,7 @@ import router from './router'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
-    messages: null,
+    messages: [],
     connected:false,
     client:{
       name:null,
@@ -21,14 +21,14 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    // =================================================UTILITY MUTATIONS START=======================================================
-    CHANGE_LOGGED: (state, value) => {
-      state.isLogged = value;
-    },
-    CHANGE_WHO_DAT: (state, type) => {
-      state.whosUsing = type;
-      sessionStorage.setItem('whodat', type);
-    },
+  // =================================================UTILITY MUTATIONS START=======================================================
+  //   CHANGE_LOGGED: (state, value) => {
+  //     state.isLogged = value;
+  //   },
+  //   CHANGE_WHO_DAT: (state, type) => {
+  //     state.whosUsing = type;
+  //     sessionStorage.setItem('whodat', type);
+  //   },
     ADD_MESSAGES : (state, payload) => {
       console.log(payload)
       state.messages = payload;
@@ -37,19 +37,26 @@ const store = new Vuex.Store({
       state.user.name = payload;
     }
   },
-
-
   actions: {
     addMessages (store, payload){
       store.commit( 'ADD_MESSAGES' , payload);
     },
     addUsername (store, payload){
-      store.commit( 'ADD_USERNAME' , payload);
+      store.commit('ADD_USERNAME' , payload);
     },
     connectToWS(store){
-      console.log(store.state.user.sid);
-      if(store.state.user.sid != null){
-        let WS = new WebSocket('ws://990b121.mars1.mars-hosting.com/stockings?sid='+ store.state.user.sid);
+        let sidd;
+        if(store.state.user.sid)
+          sidd = store.state.user.sid;
+        else{
+          let name = window.localStorage.getItem('name');
+          if(name)
+            store.dispatch('subName', name)
+          else{
+            return 'vrati na popup page'
+          }
+        }
+        let WS = new WebSocket('ws://990b121.mars1.mars-hosting.com/stockings?sid='+ sidd);
         store.state.user.ws = WS;
         window.localStorage.setItem("ws",WS);
         store.state.user.ws.onopen = () =>{
@@ -67,13 +74,36 @@ const store = new Vuex.Store({
             }else{
               object.newUser = true;
             }
-              
             store.state.messages.push( object )
             store.state.user.scrolled = false;
-            // console.log(store.state.messages)
           }
-        }
+          return 'ok';
       }
+    },
+    subName(namee){
+      if(namee == ''){
+        console.log("Name needed");
+        return 'nema ime';
+      }
+      if(typeof namee == typeof {})
+        namee = window.localStorage.getItem('name')
+
+      api.login(namee).then(Response => {
+        store.state.user.sid = Response.data.sid;
+        store.state.user.name = Response.data.name;
+        store.state.user.ip = Response.data.ip;
+        window.localStorage.setItem('sid',  Response.data.sid);
+        window.localStorage.setItem('name', namee);
+        window.localStorage.setItem('ip',   Response.data.ip);
+        console.log('dosao do ovde')
+        let response = store.dispatch('connectToWS');
+        if(response == 'vrati na popup page')
+          return 'vrati na popup page'
+          //router.push('/')
+        else
+          return 'goto chatpage'
+          // router.push('/chatpage');
+      });
     },
     disconnectWS (store) {
       store.state.user.ws.close();
@@ -89,30 +119,8 @@ const store = new Vuex.Store({
           store.state.client.name = response.data.cafe.caf_name;
           store.state.client.number = response.data.cafe.caf_number;
       })
-    },
-
-
-
-
-
-    // =================================================UTILITY ACTIONS=======================================================
-
-    setWhodat(store, type) {
-      store.commit('CHANGE_WHO_DAT', type);
-    },
-    // =================================================USER ACTIONS START=======================================================
-    userLogin(store, credentials) {
-      if (credentials.email && credentials.password)
-        api.userlogin(credentials.email, credentials.password).then(response => {
-          if (response.data.sid != null) {
-            store.commit("CHANGE_LOGGED", true);
-            sessionStorage.setItem("sid", response.data.sid);
-            store.dispatch("userCheckStatus",response.data.sid);
-            router.push('about');
-          }
-        })
-    },
-}
+    }
+  }
 })
 
 export default store;

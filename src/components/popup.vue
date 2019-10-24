@@ -42,28 +42,15 @@ export default {
     ...mapState(['user','client']),
     },
     methods:{
-        ...mapActions(['addUsername','connectToWS','messages']),
-            submitName(){
-                if(this.name == ''){
-                    console.log("Name needed");
-                    if(this.typingAllowed)
-                        this.typing("Morate uneti ime prvo");
-                        this.typingAllowed = false;
-                    return;
+        ...mapActions(['addUsername','messages','subName']),
+             submitName(){
+                 window.localStorage.setItem('name',this.name);
+                let response = this.subName(this.name);
+                if(response == 'nema ime'){
+                    this.typing("Morate uneti ime prvo");
+                    this.typingAllowed = false;
                 }
-                this.addUsername(this.name);
-                api.login(this.name).then(Response => {
-                    // console.log(Response.data)
-                    this.user.sid = Response.data.sid;
-                        window.localStorage.setItem('sid', Response.data.sid);
-                    this.user.name = Response.data.name;
-                        window.localStorage.setItem('name', this.user.name);
-                    this.user.ip = Response.data.ip;
-                        window.localStorage.setItem('ip', Response.data.ip);
-                    console.log(this.user);
-                    this.connectToWS();
-                });
-                router.push('/firstpage');
+                router.push('/firstpage')
             },
             typing(poruka) {
                 let text = poruka;
